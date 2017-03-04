@@ -104,12 +104,12 @@
   flex-direction: column;
   justify-content: space-around
 }
-.add-cart-btn a {
+.emphasis-btn a {
   text-decoration: none;
   color: white
 }
 
-.add-cart-btn {
+.emphasis-btn {
   width: 130px;
   margin: 0 auto;
 }

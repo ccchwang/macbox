@@ -23,13 +23,13 @@ import { receiveLineItems } from './reducers/cart'
 const loadProductsAndCartItems = (nextState, replace, done) => {
   axios.get('/api/products')
     .then(products => store.dispatch(receiveProducts(products.data)))
-    // .then(() => {
-    //   let userId = store.getState().auth.id;
+    .then(() => {
+      let userId = store.getState().auth.id;
 
-    //   axios.get(`/api/cart/${userId}`)
-    //       .then(cart => cart.data)
-    //       .then(cart => store.dispatch(receiveLineItems(cart)))
-    // })
+      axios.get(`/api/cart/${userId}`)
+          .then(cart => cart.data)
+          .then(cart => store.dispatch(receiveLineItems(cart)))
+    })
     .then(() => done())
     .catch(console.error)
 }

@@ -26,19 +26,22 @@ export default function({selectedProduct, reviews, handleCartAdd, user}) {
             <h3> ${selectedProduct.formattedPrice} </h3>
             <p>Description:  {selectedProduct.description} </p>
 
-            <Form className="quantity-select">
+            <Form >
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Quantity:</ControlLabel>
                 {" "}
-                <FormControl componentClass="select" placeholder="select">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
+                <FormControl
+                  className="quantity-select"
+                  componentClass="select"
+                  placeholder="select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </FormControl>
                 <br />
-                <Button className="add-cart-btn">
+                <Button className="emphasis-btn">
                   <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}>ADD TO CART</Link>
                 </Button>
               </FormGroup>

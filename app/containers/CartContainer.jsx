@@ -22,7 +22,7 @@ export default connect(
       },
       handleUpdate: function(e, lineItemId) {
         e.preventDefault();
-        axios.put(`/api/cart/item/${lineItemId}`, {newQuantity: e.target.inputField.value})
+        axios.put(`/api/cart/item/${lineItemId}`, {newQuantity: e.target.quantity.value})
           .then((newQuantity) => dispatch(updateLineItem(lineItemId, newQuantity.data)))
           .catch(console.error)
       }

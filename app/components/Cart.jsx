@@ -8,35 +8,47 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
   let total = 0;
 
   let rows = lineItems && lineItems.map(item => {
-    let price = (item.product.price * item.quantity).toFixed(2);
+    let price = item.product.formattedPrice * item.quantity
     total += +price;
 
     return (
       <div key={item.id} >
-        <Row className="show-grid">
-          <Col sm={2} md={2} >
-            <img className="img-responsive" src={item.product.photo} />
+        <Row className="show-grid main-padding" key={item.id}>
+          <Col xs={4} md={4} >
+            <img className="img-responsive" src={item.product.imgUrl} />
           </Col>
 
-          <Col sm={5} md={5} >
+          <Col xs={8} md={7} >
             <h3>{item.product.name}</h3>
-            <br />
-            <Form inline onSubmit={(e) => handleUpdate(e, item.id)}>
-              <FormGroup controlId="formInlineName">
-                <ControlLabel><h4>Quantity: </h4></ControlLabel>
-                {' '}
-                <FormControl className="quantity-form" type="text" defaultValue={item.quantity} name="inputField"/>
-                <Button type="submit" bsStyle='primary'>Update Cart</Button>
+            <h4>${price}</h4>
+
+            <Form onSubmit={(e) => handleUpdate(e, item.id)}>
+              <FormGroup controlId="formControlsSelect">
+                <ControlLabel>Quantity:</ControlLabel>
+                {" "}
+                <FormControl
+                  componentClass="select"
+                  className="quantity-select"
+                  defaultValue={item.quantity}
+                  name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </FormControl>
+                <br />
+
+                <Button type="submit" >Update Cart</Button>
+                <Button onClick={(e) => handleRemove(e, item.id)}>Remove</Button>
+
+
               </FormGroup>
             </Form>
-          </Col>
 
-          <Col sm={2} md={2}>
-            <h4>${price}
-            </h4>
+
+
           </Col>
-          <br />
-          <Button bsStyle='danger' onClick={(e) => handleRemove(e, item.id)}>Remove</Button>
 
         </Row>
         <hr />
@@ -44,23 +56,35 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
     )
   })
 
-  if (!rows.length) {rows = <h4>You don't have any cuties yet!</h4>}
-  total = total === 0 ? null : '$' + total.toFixed(2);
+  if (!rows.length) {
+    rows = <h4>You don't have any cuties yet!</h4>
+    total = null;
+  }
+  else {
+    total = '$' + total
+  }
 
   return (
-    <Grid className="cart">
+    <Grid className="cart-page">
       <h1>Your Cart</h1>
-      <br />
-      <br />
-       <Row className="show-grid">
-         { rows }
+
+       <Row className="show-grid main-padding">
+         <Col sm={12} md={8}>
+          <div className="cart-header">PRODUCTS</div>
+          { rows }
+         </Col>
+
+         <Col sm={12} md={4}>
+          <div className="cart-header">TOTAL</div>
+          <div className="main-padding">
+            <h4>{total}</h4>
+            <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
+          </div>
+        </Col>
+
        </Row>
-       <Row className="show-grid">
-         <Col sm={2} md={2} />
-         <Col sm={2} md={5} />
-         <Col sm={2} md={2}><h4>{total}</h4></Col>
-         <Button bsStyle='info'>PROCEED TO CHECKOUT</Button>
-       </Row>
+
+
     </Grid>
   )
 }
