@@ -9,13 +9,13 @@ const Review = db.define('reviews', {
 }, {
   hooks: {
     afterValidate: function(review){
-      const prettyDate = (x) => {
-        const month = x.slice(4, 7);
-        const day = x.slice(8, 10);
-        const year = x.slice(11, 15);
+      const prettifyDate = (date) => {
+        const month = date.slice(4, 7);
+        const day = date.slice(8, 10);
+        const year = date.slice(11, 15);
         return month + ' ' + day + ', ' + year;
       }
-      review.date = prettyDate(""+review.created_at)
+      review.date = prettifyDate("" + review.created_at)
     },
     afterCreate: function(review){
 

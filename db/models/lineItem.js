@@ -6,9 +6,7 @@ const LineItem = db.define('lineItems', {
   orderedPrice: {
     type: Sequelize.INTEGER,
     get: function(price){
-      let unformatted = this.getDataValue(price);
-      let formatted = unformatted / 100;
-      return formatted
+      return this.getDataValue(price) / 100
     }
   },
   quantity: {
@@ -28,7 +26,6 @@ const LineItem = db.define('lineItems', {
       }
     }
   },
-
   scopes: {
     default: {
       include: [{all: true}]

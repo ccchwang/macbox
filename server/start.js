@@ -42,9 +42,9 @@ module.exports = app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
 
-  // Authentication middleware
-  .use(passport.initialize())
-  .use(passport.session())
+  // Authentication middleware NEED TO FIX TO HAVE PASSPORT!!
+  // .use(passport.initialize())
+  // .use(passport.session())
 
   // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'public')))
@@ -66,7 +66,7 @@ if (module === require.main) {
   //
   // https://nodejs.org/api/modules.html#modules_accessing_the_main_module
   const server = app.listen(
-    process.env.PORT || 1337,
+    process.env.PORT || 8080,
     () => {
       console.log(`--- Started HTTP Server for ${pkg.name} ---`)
       const { address, port } = server.address()

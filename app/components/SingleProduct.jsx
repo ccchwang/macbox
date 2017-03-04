@@ -12,7 +12,7 @@ export default function({selectedProduct, handleCartAdd, user}) {
     <Grid>
       <Row className="show-grid">
         <Col sm={12} md={5} className="product-photo">
-            <img className="image-responsive" src={selectedProduct.photo} />
+            <img className="img-responsive" src={selectedProduct.imgUrl} />
         </Col>
         <Col sm={12} md={7} className="product-info">
             <h1> {selectedProduct.name} </h1>

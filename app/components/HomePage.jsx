@@ -5,30 +5,42 @@ import { Link } from 'react-router'
 
 export default function(props) {
   const boxes = props.products.map((product, index) => {
-    const gridBackground = { backgroundImage: `url(${product.photo})`, cursor: "pointer" }
+    const gridBackground = { cursor: "pointer" }
 
-    if (index === 0 || index % 14 === 0) {
+    if (index === 0 || index % 10 === 0) {
       return (
-        <Col style={gridBackground} sm={6} md={6} className="wide grid-box" key={product.id} >
+        <Col style={gridBackground} xs={6} md={6} className="grid-box" key={product.id} >
           <Link to={`products/${product.id}`}>
-            <div className='grid-box-hover'><h3>{product.name}<br />${product.price}</h3></div>
+            <img src={product.imgUrl} className="img-responsive"/>
+            <div className='grid-box-hover'>
+              <h3>{product.name}</h3>
+              <div className="shop-icon">SHOP IT</div>
+            </div>
           </Link>
         </Col>
       )
     }
-    else if (index === 10 || index % 14 === 10) {
+    else if (index === 7 || index===17 || index===29 ) {
       return (
-        <Col style={gridBackground} sm={6} md={6} className="wide grid-box float-right" key={product.id} >
+        <Col style={gridBackground} xs={6} md={6} className="grid-box float-right" key={product.id} >
           <Link to={`products/${product.id}`}>
-            <div className='grid-box-hover'><h3>{product.name}<br />${product.price}</h3></div>
+            <img src={product.imgUrl} className="img-responsive"/>
+            <div className='grid-box-hover'>
+              <h3>{product.name}</h3>
+              <div className="shop-icon">SHOP IT</div>
+            </div>
           </Link>
         </Col>
       )
     }
     else {
-      return <Col style={gridBackground} sm={6} md={2} className="grid-box" key={product.id}>
+      return <Col style={gridBackground} xs={6} md={3} className="grid-box" key={product.id}>
         <Link to={`products/${product.id}`}>
-          <div className='grid-box-hover'><h3>{product.name}<br />${product.price}</h3></div>
+          <img src={product.imgUrl} className="img-responsive"/>
+          <div className='grid-box-hover'>
+            <h3>{product.name}</h3>
+            <div className="shop-icon">SHOP IT</div>
+          </div>
         </Link>
       </Col>
     }

@@ -16,16 +16,18 @@ class MyNavbar extends React.Component {
 
   render () {
     return (
+      <div>
+      <div id="nav-promotions" />
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/home">Cuties</Link>
+            <Link to="/home">MACBOX <div id="brand-star">♦</div></Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavDropdown eventKey={2} title="Shop" id="basic-nav-dropdown">
+            <NavDropdown eventKey={2} title="SHOP BY CATEGORY" id="basic-nav-dropdown">
               <MenuItem eventKey={2.1}>Kittens</MenuItem>
               <MenuItem eventKey={2.2}>Puppies</MenuItem>
               <MenuItem eventKey={2.3}>Piglets</MenuItem>
@@ -34,16 +36,9 @@ class MyNavbar extends React.Component {
 
           {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
 
-            <Navbar.Form pullLeft>
-              <FormGroup>
-                <FormControl type="text" placeholder="Search" />
-              </FormGroup>
-              <Button type="submit">Submit</Button>
-            </Navbar.Form>
-
           <Nav pullRight>
             <LinkContainer to="/cart">
-             <NavItem eventKey={2}>Cart ({this.props.lineItems.reduce((acc, currentItem) => {
+             <NavItem eventKey={2}>CART ({this.props.lineItems.reduce((acc, currentItem) => {
                   return acc + currentItem.quantity
                }, 0)})
             </NavItem>
@@ -53,6 +48,8 @@ class MyNavbar extends React.Component {
 
         </Navbar.Collapse>
       </Navbar>
+      <div id="nav-border" />
+    </div>
     )
   }
 
@@ -61,10 +58,10 @@ class MyNavbar extends React.Component {
     return (
       <Nav pullRight>
         <LinkContainer to="/login">
-          <NavItem eventKey={1}>Login</NavItem>
+          <NavItem eventKey={1}>LOGIN</NavItem>
         </LinkContainer>
         <LinkContainer to="/signup">
-          <NavItem eventKey={2}>Sign Up</NavItem>
+          <NavItem eventKey={2}>SIGN UP</NavItem>
         </LinkContainer>
       </Nav>
     )

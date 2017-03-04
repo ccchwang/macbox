@@ -2,41 +2,35 @@
 
 const Sequelize = require('sequelize')
 const db = require('APP/db')
-const {Review, User} = require('./index')
 
 const Product = db.define('products', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  description: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-  },
+  description: Sequelize.TEXT,
   category: {
     type: Sequelize.STRING,
     allowNull: false,
   },
   quantity: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     defaultValue: 1,
   },
-  photo: {
-    type: Sequelize.STRING,
-    defaultValue: "http://placekitten.com/200/300",
-  },
+  imgUrl: Sequelize.STRING,
   averageRating: Sequelize.INTEGER,
   price: {
     type: Sequelize.INTEGER,
-    defaultValue: 0,
-    get: function(price){
-      let unformatted = this.getDataValue(price);
-      let formatted = unformatted / 100;
-      return formatted
-    }
+    defaultValue: 0
   },
+}, {
+  getterMethods: {
+    formattedPrice: function(){
+      return this.price / 100
+    }
+  }
 })
 
-// EI: test validations?
+
 
 module.exports = Product
