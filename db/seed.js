@@ -10,36 +10,55 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 
 const seedReviews = () => db.Promise.map([
-  {description: "The cutest, most fluffiest ball of love you've ever seen! Will snuggle you for hours!",
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
     user_id: '1', product_id: '1', rating: '5'
   },
-  {description: "Sassy but sweet. She knows she's cute and isn't afraid to flaunt it!",
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
+    user_id: '2', product_id: '1', rating: '3'
+  },
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
     user_id: '2', product_id: '2', rating: '4'
   },
-  {description: 'Irresistible charm! Looks especially dapper in a top hat and bow tie.',
-    user_id: '3', product_id: '3', rating: '5'
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
+    user_id: '5', product_id: '2', rating: '5'
   },
-  {description: "Feeling down?? Wondering the meaning of life?? This little cutie is an instant pick-me-up and will brighten anyone's day!",
+  {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ',
+    user_id: '3', product_id: '3', rating: '4'
+  },
+  {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ',
+    user_id: '2', product_id: '3', rating: '4'
+  },
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
     user_id: '4', product_id: '4', rating: '5'
   },
-  {description: "Likes soft blankets, rolling around on the bed, and being the star of the show!",
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
+    user_id: '1', product_id: '4', rating: '5'
+  },
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
     user_id: '5', product_id: '5', rating: '4'
   },
-  {description: "Sorta meh but still lovable!", user_id: '1', product_id: '6', rating: '3'  },
-  {description: "Will do the trick!", user_id: '3', product_id: '8', rating: '3'},
-  {description: "Sweetest little pig in the world! Best decision of my life!!", user_id: '3', product_id: '7', rating: '5'}
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ",
+    user_id: '1', product_id: '5', rating: '3'
+  },
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ", user_id: '1', product_id: '6', rating: '3'  },
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ", user_id: '3', product_id: '6', rating: '5'  },
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ", user_id: '3', product_id: '8', rating: '3'},
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ", user_id: '4', product_id: '8', rating: '5'},
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ! Best decision of my life!!", user_id: '3', product_id: '7', rating: '5'},
+  {description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula. ! Best decision of my life!!", user_id: '2', product_id: '7', rating: '4'}
 ], review => db.model('reviews').create(review))
 
 const seedProducts = () => db.Promise.map([
-{name: "Champagne Gold Envelope Sleeve", description: "Sir Thump-a-lot", category: "Macbook Cover", imgUrl: "/img/f1.jpg", price: 8200},
-{name: "Patent Black Leather Zip", description: "Sir Thump-a-lot", category: "Macbook Cover", imgUrl: "/img/f3.jpg", price: 8200},
-{name: "Glittery Rose Gold Vinyl Zip", description: "Sir Thump-a-lot", category: "Macbook Cover", imgUrl: "/img/f4.jpg", price: 8200},
-{name: "Glittery Midnight Black Vinyl Zip", description: "Sir Thump-a-lot", category: "Macbook Cover", imgUrl: "/img/f5.jpg", price: 8200},
-{name: 'Weathered Beach Wood', description: "A cute little piglet in boots", category: "Macbook Decal", imgUrl: "/img/c1.jpg", price: 2399},
-{name: "Glittery Pink Sleeve", description: "Baby orange tabby cat", category: "Macbook Cover", imgUrl: "/img/f2.jpg", price: 2399},{name: "Clean White Marble", description: "Small dog", category: "Macbook Decal", imgUrl: "/img/c3.jpg", price: 2399},
-{name: "Purple Stones Tanzanite", description: "Small giraffe", category: "Macbook Decal", imgUrl: "/img/c5.jpg", price: 2399},
-{name: "Bright Pink Ombre", description: "Sir Thump-a-lot", category: "Keyboard Decal", imgUrl: "/img/k11.jpg", price: 1999},
-{name: "Clean White Marble", description: "Small dog", category: "Macbook Decal", imgUrl: "/img/c3.jpg", price: 2399},
+{averageRating: "4", name: "Champagne Gold Envelope Sleeve", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Cover", imgUrl: "/img/f1.jpg", price: 8200},
+{averageRating: "5", name: "Patent Black Leather Zip", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Cover", imgUrl: "/img/f3.jpg", price: 8200},
+{averageRating: "5", name: "Glittery Rose Gold Vinyl Zip", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Cover", imgUrl: "/img/f4.jpg", price: 8200},
+{averageRating: "4", name: "Glittery Midnight Black Vinyl Zip", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Cover", imgUrl: "/img/f5.jpg", price: 8200},
+{averageRating: "4", name: 'Weathered Beach Wood', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Decal", imgUrl: "/img/c1.jpg", price: 2399},
+{averageRating: "4", name: "Glittery Pink Sleeve", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Cover", imgUrl: "/img/f2.jpg", price: 2399},
+{averageRating: "5", name: "Clean White Marble", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Decal", imgUrl: "/img/c3.jpg", price: 2399},
+{averageRating: "4", name: "Purple Stones Tanzanite", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Decal", imgUrl: "/img/c5.jpg", price: 2399},
+{name: "Bright Pink Ombre", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Keyboard Decal", imgUrl: "/img/k11.jpg", price: 1999},
+{name: "Clean White Marble", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tellus est, pulvinar a tellus ut, volutpat accumsan sem. Duis eleifend rhoncus augue, eget mollis augue efficitur vitae. Donec sollicitudin, mi et mattis interdum, est tellus facilisis metus, non fermentum nisi nibh quis ligula.", category: "Macbook Decal", imgUrl: "/img/c3.jpg", price: 2399},
 
 ], products => db.model('products').create(products))
 

@@ -15,11 +15,11 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
     return (
       <div key={item.id} >
         <Row className="show-grid main-padding" key={item.id}>
-          <Col xs={4} md={4} >
+          <Col xs={5} md={4} >
             <img className="img-responsive" src={item.product.imgUrl} />
           </Col>
 
-          <Col xs={8} md={8} >
+          <Col xs={7} md={8} >
             <h3>{item.product.name}</h3>
             <p>{item.product.category}</p>
             <h4>${price}</h4>

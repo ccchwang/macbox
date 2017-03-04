@@ -16,7 +16,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user}) {
         <Col sm={6} md={5}>
             <img className="img-responsive" src={selectedProduct.imgUrl} />
         </Col>
-        <Col sm={6} md={6} className="product-info">
+        <Col sm={6} md={7} className="product-info">
             <h1> {selectedProduct.name} </h1>
             <div className="rating-stars">
               { `★`.repeat(selectedProduct.averageRating) }

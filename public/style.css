@@ -17,7 +17,8 @@
   background-color: #B8FFED;
   border: none;
   border-radius: 0;
-  transition: 0.2s
+  transition: 0.2s;
+  margin-top: 8px;
 }
 
 
@@ -28,7 +29,11 @@
   width: 100vw;
   position: fixed;
   top: 0;
-  z-index: 2
+  z-index: 2;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 32px
 }
 
 #navbar {
@@ -66,8 +71,15 @@
 
 #brand-star {
   font-size: 0.7em;
-  display: inline-block;
-  margin-top: -3px;
+}
+
+#nav-cart-count{
+  background-color: #D4838F;
+  border-radius: 10px;
+  color: #fff;
+  padding: 2px 7px;
+  line-height: 1;
+  font-size: 0.9em;
 }
 
 #nav-border {
@@ -213,6 +225,7 @@
   color: #666;
   border-radius: 0;
   margin-right: 11px;
+  margin-bottom: 10px;
   transition: 0.18s
 }
 

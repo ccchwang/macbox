@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Button } from 'react-bootstrap'
-import { Route, RouteHandler, Link } from 'react-router'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../reducers/auth'
 
@@ -12,16 +12,14 @@ class MyNavbar extends React.Component {
     this.renderLogout = this.renderLogout.bind(this)
   }
 
-
-
   render () {
     return (
       <div>
-      <div id="nav-promotions" />
+      <div id="nav-promotions">FREE SHIPPING ON ALL ORDERS $50+</div>
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/home">MACBOX <div id="brand-star">♦</div></Link>
+            <Link to="/home">MACBOX <span id="brand-star">♦</span></Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -34,16 +32,26 @@ class MyNavbar extends React.Component {
             </NavDropdown>
           </Nav>
 
-          {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
-
-          <Nav pullRight>
-            <LinkContainer to="/cart">
-             <NavItem eventKey={2}>CART ({this.props.lineItems.reduce((acc, currentItem) => {
-                  return acc + currentItem.quantity
-               }, 0)})
-            </NavItem>
-            </LinkContainer>
+          <Nav>
+            <NavItem>SUBSCRIBE</NavItem>
           </Nav>
+
+        {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
+
+        <Nav pullRight>
+          <LinkContainer to="/cart">
+            <NavItem eventKey={2}>
+              <img src="/img/cart-30-24.png" />
+              {" "}
+              {
+              !this.props.lineItems.length ? null :
+                <span id="nav-cart-count">
+                {this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}
+                </span>
+              }
+          </NavItem>
+          </LinkContainer>
+        </Nav>
 
 
         </Navbar.Collapse>
@@ -58,7 +66,7 @@ class MyNavbar extends React.Component {
     return (
       <Nav pullRight>
         <LinkContainer to="/login">
-          <NavItem eventKey={1}>LOGIN</NavItem>
+          <NavItem eventKey={2}>LOGIN</NavItem>
         </LinkContainer>
         <LinkContainer to="/signup">
           <NavItem eventKey={2}>SIGN UP</NavItem>
@@ -70,9 +78,7 @@ class MyNavbar extends React.Component {
   renderLogout() {
     return (
       <Nav pullRight>
-        <LinkContainer to="/">
-          <NavItem eventKey={1} onClick={this.props.logout}>Logout</NavItem>
-        </LinkContainer>
+        <NavItem eventKey={2} onClick={this.props.logout}>LOGOUT</NavItem>
       </Nav>
     );
   }
