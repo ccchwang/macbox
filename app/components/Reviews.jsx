@@ -31,7 +31,7 @@ export default function({ reviews, selectedProduct }) {
   })
 
   return (
-   <Grid>
+   <Grid className="review-main">
      <h3>Reviews</h3>
      <hr />
       { rows }

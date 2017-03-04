@@ -8,7 +8,8 @@ export default connect(
   (state) => {
     return {
       selectedProduct: state.products.selectedProduct,
-      user: state.auth
+      user: state.auth,
+      reviews: state.reviews.reviews
     }
   },
   (dispatch) => {

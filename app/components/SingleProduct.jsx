@@ -1,29 +1,53 @@
 import React from 'react'
-import { Grid, Row, Col, Button } from 'react-bootstrap'
+import { Grid, Row, Col, Button, Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router';
 import ReviewContainer from '../containers/ReviewContainer'
 
 
-export default function({selectedProduct, handleCartAdd, user}) {
+export default function({selectedProduct, reviews, handleCartAdd, user}) {
 
 
 
   return (
     <Grid>
-      <Row className="show-grid">
-        <Col sm={12} md={5} className="product-photo">
+      Shop / <Link to="" className="category-link">{selectedProduct.category}</Link>
+      <br /><br />
+      <Row className="show-grid product-main">
+        <Col sm={6} md={5}>
             <img className="img-responsive" src={selectedProduct.imgUrl} />
         </Col>
-        <Col sm={12} md={7} className="product-info">
+        <Col sm={6} md={6} className="product-info">
             <h1> {selectedProduct.name} </h1>
-            <h3> ${selectedProduct.price} </h3>
-            <p> {selectedProduct.description} </p>
-            <Button bsStyle="info" className="add-cart-btn">
-              <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link>
-            </Button>
+            <div className="rating-stars">
+              { `★`.repeat(selectedProduct.averageRating) }
+              { `☆`.repeat(5-selectedProduct.averageRating) }
+              {" " + reviews.length} Reviews
+            </div>
+            <h3> ${selectedProduct.formattedPrice} </h3>
+            <p>Description:  {selectedProduct.description} </p>
+
+            <Form className="quantity-select">
+              <FormGroup controlId="formControlsSelect">
+                <ControlLabel>Quantity:</ControlLabel>
+                {" "}
+                <FormControl componentClass="select" placeholder="select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </FormControl>
+                <br />
+                <Button className="add-cart-btn">
+                  <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}>ADD TO CART</Link>
+                </Button>
+              </FormGroup>
+            </Form>
+
         </Col>
+      </Row>
 
-
+      <Row>
         <Col sm={12} >
           <ReviewContainer />
         </Col>

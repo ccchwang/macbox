@@ -49,7 +49,7 @@ export default function(props) {
 
   return (
     <Grid>
-       <Row className="show-grid">
+       <Row className="show-grid all-products">
          { boxes }
        </Row>
     </Grid>
