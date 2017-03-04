@@ -4,12 +4,13 @@ import { Link } from 'react-router'
 
 
 export default function({ lineItems, handleRemove, handleUpdate }) {
+  let cartIsEmpty = lineItems.length;
 
   let total = 0;
 
   let rows = lineItems && lineItems.map(item => {
-    let price = item.product.formattedPrice * item.quantity
-    total += +price;
+    let price = (item.product.price * item.quantity)/100
+    total += +price
 
     return (
       <div key={item.id} >
@@ -18,17 +19,18 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
             <img className="img-responsive" src={item.product.imgUrl} />
           </Col>
 
-          <Col xs={8} md={7} >
+          <Col xs={8} md={8} >
             <h3>{item.product.name}</h3>
+            <p>{item.product.category}</p>
             <h4>${price}</h4>
-
+            <br />
             <Form onSubmit={(e) => handleUpdate(e, item.id)}>
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Quantity:</ControlLabel>
                 {" "}
                 <FormControl
                   componentClass="select"
-                  className="quantity-select"
+                  className="quantity-select cart-select"
                   defaultValue={item.quantity}
                   name="quantity">
                     <option value="1">1</option>
@@ -39,8 +41,8 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
                 </FormControl>
                 <br />
 
-                <Button type="submit" >Update Cart</Button>
-                <Button onClick={(e) => handleRemove(e, item.id)}>Remove</Button>
+                <Button className="cart-btn" type="submit" >UPDATE CART</Button>
+                <Button className="cart-btn" onClick={(e) => handleRemove(e, item.id)}>REMOVE</Button>
 
 
               </FormGroup>
@@ -56,14 +58,6 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
     )
   })
 
-  if (!rows.length) {
-    rows = <h4>You don't have any cuties yet!</h4>
-    total = null;
-  }
-  else {
-    total = '$' + total
-  }
-
   return (
     <Grid className="cart-page">
       <h1>Your Cart</h1>
@@ -71,14 +65,19 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
        <Row className="show-grid main-padding">
          <Col sm={12} md={8}>
           <div className="cart-header">PRODUCTS</div>
-          { rows }
+          { !cartIsEmpty ?  <h4>Your cart is currently empty!</h4> : rows }
          </Col>
 
-         <Col sm={12} md={4}>
+         <Col sm={12} md={4} className="cart-checkout-panel">
           <div className="cart-header">TOTAL</div>
           <div className="main-padding">
-            <h4>{total}</h4>
-            <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
+            { !cartIsEmpty ? null :
+                <div>
+                  <h3>${total.toFixed(2)}</h3>
+                  <br />
+                  <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
+                </div>
+            }
           </div>
         </Col>
 

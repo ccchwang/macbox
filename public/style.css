@@ -12,6 +12,14 @@
   padding-right: 3%
 }
 
+.emphasis-btn {
+  padding: 11px 15%;
+  background-color: #B8FFED;
+  border: none;
+  border-radius: 0;
+  transition: 0.2s
+}
+
 
 /*** NAVBAR ***/
 #nav-promotions {
@@ -102,7 +110,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5%;
+  padding: 7%;
 }
 
 .grid-box-hover:hover {
@@ -110,7 +118,7 @@
 }
 
 .grid-box-hover h3 {
-  font-size: 1.5em
+  font-size: 1.6em
 }
 
 
@@ -154,14 +162,6 @@
   color: black;
 }
 
-.emphasis-btn {
-  padding: 11px 15%;
-  background-color: #B8FFED;
-  border: none;
-  border-radius: 0;
-  transition: 0.2s
-}
-
 .emphasis-btn:hover, .emphasis-btn:active:focus, .emphasis-btn:focus {
   background-color: #AEF1E0;
 }
@@ -189,6 +189,15 @@
   margin-top: 0
 }
 
+.cart-checkout-panel{
+  text-align: center
+}
+
+.cart-select {
+  display: inline-block;
+  margin-bottom: 20px
+}
+
 .cart-header{
   background-color: #fafafa;
   border-bottom: 1px solid #eaeaea;
@@ -198,6 +207,20 @@
   margin: 20px 0 30px;
 }
 
+.cart-btn {
+  padding: 5px 20px;
+  border: 3px solid #aaa;
+  color: #666;
+  border-radius: 0;
+  margin-right: 11px;
+  transition: 0.18s
+}
+
+.cart-btn:hover, .cart-btn:active:focus, .cart-btn:focus {
+  border: 3px solid #D4838F;
+  background-color: white;
+  color: #D4838F;
+}
 
 #footer {
   position: relative;
