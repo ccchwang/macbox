@@ -3,6 +3,21 @@
   font-family: 'Tenor Sans', sans-serif;
 }
 
+a {
+  transition: 0.15s;
+  color: black;
+}
+
+a:focus, a:hover {
+  color: #62BCA5;
+  text-decoration: none;
+}
+
+.btn-default {
+  font-weight: 600;
+}
+
+
 #body {
   padding-top: 125px;
 }
@@ -19,22 +34,23 @@
   border-radius: 0;
   transition: 0.2s;
   margin-top: 8px;
+
 }
 
 .emphasis-btn a {
   text-decoration: none;
   color: black;
+  font-weight: 600
 }
 
 .emphasis-btn:hover, .emphasis-btn:active:focus, .emphasis-btn:focus {
   background-color: #AEF1E0;
 }
 
-.modal-container {
-  position: relative;
-}
-.modal-container .modal, .modal-container .modal-backdrop {
-  position: absolute;
+
+
+.custom-modal {
+  margin: 25vh auto 0;
 }
 
 .modal-content {
@@ -61,15 +77,15 @@
   margin-right: 11px;
 }
 
-.modal-body .modal-detail-btn {
-  background-color: white;
-  margin-right: 0;
-}
-
 .modal-body button:hover,
 .modal-body button:active,
 .modal-body button:active:focus {
   border-color: #AEF1E0
+}
+
+.modal-body .modal-detail-btn {
+  background-color: white;
+  margin-right: 0;
 }
 
 .modal-body .close {
@@ -82,15 +98,6 @@
 
 
 
-a {
-  transition: 0.15s;
-  color: black;
-}
-
-a:focus, a:hover {
-  color: #62BCA5;
-  text-decoration: none;
-}
 
 
 /*** NAVBAR ***/
@@ -194,6 +201,7 @@ a:focus, a:hover {
   flex-direction: column;
   justify-content: center;
   padding: 7%;
+  cursor: pointer
 }
 
 .grid-box-hover:hover {
@@ -308,6 +316,22 @@ a:focus, a:hover {
 .mini-stars {
   color: #D4838F
 }
+
+.quick-view-hover {
+  background-color: rgba(255,255,255,0.6);
+}
+
+.quick-view-icon {
+  background-color: white;
+  padding: 4%;
+  width: 95%;
+  margin: 0 auto;
+  color: #d4838f;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+
 
 
 

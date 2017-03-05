@@ -9,7 +9,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
   let total = 0;
 
   let rows = lineItems && lineItems.map(item => {
-    let price = (item.product.price * item.quantity)/100
+    let price = (item.product.formattedPrice * item.quantity).toFixed(2)
     total += +price
 
     return (
@@ -20,7 +20,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
           </Col>
 
           <Col xs={7} md={8} >
-            <h3>{item.product.name}</h3>
+            <h3><Link to={`/products/${item.product_id}`}>{item.product.name}</Link></h3>
             <p>{item.product.category}</p>
             <h4>${price}</h4>
             <br />
@@ -73,7 +73,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
           <div className="main-padding">
             { !cartIsEmpty ? null :
                 <div>
-                  <h3>${total}</h3>
+                  <h3>${total.toFixed(2)}</h3>
                   <br />
                   <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
                 </div>

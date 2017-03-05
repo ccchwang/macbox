@@ -41,9 +41,9 @@ export default function({selectedProduct, reviews, handleCartAdd, user}) {
                     <option value="5">5</option>
                 </FormControl>
                 <br />
-                <Button className="emphasis-btn">
-                  <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}>ADD TO CART</Link>
-                </Button>
+                <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}>
+                  <Button className="emphasis-btn">ADD TO CART</Button>
+                </Link>
               </FormGroup>
             </Form>
 

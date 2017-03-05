@@ -8,9 +8,13 @@ export default function({ products, category, modalOpen }) {
 const rows = products && products.map(product =>
   (<Col sm={6} md={3} key={product.id}>
 
-    <div onClick={(e) => modalOpen(e, product)} style={{cursor: "pointer"}}>
+    <div onClick={(e) => modalOpen(e, product)} style={{position: 'relative' }}>
       <img src={product.imgUrl} className="img-responsive" />
+      <div className='quick-view-hover grid-box-hover'>
+        <div className="quick-view-icon">QUICK VIEW</div>
+      </div>
     </div>
+
     <div className="main-padding category-product">
       <Link to={`/products/${product.id}`}>{product.name}</Link>
       <div className="mini-stars">
