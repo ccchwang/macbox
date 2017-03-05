@@ -41,7 +41,7 @@ try {
   debug('%s: env file not found or invalid, moving on', secretsFile)
 }
 
-const PORT = process.env.PORT || 1337
+const PORT = process.env.PORT || 8080
 
 module.exports = {
   get name() { return pkg.name },
@@ -53,7 +53,7 @@ module.exports = {
     return env.BASE_URL || `http://localhost:${PORT}`
   },
   get port() {
-    return env.PORT || 1337
+    return env.PORT || 8080
   },
   package: pkg,
   env,

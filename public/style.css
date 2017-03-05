@@ -245,7 +245,7 @@
   vertical-align: middle
 }
 
-#googleBtn {
+.provider-login-btn {
   margin-left: 15px;
   width: 45%;
 }

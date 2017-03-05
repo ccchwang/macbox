@@ -1,15 +1,17 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router';
+import { receiveLineItems } from './cart'
+
+const AUTHENTICATED = 'AUTHENTICATED'
 
 const reducer = (state=null, action) => {
-  switch(action.type) {
+  switch (action.type) {
   case AUTHENTICATED:
     return action.user
   }
   return state
 }
 
-const AUTHENTICATED = 'AUTHENTICATED'
 export const authenticated = user => ({
   type: AUTHENTICATED, user
 })
@@ -34,6 +36,8 @@ export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
       .then(() => dispatch(whoami()))
+      .then(() => dispatch(receiveLineItems([])))
+      .then(() => browserHistory.push('/'))
       .catch(() => dispatch(whoami()))
 
 export const whoami = () =>

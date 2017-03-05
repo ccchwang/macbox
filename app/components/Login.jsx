@@ -1,7 +1,8 @@
 import React from 'react'
-import {PageHeader, Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
+import {Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
 
-export const Login = ({ login }) => (
+export default function({ login }) {
+  return (
   <div className="login-container">
 
 
@@ -16,6 +17,13 @@ export const Login = ({ login }) => (
     <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
     </Button>
     </Col>
+    </FormGroup>
+
+    <FormGroup>
+      <Col smOffset={4}>
+      <Button className="buffer oauth provider-login-btn" bsStyle="info" href="/api/auth/login/facebook" bsSize="large">Login with Facebook
+      </Button>
+      </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalEmail">
@@ -51,13 +59,5 @@ export const Login = ({ login }) => (
     </FormGroup>
   </Form>
   </div>
-
-)
-
-import {login} from 'APP/app/reducers/auth'
-import {connect} from 'react-redux'
-
-export default connect (
-  state => ({}),
-  {login},
-)(Login)
+  )
+}

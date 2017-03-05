@@ -15,6 +15,13 @@ export const SignUp = ({ signup }) => (
       </Col>
     </FormGroup>
 
+    <FormGroup>
+      <Col smOffset={4}>
+        <Button className="buffer oauth provider-login-btn" bsStyle="info" href="/api/auth/login/facebook" bsSize="large">Signup with Facebook
+        </Button>
+      </Col>
+    </FormGroup>
+
     <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} smOffset={2} sm={2}>
         Email
