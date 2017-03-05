@@ -11,12 +11,8 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case "RECEIVE_LINE_ITEM":
-      let duplicate = newState.lineItems.filter(item => item.id === action.lineItem.id)
-      if (duplicate.length) {
-        duplicate[0].quantity += 1;
-        newState.lineItems = [...newState.lineItems];
-      }
-      else { newState.lineItems = [...newState.lineItems, action.lineItem] }
+      let noDupeLineItems = newState.lineItems.filter(item => item.product_id !== action.lineItem.product_id);
+      newState.lineItems = [...noDupeLineItems, action.lineItem];
       break;
 
     case "RECEIVE_LINE_ITEMS":

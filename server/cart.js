@@ -16,13 +16,10 @@ api.post('/:userId', (req, res, next) => {
                 cart_id: cart.id
             }})
         })
-        .then(([line, isCreated]) => {
-            if (!isCreated) {
-                return line.update({quantity: line.quantity + 1})
-            } else {
-                return line
-            }
-        })
+        .then(([line, isCreated]) => line.update(
+            {quantity: !isCreated ? line.quantity + +req.body.quantity
+                                  : req.body.quantity}
+        ))
         .then(line => LineItem.scope('default').findById(line.id))
         .then(line => res.send(line))
         .catch(next)
