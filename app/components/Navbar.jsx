@@ -13,6 +13,7 @@ class MyNavbar extends React.Component {
   }
 
   render () {
+
     return (
       <div>
       <div id="nav-promotions">FREE SHIPPING ON ALL ORDERS $50+</div>
@@ -26,9 +27,12 @@ class MyNavbar extends React.Component {
         <Navbar.Collapse>
           <Nav>
             <NavDropdown eventKey={2} title="SHOP BY CATEGORY" id="basic-nav-dropdown">
-              <MenuItem eventKey={2.1}>Kittens</MenuItem>
-              <MenuItem eventKey={2.2}>Puppies</MenuItem>
-              <MenuItem eventKey={2.3}>Piglets</MenuItem>
+              {
+                this.props.categories.map((c, i) =>
+                  <LinkContainer to={`/shop/${c}`} key={i}>
+                    <MenuItem eventKey={`2.${i}`}>{c}</MenuItem>
+                  </LinkContainer>)
+              }
             </NavDropdown>
           </Nav>
 
@@ -84,7 +88,11 @@ class MyNavbar extends React.Component {
   }
 }
 
-const mapState = ({auth, cart}) => ({auth: auth, lineItems: cart.lineItems});
+const mapState = ({auth, cart, products}) => ({
+  auth: auth,
+  lineItems: cart.lineItems,
+  categories: products.products.map(p => p.category)
+});
 
 const mapDispatch = dispatch => ({
   logout: () => {

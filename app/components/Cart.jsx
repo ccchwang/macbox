@@ -73,7 +73,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
           <div className="main-padding">
             { !cartIsEmpty ? null :
                 <div>
-                  <h3>${total.toFixed(2)}</h3>
+                  <h3>${total}</h3>
                   <br />
                   <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
                 </div>

@@ -21,6 +21,77 @@
   margin-top: 8px;
 }
 
+.emphasis-btn a {
+  text-decoration: none;
+  color: black;
+}
+
+.emphasis-btn:hover, .emphasis-btn:active:focus, .emphasis-btn:focus {
+  background-color: #AEF1E0;
+}
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
+
+.modal-content {
+  border-radius: 0;
+  border: none;
+  box-shadow: none
+}
+
+.modal-body {
+  padding: 47px 35px;
+}
+.modal-body .container {
+  width: 100%
+}
+
+.modal-body .container h3 {
+  margin-top: 0
+}
+
+.modal-body button {
+  padding: 8px 7%;
+  transition: 0.18s;
+  border: 3px solid #B8FFED;
+  margin-right: 11px;
+}
+
+.modal-body .modal-detail-btn {
+  background-color: white;
+  margin-right: 0;
+}
+
+.modal-body button:hover,
+.modal-body button:active,
+.modal-body button:active:focus {
+  border-color: #AEF1E0
+}
+
+.modal-body .close {
+  border: none;
+  padding: 0;
+  margin-right: -30px;
+    margin-top: -30px;
+}
+
+
+
+
+a {
+  transition: 0.15s;
+  color: black;
+}
+
+a:focus, a:hover {
+  color: #62BCA5;
+  text-decoration: none;
+}
+
 
 /*** NAVBAR ***/
 #nav-promotions {
@@ -169,15 +240,6 @@
   width: 20%;
 }
 
-.emphasis-btn a {
-  text-decoration: none;
-  color: black;
-}
-
-.emphasis-btn:hover, .emphasis-btn:active:focus, .emphasis-btn:focus {
-  background-color: #AEF1E0;
-}
-
 
 
 .rating-stars {
@@ -234,6 +296,20 @@
   background-color: white;
   color: #D4838F;
 }
+
+
+/* CATEGORY PAGE */
+
+.category-product {
+  font-size: 1.1em;
+  margin-top: 6px;
+}
+
+.mini-stars {
+  color: #D4838F
+}
+
+
 
 #footer {
   position: relative;

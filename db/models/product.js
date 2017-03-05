@@ -26,7 +26,7 @@ const Product = db.define('products', {
 }, {
   getterMethods: {
     formattedPrice: function(){
-      return this.price / 100
+      return (this.price / 100).toFixed(2)
     }
   }
 })

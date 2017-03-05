@@ -13,6 +13,7 @@ import AppContainer from './containers/AppContainer'
 import LoginContainer from './containers/LoginContainer'
 import SingleProductContainer from './containers/SingleProductContainer';
 import CartContainer from './containers/CartContainer'
+import CategoryContainer from './containers/CategoryContainer'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
@@ -55,7 +56,8 @@ render (
         <Route path='/signup' component={SignUp} />
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePageContainer} onEnter={loadProductsAndCartItems} />
-        <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct}/>
+        <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct} />
+        <Route path="/shop/:category" component={CategoryContainer} />
         <Route path="/cart" component={CartContainer} />
       </Route>
     </Router>

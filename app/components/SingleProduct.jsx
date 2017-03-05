@@ -10,7 +10,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user}) {
 
   return (
     <Grid>
-      Shop / <Link to="" className="category-link">{selectedProduct.category}</Link>
+      Shop / <Link to={`/shop/${selectedProduct.category}`} className="category-link">{selectedProduct.category}</Link>
       <br /><br />
       <Row className="show-grid product-main">
         <Col sm={6} md={5}>
