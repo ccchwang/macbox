@@ -95,7 +95,8 @@ const mapState = ({auth, cart, products}) => ({
 });
 
 const mapDispatch = dispatch => ({
-  logout: () => {
+  logout: (e) => {
+    e.preventDefault();
     dispatch(logout());
     // browserHistory.push('/'); // removed to demo logout instant re-render
   }

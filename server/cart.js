@@ -7,9 +7,10 @@ const api = module.exports = require('express').Router()
 // const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
 api.post('/:userId', (req, res, next) => {
+    let cartInfo = req.params.userId === "unauthUser" ? {where: {session_id: req.sessionID}} : {where: {user_id: req.params.userId}}
     let product = req.body.product;
 
-    Cart.findOrCreate({where: {user_id: req.params.userId}})
+    Cart.findOrCreate(cartInfo)
         .then(([cart, _]) => {
             return LineItem.findOrCreate({where: {
                 product_id: product.id,
@@ -26,7 +27,9 @@ api.post('/:userId', (req, res, next) => {
 })
 
 api.get('/:userId', (req, res, next) => {
-    Cart.findOne({where: {user_id: req.params.userId}})
+    let cartInfo = req.params.userId === "unauthUser" ? {where: {session_id: req.sessionID}} : {where: {user_id: req.params.userId}};
+
+    Cart.findOne(cartInfo)
         .then(cart => {
             if (cart) return LineItem.scope('default').findAll({where: {cart_id: cart.id}})
             else {return []}

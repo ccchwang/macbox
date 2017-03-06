@@ -36,7 +36,6 @@ export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
       .then(() => dispatch(whoami()))
-      .then(() => dispatch(receiveLineItems([])))
       .then(() => browserHistory.push('/'))
       .catch(() => dispatch(whoami()))
 
