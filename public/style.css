@@ -17,7 +17,6 @@ a:focus, a:hover {
   font-weight: 600;
 }
 
-
 #body {
   padding-top: 125px;
 }
@@ -153,11 +152,6 @@ a:focus, a:hover {
 
 #nav-cart-count{
   background-color: #D4838F;
-  border-radius: 10px;
-  color: #fff;
-  padding: 2px 7px;
-  line-height: 1;
-  font-size: 0.9em;
 }
 
 #nav-border {
@@ -209,7 +203,8 @@ a:focus, a:hover {
 }
 
 .grid-box-hover h3 {
-  font-size: 1.6em
+  font-size: 1.6em;
+  line-height: 30px
 }
 
 
@@ -269,6 +264,10 @@ a:focus, a:hover {
 
 .cart-page h3 {
   margin-top: 0
+}
+
+.cart-page a:focus, .cart-page a:hover {
+  color: #D4838F;
 }
 
 .cart-checkout-panel{

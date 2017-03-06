@@ -22,7 +22,7 @@ export default connect(
   }
 
   close() {
-    setTimeout(this.setState({ showModal: false, selectedProduct: {} }), 500)
+    setTimeout(this.setState({ showModal: false, selectedProduct: {} }), 1000)
   }
 
   open(e, product) {
