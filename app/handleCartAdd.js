@@ -5,6 +5,8 @@ import store from './store'
 export const handleCartAdd = function(e, user, selectedProduct) {
   e.preventDefault();
 
+  console.log(e.target.quantity)
+
   axios.post(`/api/cart/${user.id || 'unauthUser'}`, {
     product: selectedProduct,
     quantity: e.target.quantity && e.target.quantity.value || 1
