@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Badge } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../reducers/auth'
@@ -49,9 +49,7 @@ class MyNavbar extends React.Component {
               {" "}
               {
               !this.props.lineItems.length ? null :
-                <span id="nav-cart-count">
-                {this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}
-                </span>
+                <span><Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge></span>
               }
           </NavItem>
           </LinkContainer>

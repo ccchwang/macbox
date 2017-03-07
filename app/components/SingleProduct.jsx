@@ -24,7 +24,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user}) {
               {" " + reviews.length} Reviews
             </div>
             <h3> ${selectedProduct.formattedPrice} </h3>
-            <p>Description:  {selectedProduct.description} </p>
+            <p>{selectedProduct.description} </p>
 
             <Form onSubmit={(e) => handleCartAdd(e, user, selectedProduct)}>
               <FormGroup controlId="formControlsSelect">

@@ -35,7 +35,7 @@ module.exports = app
   // Session middleware - compared to express-session (which is what's used in the Auther workshop), cookie-session stores sessions in a cookie, rather than some other type of session store.
   // Cookie-session docs: https://www.npmjs.com/package/cookie-session
   .use(expressSession({
-    secret: 'tongiscool',
+    secret: 'imthebest',
     resave: false,
     saveUninitialized: true
   }))
