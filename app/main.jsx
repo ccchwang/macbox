@@ -14,6 +14,7 @@ import LoginContainer from './containers/LoginContainer'
 import SingleProductContainer from './containers/SingleProductContainer';
 import CartContainer from './containers/CartContainer'
 import CategoryContainer from './containers/CategoryContainer'
+import TestContainer from './containers/TestContainer'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
@@ -58,6 +59,7 @@ render (
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct} />
         <Route path="/shop/:category" component={CategoryContainer} />
         <Route path="/cart" component={CartContainer} />
+        <Route path="/test" component={TestContainer} />
       </Route>
     </Router>
   </Provider>,

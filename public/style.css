@@ -1,3 +1,20 @@
+#test {
+  position: absolute;
+  z-index: 2;
+  width: 258px;
+  text-align: center;
+  margin: 0
+}
+
+#test2 {
+  margin: 0
+}
+
+.test-btn {
+  min-width: 258.05px;
+  min-height: 42px;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Tenor Sans', sans-serif;
