@@ -17,17 +17,19 @@ export default connect(
       showBox: false
     };
 
-    toggle = () => {
-      this.setState({
-        showBox: !this.state.showBox
-      });
+    scrollUpAdd = () => {
+      this.setState({showBox: false})
+    }
+    scrollDownAdd = () => {
+      this.setState({showBox: !this.state.showBox})
+      // setTimeout(this.scrollUpAdd, 2000)
     };
 
     render () {
       return (
       <SingleProduct
         showBox={this.state.showBox}
-        toggle={this.toggle}
+        scroll={this.scrollDownAdd}
         selectedProduct={this.props.selectedProduct}
         user={this.props.user}
         reviews={this.props.reviews}

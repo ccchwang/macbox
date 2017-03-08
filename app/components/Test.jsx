@@ -18,7 +18,10 @@ export default class Box extends React.Component {
     return (
 
 
-        <p id="test" ref={c => this.container = c}>ADDING</p>
+        <div id="test" ref={c => this.container = c}>
+          <img src="/img/cart-30-16.png" id="add-cart-icon" />
+          <span>  ADDING</span>
+        </div>
 
 
     );

@@ -6,7 +6,7 @@ import TransitionGroup from 'react-addons-transition-group';
 import Test from '../components/Test'
 import Test2 from '../components/Test2'
 
-export default function({selectedProduct, reviews, handleCartAdd, user, showBox, toggle}) {
+export default function({selectedProduct, reviews, handleCartAdd, user, showBox, scroll}) {
 
   return (
     <Grid>
@@ -62,7 +62,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user, showBox,
                   { showBox && <Test  />}
                 </TransitionGroup>}
 
-                <Button type="submit" className="emphasis-btn test-btn" onClick={toggle} >
+                <Button type="submit" className="emphasis-btn test-btn" onClick={scroll} >
 
                   <TransitionGroup>
                     { !showBox && <Test2 /> }

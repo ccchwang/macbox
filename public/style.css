@@ -15,6 +15,14 @@
   min-height: 42px;
 }
 
+.btn:focus {
+  outline: none
+}
+
+#add-cart-icon {
+  padding-bottom: 3px
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Tenor Sans', sans-serif;
