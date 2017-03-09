@@ -33,9 +33,11 @@
   position: absolute;
   z-index: 2;
   right: 0;
-  top: 20px;
+  top: 65px;
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
   border: 1px solid #c5c5c5;
+  background-color: white;
+
 }
 
 @keyframes belle-spinner-pulse {

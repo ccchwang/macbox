@@ -72,13 +72,12 @@ export default connect(
                   <Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
                 </span>
               }
-
-              <TransitionGroup>
-                { this.state.playAnimation && <CartDropdown /> }
-              </TransitionGroup>
-
           </NavItem>
           </LinkContainer>
+
+          <TransitionGroup>
+            { this.state.playAnimation && <CartDropdown /> }
+          </TransitionGroup>
         </Nav>
 
 
