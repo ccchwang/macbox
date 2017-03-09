@@ -5,22 +5,45 @@ import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../reducers/auth'
 import CartDropdown from './CartDropdown'
+import LoginSignUp from './LoginSignUp'
+import Logout from './Logout'
 import TransitionGroup from 'react-addons-transition-group'
-import { animationOn, animationOff } from '../toggleAnimation'
+// import { toggleAnimation } from '../toggleAnimation'
 
 
-class MyNavbar extends React.Component {
+const mapState = ({auth, cart, products}) => ({
+  auth: auth,
+  lineItems: cart.lineItems,
+  categories: products.products.map(p => p.category)
+});
+
+const mapDispatch = dispatch => ({
+  logout: (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    // browserHistory.push('/'); // removed to demo logout instant re-render
+  }
+});
+
+export let NavBar;
+
+export default connect(mapState, mapDispatch)(class MyNavbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {playAnimation: false}
-    this.renderLoginSignup = this.renderLoginSignup.bind(this)
-    this.renderLogout = this.renderLogout.bind(this)
-    this.animationOn = animationOn.bind(this);
-    this.animationOff = animationOff.bind(this);
+    this.toggleAnimation = this.toggleAnimation.bind(this);
   }
 
-  render () {
+  toggleAnimation () {
+    console.log('hi')
+    this.setState({playAnimation: !this.state.playAnimation})
+    setTimeout(() => this.setState({playAnimation: !this.state.playAnimation}), 2000)
+  }
 
+
+
+  render () {
+    NavBar = this;
     return (
       <div>
       <div id="nav-promotions">FREE SHIPPING ON ALL ORDERS $50+</div>
@@ -47,7 +70,7 @@ class MyNavbar extends React.Component {
             <NavItem>SUBSCRIBE</NavItem>
           </Nav>
 
-        {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
+          {this.props.auth ? <Logout /> : <LoginSignUp />}
 
         <Nav pullRight id="cart-widget">
           <LinkContainer to="/cart">
@@ -59,10 +82,12 @@ class MyNavbar extends React.Component {
                 <span>
                   <Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
                 </span>
+
+
               }
 
               <TransitionGroup>
-                { this.props.lineItems.length && <CartDropdown /> }
+                { this.state.playAnimation && <CartDropdown /> }
               </TransitionGroup>
 
           </NavItem>
@@ -76,43 +101,4 @@ class MyNavbar extends React.Component {
     </div>
     )
   }
-
-
-  renderLoginSignup() {
-    return (
-      <Nav pullRight>
-        <LinkContainer to="/login">
-          <NavItem eventKey={2}>LOGIN</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/signup">
-          <NavItem eventKey={2}>SIGN UP</NavItem>
-        </LinkContainer>
-      </Nav>
-    )
-  }
-
-  renderLogout() {
-    return (
-      <Nav pullRight>
-        <NavItem eventKey={2} onClick={this.props.logout}>LOGOUT</NavItem>
-      </Nav>
-    );
-  }
-}
-
-const mapState = ({auth, cart, products}) => ({
-  auth: auth,
-  lineItems: cart.lineItems,
-  categories: products.products.map(p => p.category),
-  cartAdded: false
 });
-
-const mapDispatch = dispatch => ({
-  logout: (e) => {
-    e.preventDefault();
-    dispatch(logout());
-    // browserHistory.push('/'); // removed to demo logout instant re-render
-  }
-});
-
-export default connect(mapState, mapDispatch)(MyNavbar);

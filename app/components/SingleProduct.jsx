@@ -7,7 +7,7 @@ import Test from '../components/Test'
 import Test2 from '../components/Test2'
 
 
-export default function({selectedProduct, reviews, handleCartAddDelay, user, playAnimation, animationOn}) {
+export default function({selectedProduct, reviews, handleCartAdd, user, playAnimation, toggleAnimation}) {
 
   return (
     <Grid>
@@ -27,7 +27,7 @@ export default function({selectedProduct, reviews, handleCartAddDelay, user, pla
             <h3> ${selectedProduct.formattedPrice} </h3>
             <p>{selectedProduct.description} </p>
 
-            <Form onSubmit={(e) => handleCartAddDelay(e, user, selectedProduct)}>
+            <Form onSubmit={(e) => handleCartAdd(e, user, selectedProduct)}>
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Quantity:</ControlLabel>
                 {" "}
@@ -63,7 +63,7 @@ export default function({selectedProduct, reviews, handleCartAddDelay, user, pla
                   { playAnimation && <Test  />}
                 </TransitionGroup>
 
-                <Button type="submit" className="emphasis-btn test-btn" onClick={animationOn} style={!playAnimation ? {backgroundColor:'#B8FFED'} : null}>
+                <Button type="submit" className="emphasis-btn test-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#B8FFED'} : null}>
                   <TransitionGroup>
                     { !playAnimation && <Test2 /> }
                   </TransitionGroup>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import SingleProduct from '../components/SingleProduct'
-import { handleCartAddDelay } from '../handleCartAdd'
-import { animationOn, animationOff } from '../toggleAnimation'
+import { handleCartAdd } from '../handleCartAdd'
+import { toggleAnimation } from '../toggleAnimation'
+
 
 export default connect(
   (state) => {
@@ -10,25 +11,26 @@ export default connect(
       selectedProduct: state.products.selectedProduct,
       user: state.auth,
       reviews: state.reviews.reviews,
-      handleCartAddDelay: handleCartAddDelay
+      handleCartAdd: handleCartAdd
     }
   })(class extends React.Component {
     constructor() {
       super();
       this.state = {playAnimation: false}
-      this.animationOn = animationOn.bind(this);
-      this.animationOff = animationOff.bind(this);
+      this.toggleAnimation = toggleAnimation.bind(this);
     }
 
     render () {
+
+
       return (
         <SingleProduct
           playAnimation={this.state.playAnimation}
-          animationOn={this.animationOn}
+          toggleAnimation={this.toggleAnimation}
           selectedProduct={this.props.selectedProduct}
           user={this.props.user}
           reviews={this.props.reviews}
-          handleCartAddDelay={this.props.handleCartAddDelay}
+          handleCartAdd={this.props.handleCartAdd}
         />
       );
     }
