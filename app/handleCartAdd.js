@@ -15,7 +15,7 @@ export const handleCartAdd = function(e, user, selectedProduct) {
     setTimeout(() => {
       toggleAnimation.call(NavBar)
       store.dispatch(receiveLineItem(createdLineItem.data))
-    }, 2000)
+    }, 3000)
   )
   .catch(console.error)
 }

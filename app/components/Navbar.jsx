@@ -8,42 +8,31 @@ import CartDropdown from './CartDropdown'
 import LoginSignUp from './LoginSignUp'
 import Logout from './Logout'
 import TransitionGroup from 'react-addons-transition-group'
-// import { toggleAnimation } from '../toggleAnimation'
 
-
-const mapState = ({auth, cart, products}) => ({
-  auth: auth,
-  lineItems: cart.lineItems,
-  categories: products.products.map(p => p.category)
-});
-
-const mapDispatch = dispatch => ({
-  logout: (e) => {
-    e.preventDefault();
-    dispatch(logout());
-    // browserHistory.push('/'); // removed to demo logout instant re-render
-  }
-});
 
 export let NavBar;
 
-export default connect(mapState, mapDispatch)(class MyNavbar extends React.Component {
+export default connect(
+  ({auth, cart, products}) => ({
+      auth: auth,
+      lineItems: cart.lineItems,
+      categories: products.products.map(p => p.category)
+  }),
+  (dispatch) => ({
+    logout: (e) => {
+      e.preventDefault();
+      dispatch(logout());
+    }
+  })
+)(class MyNavbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {playAnimation: false}
-    this.toggleAnimation = this.toggleAnimation.bind(this);
+    NavBar = this;
   }
-
-  toggleAnimation () {
-    console.log('hi')
-    this.setState({playAnimation: !this.state.playAnimation})
-    setTimeout(() => this.setState({playAnimation: !this.state.playAnimation}), 2000)
-  }
-
-
 
   render () {
-    NavBar = this;
+
     return (
       <div>
       <div id="nav-promotions">FREE SHIPPING ON ALL ORDERS $50+</div>
@@ -82,8 +71,6 @@ export default connect(mapState, mapDispatch)(class MyNavbar extends React.Compo
                 <span>
                   <Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
                 </span>
-
-
               }
 
               <TransitionGroup>
