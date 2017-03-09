@@ -37,7 +37,14 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
   border: 1px solid #c5c5c5;
   background-color: white;
+}
 
+#cart-dropdown-items {
+  width: 95%;
+  margin: 0 auto;
+  padding: 5%;
+  font-size: 0.95em;
+  font-weight: 600
 }
 
 @keyframes belle-spinner-pulse {

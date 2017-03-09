@@ -32,6 +32,7 @@ export default connect(
   }
 
   render () {
+    const lineItems = this.props.lineItems
 
     return (
       <div>
@@ -67,16 +68,16 @@ export default connect(
               <img src="/img/cart-30-24.png" />
               {" "}
               {
-              !this.props.lineItems.length ? null :
+              !lineItems.length ? null :
                 <span>
-                  <Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
+                  <Badge id="nav-cart-count">{lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
                 </span>
               }
           </NavItem>
           </LinkContainer>
 
           <TransitionGroup>
-            { this.state.playAnimation && <CartDropdown /> }
+            { this.state.playAnimation && <CartDropdown lineItems={lineItems} /> }
           </TransitionGroup>
         </Nav>
 
