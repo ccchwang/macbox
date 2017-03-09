@@ -6,7 +6,8 @@ import TransitionGroup from 'react-addons-transition-group';
 import Test from '../components/Test'
 import Test2 from '../components/Test2'
 
-export default function({selectedProduct, reviews, handleCartAdd, user, showBox, scroll}) {
+
+export default function({selectedProduct, reviews, handleCartAddDelay, user, playAnimation, animationOn}) {
 
   return (
     <Grid>
@@ -26,7 +27,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user, showBox,
             <h3> ${selectedProduct.formattedPrice} </h3>
             <p>{selectedProduct.description} </p>
 
-            <Form onSubmit={(e) => handleCartAdd(e, user, selectedProduct)}>
+            <Form onSubmit={(e) => handleCartAddDelay(e, user, selectedProduct)}>
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Quantity:</ControlLabel>
                 {" "}
@@ -57,19 +58,19 @@ export default function({selectedProduct, reviews, handleCartAdd, user, showBox,
                 </FormControl>
                 <br />
 
-{
+
                 <TransitionGroup>
-                  { showBox && <Test  />}
-                </TransitionGroup>}
+                  { playAnimation && <Test  />}
+                </TransitionGroup>
 
-                <Button type="submit" className="emphasis-btn test-btn" onClick={scroll} >
-
+                <Button type="submit" className="emphasis-btn test-btn" onClick={animationOn} style={!playAnimation ? {backgroundColor:'#B8FFED'} : null}>
                   <TransitionGroup>
-                    { !showBox && <Test2 /> }
+                    { !playAnimation && <Test2 /> }
                   </TransitionGroup>
-
-
                 </Button>
+
+
+
               </FormGroup>
             </Form>
 

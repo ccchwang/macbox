@@ -23,6 +23,47 @@
   padding-bottom: 3px
 }
 
+#cart-widget {
+  position: relative
+}
+
+#cart-dropdown {
+  width: 360px;
+  height: 400px;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  border: 1px solid #c5c5c5;
+}
+
+@keyframes belle-spinner-pulse {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+    }
+  50% {
+    opacity: 1;
+    }
+  }
+
+@keyframes belle-spinner-pulse {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    }
+  }
+
+
+
+/***************************/
+
 * {
   box-sizing: border-box;
   font-family: 'Tenor Sans', sans-serif;

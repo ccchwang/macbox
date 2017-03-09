@@ -4,12 +4,19 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Badge } from 'react-bootst
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../reducers/auth'
+import CartDropdown from './CartDropdown'
+import TransitionGroup from 'react-addons-transition-group'
+import { animationOn, animationOff } from '../toggleAnimation'
+
 
 class MyNavbar extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {playAnimation: false}
     this.renderLoginSignup = this.renderLoginSignup.bind(this)
     this.renderLogout = this.renderLogout.bind(this)
+    this.animationOn = animationOn.bind(this);
+    this.animationOff = animationOff.bind(this);
   }
 
   render () {
@@ -42,15 +49,22 @@ class MyNavbar extends React.Component {
 
         {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
 
-        <Nav pullRight>
+        <Nav pullRight id="cart-widget">
           <LinkContainer to="/cart">
             <NavItem eventKey={2}>
               <img src="/img/cart-30-24.png" />
               {" "}
               {
               !this.props.lineItems.length ? null :
-                <span><Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge></span>
+                <span>
+                  <Badge id="nav-cart-count">{this.props.lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
+                </span>
               }
+
+              <TransitionGroup>
+                { this.props.lineItems.length && <CartDropdown /> }
+              </TransitionGroup>
+
           </NavItem>
           </LinkContainer>
         </Nav>
@@ -89,7 +103,8 @@ class MyNavbar extends React.Component {
 const mapState = ({auth, cart, products}) => ({
   auth: auth,
   lineItems: cart.lineItems,
-  categories: products.products.map(p => p.category)
+  categories: products.products.map(p => p.category),
+  cartAdded: false
 });
 
 const mapDispatch = dispatch => ({
