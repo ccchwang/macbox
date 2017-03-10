@@ -23,28 +23,38 @@
   padding-bottom: 3px
 }
 
-#cart-widget {
+#cart-widget-parent {
   position: relative
 }
 
-#cart-dropdown {
+#cart-widget {
   width: 360px;
-  height: 400px;
   position: absolute;
   z-index: 2;
   right: 0;
   top: 65px;
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
   border: 1px solid #c5c5c5;
-  background-color: white;
+  background-color: #3d2e44;
+  color: black
 }
 
-#cart-dropdown-items {
-  width: 95%;
-  margin: 0 auto;
-  padding: 5%;
+#cart-widget-items {
+  width: 100%;
+  min-height: 150px;
+  margin: 0;
+  padding: 5% 5% 0;
   font-size: 0.95em;
-  font-weight: 600
+  font-weight: 600;
+  background-color: white
+}
+
+#cart-widget-checkout {
+  padding: 8%;
+}
+
+.widget-btn {
+  width: 100%
 }
 
 @keyframes belle-spinner-pulse {

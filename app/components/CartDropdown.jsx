@@ -1,7 +1,7 @@
 import React from 'react'
-import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } from 'react-bootstrap'
+import { Grid, Row, Col, Button } from 'react-bootstrap'
 
-export default class CartDropdown extends React.Component {
+export default class Cartwidget extends React.Component {
   componentWillEnter (callback) {
     const el = this.container;
     TweenMax.from(el, 0.6, {height: 0, opacity: 0, ease:Back.easeOut, onComplete: callback});
@@ -13,8 +13,11 @@ export default class CartDropdown extends React.Component {
   }
 
   render () {
+  let total = 0;
 
-let rows = this.props.lineItems && this.props.lineItems.map(item => {
+  let rows = this.props.lineItems && this.props.lineItems.map(item => {
+    let price = (item.product.formattedPrice * item.quantity).toFixed(2)
+    total += +price
 
     return (
       <div key={item.id}>
@@ -38,11 +41,17 @@ let rows = this.props.lineItems && this.props.lineItems.map(item => {
 
 
     return (
-      <div ref={c => this.container = c} id="cart-dropdown">
-        <Grid id="cart-dropdown-items">
+      <div ref={c => this.container = c} id="cart-widget">
+        <div>
+        <Grid id="cart-widget-items">
           { rows }
         </Grid>
+        <Col xs={12} id="cart-widget-checkout">
+          <Button className="emphasis-btn widget-btn">CHECK OUT  |  ${total.toFixed(2)}</Button>
+        </Col>
+        </div>
       </div>
+
 
 
     );

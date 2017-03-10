@@ -62,7 +62,7 @@ export default connect(
 
           {this.props.auth ? <Logout /> : <LoginSignUp />}
 
-        <Nav pullRight id="cart-widget">
+        <Nav pullRight id="cart-widget-parent">
           <LinkContainer to="/cart">
             <NavItem eventKey={2}>
               <img src="/img/cart-30-24.png" />
@@ -73,12 +73,13 @@ export default connect(
                   <Badge id="nav-cart-count">{lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
                 </span>
               }
+              <TransitionGroup>
+                { this.state.playAnimation && <CartDropdown lineItems={lineItems} /> }
+              </TransitionGroup>
           </NavItem>
           </LinkContainer>
 
-          <TransitionGroup>
-            { this.state.playAnimation && <CartDropdown lineItems={lineItems} /> }
-          </TransitionGroup>
+
         </Nav>
 
 
