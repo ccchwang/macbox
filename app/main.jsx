@@ -60,7 +60,7 @@ render (
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct} />
         <Route path="/shop/:category" component={CategoryContainer} />
         <Route path="/cart" component={CartContainer} />
-        <Route path="/social" component={SocialPanes} />
+        <Route path="/wishlist" component={SocialPanes} />
       </Route>
     </Router>
   </Provider>,

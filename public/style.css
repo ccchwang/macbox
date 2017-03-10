@@ -109,6 +109,11 @@
   padding-right: 6%
 }
 
+#motion-menu-btn{
+  width: 20px;
+  height: 20px;
+  background-color: blue
+}
 
 /***************************/
 
@@ -220,7 +225,7 @@ a:focus, a:hover {
   width: 100vw;
   position: fixed;
   top: 0;
-  z-index: 2000;
+  z-index: 200;
   color: white;
   text-align: center;
   font-size: 0.8em;
@@ -274,7 +279,7 @@ a:focus, a:hover {
   width: 100vw;
   position: fixed;
   top: 85px;
-  z-index: 2000
+  z-index: 200
 }
 
 

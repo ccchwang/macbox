@@ -57,8 +57,8 @@ export default connect(
           </Nav>
 
           <Nav>
-            <LinkContainer to={`/social`}>
-            <NavItem>SOCIAL</NavItem>
+            <LinkContainer to={`/wishlist`}>
+            <NavItem>WISHLIST</NavItem>
             </LinkContainer>
           </Nav>
 

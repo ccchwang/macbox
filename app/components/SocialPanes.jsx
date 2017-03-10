@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { SortablePane, Pane } from 'react-sortable-pane';
 import { Col, Modal, Button } from 'react-bootstrap'
-
+import MotionMenu from './motion-menu';
 
 
 export default connect(
@@ -29,8 +29,8 @@ export default connect(
 
     return (
       <Pane
-        width={200}
-        height={200}
+        width={190}
+        height={190}
         style={backgroundImg}
         key={i}
         id={product.id}
@@ -106,7 +106,23 @@ export default connect(
 
        <Modal show={this.state.showModal} onHide={this.close} dialogClassName="custom-modal">
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <MotionMenu
+              type="horizontal"
+              margin={120}
+            >
+              <div className="button">
+                <i className="fa fa-bars" />
+              </div>
+              <div className="button">
+                <i className="fa fa-cogs" />
+              </div>
+              <div className="button">
+                <i className="fa fa-cloud" />
+              </div>
+              <div className="button">
+                <i className="fa fa-home" />
+              </div>
+            </MotionMenu>
           </Modal.Header>
           <Modal.Body>
             <h4>Overflowing text to show scroll behavior</h4>
