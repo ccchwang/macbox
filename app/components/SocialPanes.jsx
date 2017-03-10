@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { SortablePane, Pane } from 'react-sortable-pane';
-import { Col } from 'react-bootstrap'
+import { Col, Modal, Button } from 'react-bootstrap'
+
 
 
 export default connect(
@@ -10,20 +11,32 @@ export default connect(
       products: state.products.products
     }
   }
-)(function(props){
+)(class extends React.Component {
+    constructor() {
+      super()
+      this.state = {showModal: false};
+      this.close = this.close.bind(this);
+      this.open = this.open.bind(this);
+    }
 
-  const panes = props.products && props.products.map((product, i) => {
+  close() { this.setState({ showModal: false }) }
+
+  open() { this.setState({ showModal: true }) }
+
+  render () {
+  const panes = this.props.products && this.props.products.map((product, i) => {
     const backgroundImg = {backgroundImage: `url(${product.imgUrl})`};
 
-    return (<Pane
-      width={200}
-      height={200}
-      style={backgroundImg}
-      key={i}
-      id={product.id}
-      className="sort-pane"
-      >
-        <p onClick={() => console.log('hi')}>{product.name}</p>
+    return (
+      <Pane
+        width={200}
+        height={200}
+        style={backgroundImg}
+        key={i}
+        id={product.id}
+        className="sort-pane"
+        >
+          <p onClick={this.open}>{product.name}</p>
       </Pane>)
   })
 
@@ -35,7 +48,7 @@ export default connect(
 
 
   return (
-    <div className="main-padding">
+    <div className="pane-padding">
       <h1>Your Wishlist</h1>
 
       <Col md={3}>
@@ -91,8 +104,22 @@ export default connect(
        </Col>
 
 
+       <Modal show={this.state.showModal} onHide={this.close} dialogClassName="custom-modal">
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>Overflowing text to show scroll behavior</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+
     </div>
   );
+  }
 }
 )
 

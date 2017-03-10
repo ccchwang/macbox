@@ -80,11 +80,10 @@
   }
 
 .sort-pane {
-  border: solid 1px #ccc;
-  border-radius: 5px;
-  background-color: #fff;
+
+  border-radius: 9px;
   background-size: cover;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .sort-pane p {
@@ -94,6 +93,20 @@
   position: fixed;
   bottom: 0;
   padding: 3% 6%;
+}
+
+.pane-header{
+  background-color: #fafafa;
+  border-bottom: 1px solid #eaeaea;
+  padding: 12px 20px 8px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  margin: 20px 0 10px;
+}
+
+.pane-padding{
+  padding-left: 6%;
+  padding-right: 6%
 }
 
 
