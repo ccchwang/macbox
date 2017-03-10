@@ -79,6 +79,22 @@
     }
   }
 
+.sort-pane {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  background-size: cover;
+  cursor: pointer
+}
+
+.sort-pane p {
+  background-color: #d4838f;
+  color: white;
+  font-size: 1em;
+  position: fixed;
+  bottom: 0;
+  padding: 3% 6%;
+}
 
 
 /***************************/
@@ -191,7 +207,7 @@ a:focus, a:hover {
   width: 100vw;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 2000;
   color: white;
   text-align: center;
   font-size: 0.8em;
@@ -245,7 +261,7 @@ a:focus, a:hover {
   width: 100vw;
   position: fixed;
   top: 85px;
-  z-index: 2
+  z-index: 2000
 }
 
 

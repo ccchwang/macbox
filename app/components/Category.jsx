@@ -26,15 +26,13 @@ const rows = products && products.map(product =>
   </Col>)
 )
 
-    return (
-
-        <Grid>
-          <Link to={`/`} className="category-link">Shop</Link> / {category}
-          <br /><br />
-          <Row className="show-grid main-padding">
-            { rows }
-          </Row>
-        </Grid>
-
-    )
+  return (
+    <Grid>
+      <Link to={`/`} className="category-link">Shop</Link> / {category}
+      <br /><br />
+      <Row className="show-grid main-padding">
+        { rows }
+      </Row>
+    </Grid>
+  )
 }
