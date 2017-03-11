@@ -36,7 +36,7 @@ export default connect(
         id={product.id}
         className="sort-pane"
         >
-          <p onClick={this.open}>{product.name}</p>
+          <p className={`p${i}`} onClick={this.open}>{product.name}</p>
       </Pane>)
   })
 

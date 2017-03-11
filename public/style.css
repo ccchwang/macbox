@@ -80,19 +80,32 @@
   }
 
 .sort-pane {
-
   border-radius: 9px;
   background-size: cover;
   cursor: pointer;
 }
-
 .sort-pane p {
-  background-color: #d4838f;
-  color: white;
+  color: #414042;
   font-size: 1em;
   position: fixed;
   bottom: 0;
   padding: 3% 6%;
+}
+
+.sort-pane .p0, .p1, .p2 {
+  background-color: #ffd8d8;
+}
+
+.sort-pane .p3, .p4, .p5 {
+  background-color: #F5A2A2;
+}
+
+.sort-pane .p6, .p7 {
+  background-color: rgb(148, 255, 233);
+}
+
+.sort-pane .p8, .p9 {
+  background-color: #ffcba7;
 }
 
 .pane-header{
@@ -329,7 +342,7 @@ a:focus, a:hover {
 }
 
 .grid-box-hover {
-  background-color: rgba(50, 50, 50, 0.67);
+  background-color: rgba(40, 40, 40, 0.67);
   margin: 0;
   position: absolute;
   text-align: center;
