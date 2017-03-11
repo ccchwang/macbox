@@ -183,7 +183,7 @@ a:focus, a:hover {
 
 .emphasis-btn {
   padding: 11px 15%;
-  background-color: #B8FFED;
+  background-color: #94ffe9;
   border: none;
   border-radius: 0;
   transition: 0.2s;
@@ -255,32 +255,29 @@ a:focus, a:hover {
 
 
 /*** NAVBAR ***/
-#nav-promotions {
-  background-color:#D4838F;
-  height: 30px;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  z-index: 200;
-  color: white;
-  text-align: center;
-  font-size: 0.8em;
-  line-height: 32px
-}
+
 
 #navbar {
-  background-color: #3D2E44;
+  background-color: #F5A2A2;
   vertical-align: middle;
-  top: 30px;
   border: none;
-  height: 55px;
+  height: 67px;
   font-size: 1.05em;
 }
 
+#nav-border {
+  background-color:#FFD8D8;
+  height: 10px;
+  width: 100vw;
+  position: fixed;
+  top: 67px;
+  z-index: 200
+}
+
 .navbar-collapse  {
-  background-color: #3D2E44;
-  border-color: #504256;
-  padding-left: 35px;
+  background-color: #F5A2A2;
+  padding-top: 7px;
+  font-size: 1.1em;
 }
 
 .navbar-toggle {
@@ -294,7 +291,8 @@ a:focus, a:hover {
 }
 
 .navbar-brand {
-  font-size: 1.4em;
+  font-size: 1.8em;
+  padding-top: 23px;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover {
@@ -302,21 +300,17 @@ a:focus, a:hover {
 }
 
 #brand-star {
-  font-size: 0.7em;
+  font-size: 0.9em;
+}
+
+.badge {
+  font-size: 14px;
 }
 
 #nav-cart-count{
-  background-color: #D4838F;
+  background-color: #ee6767;
 }
 
-#nav-border {
-  background-color:#B8FFED;
-  height: 10px;
-  width: 100vw;
-  position: fixed;
-  top: 85px;
-  z-index: 200
-}
 
 
 /***HOME PAGE***/
@@ -335,7 +329,7 @@ a:focus, a:hover {
 }
 
 .grid-box-hover {
-  background-color: rgba(49, 39, 54, 0.55);
+  background-color: rgba(53, 53, 53, 0.67);
   margin: 0;
   position: absolute;
   text-align: center;
@@ -402,11 +396,11 @@ a:focus, a:hover {
 
 .rating-stars {
    font-size: 1.7em;
-   color: #D4838F
+   color: #ee6767
 }
 
 .category-link {
- color: #D4838F
+ color: #ee6767
 }
 
 .review-main{
@@ -468,7 +462,7 @@ a:focus, a:hover {
 }
 
 .mini-stars {
-  color: #D4838F
+  color: #ee6767
 }
 
 .quick-view-hover {
@@ -502,4 +496,8 @@ a:focus, a:hover {
 .provider-login-btn {
   margin-left: 15px;
   width: 45%;
+}
+
+svg {
+  fill: #ee6767 !important
 }

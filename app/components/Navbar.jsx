@@ -36,7 +36,6 @@ export default connect(
 
     return (
       <div>
-      <div id="nav-promotions">FREE SHIPPING ON ALL ORDERS $50+</div>
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
