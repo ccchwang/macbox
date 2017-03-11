@@ -107,7 +107,7 @@ export default connect(
        <Modal show={this.state.showModal} onHide={this.close} dialogClassName="custom-modal">
           <Modal.Header closeButton>
             <MotionMenu
-              type="horizontal"
+              type="circle"
               margin={120}
             >
               <div className="button">
@@ -118,6 +118,15 @@ export default connect(
               </div>
               <div className="button">
                 <i className="fa fa-cloud" />
+              </div>
+              <div className="button">
+                <i className="fa fa-home" />
+              </div>
+              <div className="button">
+                <i className="fa fa-home" />
+              </div>
+              <div className="button">
+                <i className="fa fa-home" />
               </div>
               <div className="button">
                 <i className="fa fa-home" />

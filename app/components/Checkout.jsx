@@ -176,7 +176,7 @@ export default connect(
                 this.setState({stepIndex: 0, finished: false});
               }}
             >
-              Success!
+              <h3>Success!</h3>
             </a>
           </p>
         </div>
