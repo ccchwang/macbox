@@ -90,7 +90,9 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
                 <div>
                   <h3>${total.toFixed(2)}</h3>
                   <br />
-                  <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
+                  <Link to="/checkout">
+                    <Button className="emphasis-btn">PROCEED TO CHECKOUT</Button>
+                  </Link>
                 </div>
             }
           </div>

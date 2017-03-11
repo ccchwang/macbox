@@ -115,6 +115,33 @@
   background-color: blue
 }
 
+.checkout-padding {
+  padding-left: 6%;
+}
+
+.checkout-form {
+  padding-right: 5%;
+  width: 65%;
+  float: left
+}
+
+.checkout-padding h3 {
+  margin-bottom: 30px
+}
+
+
+.checkout-summary{
+  width: 32%;
+  float: left
+}
+
+.checkout-summary h4 {
+  font-size: 16px;
+  margin-top: 0;
+  line-height: 20px;
+}
+
+
 /***************************/
 
 * {

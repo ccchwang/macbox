@@ -46,7 +46,7 @@ export default connect(
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavDropdown eventKey={2} title="SHOP BY CATEGORY" id="basic-nav-dropdown">
+            <NavDropdown eventKey={2} title="SHOP" id="basic-nav-dropdown">
               {
                 this.props.categories.map((c, i) =>
                   <LinkContainer to={`/shop/${c}`} key={i}>

@@ -9,6 +9,7 @@ import store from './store'
 import SignUp from './components/SignUp'
 import WhoAmI from './components/WhoAmI'
 import SocialPanes from './components/SocialPanes'
+import Checkout from './components/Checkout'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
 import LoginContainer from './containers/LoginContainer'
@@ -61,6 +62,7 @@ render (
         <Route path="/shop/:category" component={CategoryContainer} />
         <Route path="/cart" component={CartContainer} />
         <Route path="/wishlist" component={SocialPanes} />
+        <Route path="/checkout" component={Checkout} />
       </Route>
     </Router>
   </Provider>,
