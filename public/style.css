@@ -141,6 +141,15 @@
   line-height: 20px;
 }
 
+#addReviewForm textarea {
+  height: 150px !important;
+  margin-top: 20px !important
+}
+
+.review-btn {
+  width: 200px;
+  padding: 15px 10px !important
+}
 
 /***************************/
 
@@ -152,6 +161,7 @@
 a {
   transition: 0.15s;
   color: black;
+  transition: 0.3s
 }
 
 a:focus, a:hover {
@@ -402,7 +412,7 @@ a:focus, a:hover {
 
 .review-main{
   padding: 0 10%;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 

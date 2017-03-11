@@ -1,6 +1,4 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
-
 
 export default class Box extends React.Component {
   componentWillEnter (callback) {
@@ -16,11 +14,7 @@ export default class Box extends React.Component {
   render () {
 
     return (
-
-
         <p id="test2" ref={c => this.container = c}>ADD TO CART</p>
-
-
     );
   }
 }

@@ -16,7 +16,7 @@ import LoginContainer from './containers/LoginContainer'
 import SingleProductContainer from './containers/SingleProductContainer';
 import CartContainer from './containers/CartContainer'
 import CategoryContainer from './containers/CategoryContainer'
-
+import testReview from './components/testReview'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
