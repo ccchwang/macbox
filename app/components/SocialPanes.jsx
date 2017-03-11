@@ -55,7 +55,7 @@ export default connect(
       <h1>Your Wishlist</h1>
 
       <Col md={3}>
-        <div className="pane-header">PRODUCTS</div>
+        <div className="pane-header"><h3>Birthday</h3></div>
         <SortablePane
           direction="vertical"
           margin={10}
@@ -68,7 +68,7 @@ export default connect(
       </Col>
 
       <Col md={3}>
-        <div className="pane-header">PRODUCTS</div>
+        <div className="pane-header"><h3>NYC</h3></div>
         <SortablePane
           direction="vertical"
           margin={10}
@@ -81,7 +81,7 @@ export default connect(
        </Col>
 
        <Col md={3}>
-        <div className="pane-header">PRODUCTS</div>
+        <div className="pane-header"><h3>Decals</h3></div>
         <SortablePane
           direction="vertical"
           margin={10}
@@ -94,7 +94,7 @@ export default connect(
        </Col>
 
        <Col md={3}>
-        <div className="pane-header">PRODUCTS</div>
+        <div className="pane-header"><h3>Summer</h3></div>
         <SortablePane
           direction="vertical"
           margin={10}

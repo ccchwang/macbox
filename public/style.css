@@ -109,17 +109,18 @@
 }
 
 .pane-header{
-  background-color: #fafafa;
-  border-bottom: 1px solid #eaeaea;
-  padding: 12px 20px 8px;
-  letter-spacing: 0.02em;
-  line-height: 20px;
-  margin: 20px 0 10px;
+  border-bottom: 1px solid rgb(206, 205, 205);
+  padding: 12px 2px 5px;
+  letter-spacing: 0.05em;
+  margin: 12px 0 18px;
+  width: 200px;
 }
 
 .pane-padding{
   padding-left: 6%;
-  padding-right: 6%
+  padding-right: 6%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 #motion-menu-btn{

@@ -23,6 +23,7 @@ const rows = products && products.map(product =>
       </div>
       ${product.formattedPrice}
     </div>
+    <br />
   </Col>)
 )
 

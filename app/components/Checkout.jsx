@@ -206,11 +206,9 @@ export default connect(
 
   render() {
     const {loading, stepIndex} = this.state;
-    console.log(this.props.lineItems)
-
 
   return (
-    <div style={{width: '85%', margin: 'auto', fontFamily: "Tenor Sans"}}>
+    <div style={{width: '85%', margin: 'auto', fontFamily: "Tenor Sans", maxWidth: '1100px'}}>
       <h1>Checkout</h1>
       <div className="main-padding">
       <Stepper activeStep={stepIndex}>
