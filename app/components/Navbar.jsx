@@ -46,12 +46,16 @@ export default connect(
         <Navbar.Collapse>
           <Nav>
             <NavDropdown eventKey={2} title="SHOP" id="basic-nav-dropdown">
-              {
-                this.props.categories.map((c, i) =>
-                  <LinkContainer to={`/shop/${c}`} key={i}>
-                    <MenuItem eventKey={`2.${i}`}>{c}</MenuItem>
-                  </LinkContainer>)
-              }
+                  <LinkContainer to={`/shop/Macbook%20Cover`}>
+                    <MenuItem eventKey={`2.1`}>Macbook Cover</MenuItem>
+                  </LinkContainer>
+                  <LinkContainer to={`/shop/Macbook%20Decal`}>
+                    <MenuItem eventKey={`2.1`}>Macbook Decal</MenuItem>
+                  </LinkContainer>
+                  <LinkContainer to={`/shop/Keyboard%20Decal`}>
+                    <MenuItem eventKey={`2.1`}>Keyboard Decal</MenuItem>
+                  </LinkContainer>
+
             </NavDropdown>
           </Nav>
 

@@ -176,7 +176,7 @@ export default connect(
                 this.setState({stepIndex: 0, finished: false});
               }}
             >
-              <h3>Success!</h3>
+              Success!
             </a>
           </p>
         </div>
@@ -193,9 +193,10 @@ export default connect(
             onTouchTap={this.handlePrev}
             style={{marginRight: 12}}
           />
-          <RaisedButton
+          <FlatButton
             label={stepIndex === 2 ? 'Place Order' : 'Next'}
             primary={true}
+            style={{backgroundColor: '#6df1d5', color: 'black'}}
             onTouchTap={this.handleNext}
           />
         </div>

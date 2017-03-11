@@ -101,7 +101,7 @@
 }
 
 .sort-pane .p6, .p7 {
-  background-color: rgb(148, 255, 233);
+  background-color: #6DF1D7;
 }
 
 .sort-pane .p8, .p9 {
@@ -319,6 +319,16 @@ a:focus, a:hover {
   color: rgb(168, 255, 237);
 }
 
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  background-color: #f5a2a2;
+}
+
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+  background-color: #f5a2a2;
+  color: rgb(168, 255, 237)
+}
+
 #brand-star {
   font-size: 0.9em;
 }
@@ -331,7 +341,12 @@ a:focus, a:hover {
   background-color: #ee6767;
 }
 
-
+.dropdown-menu>.active>a,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover{
+  background-color: #6df1d5;
+  color: black
+}
 
 /***HOME PAGE***/
 
@@ -449,8 +464,8 @@ a:focus, a:hover {
 }
 
 .cart-header{
-  background-color: #fafafa;
-  border-bottom: 1px solid #eaeaea;
+  background-color: rgba(153, 153, 153, 0.2);
+  border-bottom:2px solid rgb(206, 205, 205);
   padding: 12px 20px 8px;
   letter-spacing: 0.02em;
   line-height: 20px;
