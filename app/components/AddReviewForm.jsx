@@ -27,9 +27,9 @@ export default class Box extends React.Component {
       <div id="addReviewForm" ref={c => this.container = c} style={{marginTop: '20px'}}>
         <Rating
           defaultValue={3}
-          characterStyle={{color: '#D4838F'}}
-          hoverCharacterStyle={{color: '#D4838F'}}
-          activeCharacterStyle={{color: '#D4838F'}}
+          characterStyle={{color: '#ee6767'}}
+          hoverCharacterStyle={{color: '#ee6767'}}
+          activeCharacterStyle={{color: '#ee6767'}}
         ></Rating>
         <TextInput placeholder="REVIEW SUMMARY" style={checkoutStyle}/>
         <Button className="emphasis-btn review-btn">SUBMIT REVIEW</Button>

@@ -118,9 +118,13 @@ export default class MenuItem extends Component {
                 transform: `translate3d(${newX}px, ${newY}px, 0) scaleX(${scaleX}) scaleY(${scaleY})`,
                 WebkitTransform: `translate3d(${newX}px, ${newY}px, 0) scaleX(${scaleX}) scaleY(${scaleY})`,
                 position: 'absolute',
-                width: '20px',
-                height: '20px',
-                backgroundColor: 'blue'
+                height: '40px',
+                width: '40px',
+                backgroundColor: 'rgb(234, 169, 169)',
+                paddingLeft: '8px',
+                paddingTop: '8px',
+                borderRadius: '5px',
+                cursor: 'pointer'
               },
             },
           )

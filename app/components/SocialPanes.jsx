@@ -114,29 +114,28 @@ export default connect(
               margin={120}
             >
               <div className="button">
-                <i className="fa fa-bars" />
+                <img src="./img/sharethis-16.png" />
               </div>
               <div className="button">
-                <i className="fa fa-cogs" />
+                <img src="./img/facebook-24.png" />
               </div>
               <div className="button">
-                <i className="fa fa-cloud" />
+
               </div>
               <div className="button">
-                <i className="fa fa-home" />
+                <img src="./img/email-3-24.png" />
               </div>
               <div className="button">
-                <i className="fa fa-home" />
+                <img src="./img/pinterest-6-24.png" />
               </div>
               <div className="button">
-                <i className="fa fa-home" />
+                <img src="./img/instagram-6-24.png" />
               </div>
-              <div className="button">
-                <i className="fa fa-home" />
-              </div>
+              <div className="button"><img src="./img/twitter-24.png" /></div>
+
             </MotionMenu>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{padding: '45px 35px'}}>
         <div>
           <Grid>
             <Row>

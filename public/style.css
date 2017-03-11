@@ -215,6 +215,9 @@ a:focus, a:hover {
 }
 
 
+.modal-header {
+  padding: 10px 15px 19px 10px;
+}
 
 .custom-modal {
   margin: 25vh auto 0;
@@ -240,7 +243,7 @@ a:focus, a:hover {
 .modal-body button {
   padding: 8px 7%;
   transition: 0.18s;
-  border: 3px solid #B8FFED;
+  border: 3px solid rgb(148, 255, 233);
   margin-right: 11px;
 }
 
@@ -429,7 +432,7 @@ a:focus, a:hover {
 }
 
 .cart-page a:focus, .cart-page a:hover {
-  color: #D4838F;
+  color: #ee6767;
 }
 
 .cart-checkout-panel{
@@ -461,9 +464,9 @@ a:focus, a:hover {
 }
 
 .cart-btn:hover, .cart-btn:active:focus, .cart-btn:focus {
-  border: 3px solid #D4838F;
+  border: 3px solid #F5A2A2;
   background-color: white;
-  color: #D4838F;
+  color: #F5A2A2;
 }
 
 
@@ -487,7 +490,7 @@ a:focus, a:hover {
   padding: 4%;
   width: 95%;
   margin: 0 auto;
-  color: #d4838f;
+  color: #ee6767;
   font-size: 0.9em;
   font-weight: 600;
 }
