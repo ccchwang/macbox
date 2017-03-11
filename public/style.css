@@ -296,7 +296,7 @@ a:focus, a:hover {
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover {
-  color: #B8FFED;
+  color: rgb(168, 255, 237);
 }
 
 #brand-star {
@@ -329,7 +329,7 @@ a:focus, a:hover {
 }
 
 .grid-box-hover {
-  background-color: rgba(53, 53, 53, 0.67);
+  background-color: rgba(50, 50, 50, 0.67);
   margin: 0;
   position: absolute;
   text-align: center;
