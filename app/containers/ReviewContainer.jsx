@@ -1,4 +1,4 @@
-
+import React from 'react'
 import { connect } from 'react-redux'
 import Reviews from '../components/Reviews'
 
@@ -9,4 +9,28 @@ export default connect(
       selectedProduct: state.products.selectedProduct
     }
   }
-)(Reviews)
+)(class extends React.Component {
+    constructor() {
+      super();
+      this.state = {playReviewAdd: false};
+      this.toggleAnimation = this.toggleAnimation.bind(this)
+    }
+    toggleAnimation () {
+      this.setState({playReviewAdd: !this.state.playReviewAdd})
+    }
+
+
+    render () {
+      return (
+        <Reviews
+          playReviewAdd={this.state.playReviewAdd}
+          reviews={this.props.reviews}
+          selectedProduct={this.props.selectedProduct}
+          toggleAnimation={this.toggleAnimation}
+        />
+      )
+
+
+    }
+
+})

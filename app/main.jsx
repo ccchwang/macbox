@@ -8,12 +8,15 @@ import axios from 'axios'
 import store from './store'
 import SignUp from './components/SignUp'
 import WhoAmI from './components/WhoAmI'
+import SocialPanes from './components/SocialPanes'
+import Checkout from './components/Checkout'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
 import LoginContainer from './containers/LoginContainer'
 import SingleProductContainer from './containers/SingleProductContainer';
 import CartContainer from './containers/CartContainer'
 import CategoryContainer from './containers/CategoryContainer'
+import testReview from './components/testReview'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
@@ -58,6 +61,8 @@ render (
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct} />
         <Route path="/shop/:category" component={CategoryContainer} />
         <Route path="/cart" component={CartContainer} />
+        <Route path="/wishlist" component={SocialPanes} />
+        <Route path="/checkout" component={Checkout} />
       </Route>
     </Router>
   </Provider>,

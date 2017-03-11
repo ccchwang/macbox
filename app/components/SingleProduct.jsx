@@ -2,11 +2,12 @@ import React from 'react'
 import { Grid, Row, Col, Button, Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router';
 import ReviewContainer from '../containers/ReviewContainer'
+import TransitionGroup from 'react-addons-transition-group';
+import Test from '../components/Test'
+import Test2 from '../components/Test2'
 
 
-export default function({selectedProduct, reviews, handleCartAdd, user}) {
-
-
+export default function({selectedProduct, reviews, handleCartAdd, user, playAnimation, toggleAnimation}) {
 
   return (
     <Grid>
@@ -56,7 +57,20 @@ export default function({selectedProduct, reviews, handleCartAdd, user}) {
                     <option value="20">20</option>
                 </FormControl>
                 <br />
-                <Button type="submit" className="emphasis-btn">ADD TO CART</Button>
+
+
+                <TransitionGroup>
+                  { playAnimation && <Test  />}
+                </TransitionGroup>
+
+                <Button type="submit" className="emphasis-btn test-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#94ffe9'} : null}>
+                  <TransitionGroup>
+                    { !playAnimation && <Test2 /> }
+                  </TransitionGroup>
+                </Button>
+
+
+
               </FormGroup>
             </Form>
 

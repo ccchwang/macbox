@@ -1,3 +1,170 @@
+#test {
+  position: absolute;
+  z-index: 2;
+  width: 258px;
+  text-align: center;
+  margin: 0
+}
+
+#test2 {
+  margin: 0
+}
+
+.test-btn {
+  min-width: 258.05px;
+  min-height: 42px;
+}
+
+.btn:focus {
+  outline: none
+}
+
+#add-cart-icon {
+  padding-bottom: 3px
+}
+
+#cart-widget-parent {
+  position: relative
+}
+
+#cart-widget {
+  width: 360px;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 65px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  border: 1px solid #c5c5c5;
+  background-color: #3d2e44;
+  color: black
+}
+
+#cart-widget-items {
+  width: 100%;
+  min-height: 150px;
+  margin: 0;
+  padding: 5% 5% 0;
+  font-size: 0.95em;
+  font-weight: 600;
+  background-color: white
+}
+
+#cart-widget-checkout {
+  padding: 8%;
+}
+
+.widget-btn {
+  width: 100%
+}
+
+@keyframes belle-spinner-pulse {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+    }
+  50% {
+    opacity: 1;
+    }
+  }
+
+@keyframes belle-spinner-pulse {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    }
+  }
+
+.sort-pane {
+  border-radius: 9px;
+  background-size: cover;
+  cursor: pointer;
+}
+.sort-pane p {
+  color: #414042;
+  font-size: 1em;
+  position: fixed;
+  bottom: 0;
+  padding: 3% 6%;
+}
+
+.sort-pane .p0, .p1, .p2 {
+  background-color: #ffd8d8;
+}
+
+.sort-pane .p3, .p4, .p5 {
+  background-color: #F5A2A2;
+}
+
+.sort-pane .p6, .p7 {
+  background-color: rgb(148, 255, 233);
+}
+
+.sort-pane .p8, .p9 {
+  background-color: #ffcba7;
+}
+
+.pane-header{
+  background-color: #fafafa;
+  border-bottom: 1px solid #eaeaea;
+  padding: 12px 20px 8px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  margin: 20px 0 10px;
+}
+
+.pane-padding{
+  padding-left: 6%;
+  padding-right: 6%
+}
+
+#motion-menu-btn{
+  width: 20px;
+  height: 20px;
+  background-color: blue
+}
+
+.checkout-padding {
+  padding-left: 6%;
+}
+
+.checkout-form {
+  padding-right: 5%;
+  width: 65%;
+  float: left
+}
+
+.checkout-padding h3 {
+  margin-bottom: 30px
+}
+
+
+.checkout-summary{
+  width: 32%;
+  float: left
+}
+
+.checkout-summary h4 {
+  font-size: 16px;
+  margin-top: 0;
+  line-height: 20px;
+}
+
+#addReviewForm textarea {
+  height: 150px !important;
+}
+
+.review-btn {
+  width: 200px;
+  padding: 15px 10px !important
+}
+
+/***************************/
+
 * {
   box-sizing: border-box;
   font-family: 'Tenor Sans', sans-serif;
@@ -6,6 +173,7 @@
 a {
   transition: 0.15s;
   color: black;
+  transition: 0.3s
 }
 
 a:focus, a:hover {
@@ -28,7 +196,7 @@ a:focus, a:hover {
 
 .emphasis-btn {
   padding: 11px 15%;
-  background-color: #B8FFED;
+  background-color: #94ffe9;
   border: none;
   border-radius: 0;
   transition: 0.2s;
@@ -100,32 +268,29 @@ a:focus, a:hover {
 
 
 /*** NAVBAR ***/
-#nav-promotions {
-  background-color:#D4838F;
-  height: 30px;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-  color: white;
-  text-align: center;
-  font-size: 0.8em;
-  line-height: 32px
-}
+
 
 #navbar {
-  background-color: #3D2E44;
+  background-color: #F5A2A2;
   vertical-align: middle;
-  top: 30px;
   border: none;
-  height: 55px;
+  height: 67px;
   font-size: 1.05em;
 }
 
+#nav-border {
+  background-color:#FFD8D8;
+  height: 10px;
+  width: 100vw;
+  position: fixed;
+  top: 67px;
+  z-index: 200
+}
+
 .navbar-collapse  {
-  background-color: #3D2E44;
-  border-color: #504256;
-  padding-left: 35px;
+  background-color: #F5A2A2;
+  padding-top: 7px;
+  font-size: 1.1em;
 }
 
 .navbar-toggle {
@@ -139,29 +304,26 @@ a:focus, a:hover {
 }
 
 .navbar-brand {
-  font-size: 1.4em;
+  font-size: 1.8em;
+  padding-top: 23px;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover {
-  color: #B8FFED;
+  color: rgb(168, 255, 237);
 }
 
 #brand-star {
-  font-size: 0.7em;
+  font-size: 0.9em;
+}
+
+.badge {
+  font-size: 14px;
 }
 
 #nav-cart-count{
-  background-color: #D4838F;
+  background-color: #ee6767;
 }
 
-#nav-border {
-  background-color:#B8FFED;
-  height: 10px;
-  width: 100vw;
-  position: fixed;
-  top: 85px;
-  z-index: 2
-}
 
 
 /***HOME PAGE***/
@@ -180,7 +342,7 @@ a:focus, a:hover {
 }
 
 .grid-box-hover {
-  background-color: rgba(49, 39, 54, 0.55);
+  background-color: rgba(40, 40, 40, 0.67);
   margin: 0;
   position: absolute;
   text-align: center;
@@ -247,16 +409,16 @@ a:focus, a:hover {
 
 .rating-stars {
    font-size: 1.7em;
-   color: #D4838F
+   color: #ee6767
 }
 
 .category-link {
- color: #D4838F
+ color: #ee6767
 }
 
 .review-main{
   padding: 0 10%;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 
@@ -313,7 +475,7 @@ a:focus, a:hover {
 }
 
 .mini-stars {
-  color: #D4838F
+  color: #ee6767
 }
 
 .quick-view-hover {
@@ -347,4 +509,8 @@ a:focus, a:hover {
 .provider-login-btn {
   margin-left: 15px;
   width: 45%;
+}
+
+svg {
+  fill: #ee6767 !important
 }
