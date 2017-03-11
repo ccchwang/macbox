@@ -63,7 +63,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playAnim
                   { playAnimation && <Test  />}
                 </TransitionGroup>
 
-                <Button type="submit" className="emphasis-btn test-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#94ffe9'} : null}>
+                <Button type="submit" className="emphasis-btn test-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#6df1d5'} : null}>
                   <TransitionGroup>
                     { !playAnimation && <Test2 /> }
                   </TransitionGroup>

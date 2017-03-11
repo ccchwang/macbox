@@ -35,7 +35,7 @@ export default function({ reviews, selectedProduct, toggleAnimation, playReviewA
   return (
    <Grid className="review-main">
      <h3 style={{display: 'inline-block', marginRight: '30px'}}>Reviews</h3>
-     <a style={playReviewAdd ? {cursor: "pointer", color: '#62BCA5'} : {cursor: "pointer"}} onClick={toggleAnimation}>ADD A REVIEW</a>
+     <a style={playReviewAdd ? {cursor: "pointer", color: '#41b396'} : {cursor: "pointer"}} onClick={toggleAnimation}>ADD A REVIEW</a>
 
      <TransitionGroup>
         { playReviewAdd && <AddReviewForm />}

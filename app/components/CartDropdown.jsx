@@ -9,7 +9,7 @@ export default class Cartwidget extends React.Component {
 
   componentWillLeave (callback) {
     const el = this.container;
-    TweenMax.fromTo(el, 0.5, {y: 0, opacity: 1}, {y: -40, opacity: 0,  ease:Back.easeIn, onComplete: callback});
+    TweenMax.fromTo(el, 0.5, {y: 0,opacity: 1}, {y: -40, opacity: 0, ease:Back.easeIn, onComplete: callback});
   }
 
   render () {

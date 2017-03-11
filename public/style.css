@@ -35,7 +35,7 @@
   top: 65px;
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
   border: 1px solid #c5c5c5;
-  background-color: #3d2e44;
+  background-color: #ee6767;
   color: black
 }
 
@@ -50,7 +50,7 @@
 }
 
 #cart-widget-checkout {
-  padding: 8%;
+  padding: 20px 35px 37px;
 }
 
 .widget-btn {
@@ -177,7 +177,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #62BCA5;
+  color: #41b396;
   text-decoration: none;
 }
 
@@ -196,7 +196,7 @@ a:focus, a:hover {
 
 .emphasis-btn {
   padding: 11px 15%;
-  background-color: #94ffe9;
+  background-color: #6df1d5;
   border: none;
   border-radius: 0;
   transition: 0.2s;
@@ -211,7 +211,10 @@ a:focus, a:hover {
 }
 
 .emphasis-btn:hover, .emphasis-btn:active:focus, .emphasis-btn:focus {
-  background-color: #AEF1E0;
+  background-color: #52e6c7;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none
 }
 
 
@@ -243,14 +246,15 @@ a:focus, a:hover {
 .modal-body button {
   padding: 8px 7%;
   transition: 0.18s;
-  border: 3px solid rgb(148, 255, 233);
+  border: 3px solid #6df1d5;
   margin-right: 11px;
 }
+
 
 .modal-body button:hover,
 .modal-body button:active,
 .modal-body button:active:focus {
-  border-color: #AEF1E0
+  border-color: #52e6c7
 }
 
 .modal-body .modal-detail-btn {
