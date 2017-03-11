@@ -7,8 +7,8 @@ export default function({ reviews, selectedProduct, toggleAnimation, playReviewA
 
   const rows = reviews && reviews.map(review => {
     return (
-      <div key={review.id} >
-        <Row className="show-grid" style={{backgroundColor: 'white'}}>
+      <div key={review.id} style={{backgroundColor: 'white', position: "relative"}}>
+        <Row className="show-grid">
           <Col sm={12} md={2} >
             <h4><strong>{review.user.name}</strong></h4>
           </Col>
