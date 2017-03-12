@@ -114,7 +114,7 @@ export default connect(
               margin={120}
             >
               <div className="button">
-                <img src="./img/sharethis-16.png" />
+                <img src="./img/favorite-5-16.png" />
               </div>
               <div className="button">
                 <img src="./img/facebook-24.png" />
