@@ -27,7 +27,14 @@ export default function({ reviews, selectedProduct, toggleAnimation, playReviewA
           </Col>
           <br />
         </Row>
-        <hr />
+        <br />
+        <hr style={{
+    display: 'block',
+    zIndex: '5000',
+    margin: '0',
+    position: 'relative',
+    backgroundColor: 'white',
+    borderTop: '1px solid #eee'}}/>
       </div>
     )
   })
@@ -40,8 +47,14 @@ export default function({ reviews, selectedProduct, toggleAnimation, playReviewA
      <TransitionGroup>
         { playReviewAdd && <AddReviewForm />}
       </TransitionGroup>
-
-     <hr />
+      <br /><br/>
+     <hr style={{
+    display: 'block',
+    zIndex: '5000',
+    margin: '0',
+    position: 'relative',
+    backgroundColor: 'white',
+    borderTop: '1px solid #eee'}}/>
       { rows }
     </Grid>
   )

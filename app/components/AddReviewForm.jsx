@@ -5,12 +5,12 @@ import { TextInput, Rating } from 'belle'
 export default class Box extends React.Component {
   componentWillEnter (callback) {
     const el = this.container;
-    TweenMax.from(el, 0.65, {height: 0, ease:Back.easeOut, onComplete: callback});
+    TweenMax.from(el, 0.5, {height: 0, ease:Back.easeOut, onComplete: callback});
   }
 
   componentWillLeave (callback) {
     const el = this.container;
-    TweenMax.to(el, 0.65, {height: 0, ease:Back.easeIn, onComplete: callback});
+    TweenMax.to(el, 0.5, {height: 0, opacity:'0.1', ease:Back.easeIn, onComplete: callback});
   }
 
   render () {
