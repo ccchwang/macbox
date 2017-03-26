@@ -4,7 +4,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Badge } from 'react-bootst
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../reducers/auth'
-import CartDropdown from './CartDropdown'
+import DrawerContainer from './AddCartAnimation/DrawerContainer'
 import LoginSignUp from './LoginSignUp'
 import Logout from './Logout'
 import TransitionGroup from 'react-addons-transition-group'
@@ -32,7 +32,8 @@ export default connect(
   }
 
   render () {
-    const lineItems = this.props.lineItems
+    const lineItems = this.props.lineItems;
+    const quantity = lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)
 
     return (
       <div>
@@ -65,13 +66,9 @@ export default connect(
             </LinkContainer>
           </Nav>
 
-          <Nav>
-            <NavItem>SUBSCRIBE</NavItem>
-          </Nav>
-
           {this.props.auth ? <Logout /> : <LoginSignUp />}
 
-        <Nav pullRight id="cart-widget-parent">
+        <Nav pullRight>
           <LinkContainer to="/cart">
             <NavItem eventKey={2}>
               <img src="/img/cart-30-24.png" />
@@ -79,17 +76,16 @@ export default connect(
               {
               !lineItems.length ? null :
                 <span>
-                  <Badge id="nav-cart-count">{lineItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}</Badge>
+                  <Badge id="nav-cart-count">{quantity}</Badge>
                 </span>
               }
-              <TransitionGroup>
-                { this.state.playAnimation && <CartDropdown lineItems={lineItems} /> }
-              </TransitionGroup>
-          </NavItem>
+            </NavItem>
           </LinkContainer>
-
-
         </Nav>
+
+        <TransitionGroup>
+                { this.state.playAnimation && <DrawerContainer quantity={quantity} lineItems={lineItems} /> }
+              </TransitionGroup>
 
 
         </Navbar.Collapse>

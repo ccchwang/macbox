@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Cart from '../components/Cart'
 import axios from 'axios'
 import {removeLineItem, updateLineItem} from '../reducers/cart'
-import React from 'react'
 
 export default connect(
   (state) => {

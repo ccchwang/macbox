@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spinner } from 'belle'
 
-export default class Box extends React.Component {
+export default class extends React.Component {
 
   componentWillEnter (callback) {
     const el = this.container;
@@ -16,15 +16,11 @@ export default class Box extends React.Component {
   render () {
 
     return (
-
-
-        <div id="test" ref={c => this.container = c}>
-          <img src="/img/cart-30-16.png" id="add-cart-icon" />
-          <span>  ADDING </span>
-          <Spinner characterStyle={{ fontSize: 16, color: 'black' }}/>
-        </div>
-
-
+      <div id="waitingProcess" ref={c => this.container = c}>
+        <img src="/img/cart-30-16.png" id="add-cart-icon" />
+        <span>  ADDING </span>
+        <Spinner characterStyle={{ fontSize: 16, color: 'black' }} />
+      </div>
     );
   }
 }

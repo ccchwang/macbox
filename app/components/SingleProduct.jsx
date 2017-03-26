@@ -3,8 +3,8 @@ import { Grid, Row, Col, Button, Form, FormControl, FormGroup, ControlLabel } fr
 import { Link } from 'react-router';
 import ReviewContainer from '../containers/ReviewContainer'
 import TransitionGroup from 'react-addons-transition-group';
-import Test from '../components/Test'
-import Test2 from '../components/Test2'
+import WaitingBtn from '../components/AddCartAnimation/WaitingBtn'
+import AddBtn from '../components/AddCartAnimation/AddBtn'
 
 
 export default function({selectedProduct, reviews, handleCartAdd, user, playAnimation, toggleAnimation}) {
@@ -60,12 +60,12 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playAnim
 
 
                 <TransitionGroup>
-                  { playAnimation && <Test  />}
+                  { playAnimation && <WaitingBtn  />}
                 </TransitionGroup>
 
-                <Button type="submit" className="emphasis-btn test-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#6df1d5'} : null}>
+                <Button type="submit" className="emphasis-btn add-cart-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#6df1d5'} : null}>
                   <TransitionGroup>
-                    { !playAnimation && <Test2 /> }
+                    { !playAnimation && <AddBtn /> }
                   </TransitionGroup>
                 </Button>
 

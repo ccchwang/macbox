@@ -61,6 +61,7 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.3.2",
+    "react-dynamic-ui": "0.0.12",
     "react-motion": "^0.4.7",
     "react-motion-menu": "^0.4.2",
     "react-redux": "^5.0.3",

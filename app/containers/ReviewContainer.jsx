@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Reviews from '../components/Reviews'
+import Reviews from '../components/Reviews/Reviews'
 
 export default connect(
   (state) => {
@@ -19,7 +19,6 @@ export default connect(
       this.setState({playReviewAdd: !this.state.playReviewAdd})
     }
 
-
     render () {
       return (
         <Reviews
@@ -29,8 +28,5 @@ export default connect(
           toggleAnimation={this.toggleAnimation}
         />
       )
-
-
     }
-
 })

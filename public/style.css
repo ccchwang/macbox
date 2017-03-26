@@ -1,4 +1,4 @@
-#test {
+#waitingProcess {
   position: absolute;
   z-index: 2;
   width: 258px;
@@ -6,11 +6,11 @@
   margin: 0
 }
 
-#test2 {
+#addBtn {
   margin: 0
 }
 
-.test-btn {
+.add-cart-btn {
   min-width: 258.05px;
   min-height: 42px;
 }
@@ -23,39 +23,8 @@
   padding-bottom: 3px
 }
 
-#cart-widget-parent {
-  position: relative
-}
 
-#cart-widget {
-  width: 360px;
-  position: absolute;
-  z-index: 2;
-  right: 0;
-  top: 65px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  border: 1px solid #c5c5c5;
-  background-color: #ee6767;
-  color: black
-}
 
-#cart-widget-items {
-  width: 100%;
-  min-height: 150px;
-  margin: 0;
-  padding: 5% 5% 0;
-  font-size: 0.95em;
-  font-weight: 600;
-  background-color: white
-}
-
-#cart-widget-checkout {
-  padding: 20px 35px 37px;
-}
-
-.widget-btn {
-  width: 100%
-}
 
 @keyframes belle-spinner-pulse {
   0%,
@@ -155,13 +124,9 @@
   line-height: 20px;
 }
 
-#addReviewForm textarea {
-  height: 150px !important;
-}
-
-.review-btn {
-  width: 200px;
-  padding: 15px 10px !important
+.subscribe-padding {
+  width: 600px;
+  margin: 0 auto
 }
 
 /***************************/
@@ -439,11 +404,41 @@ a:focus, a:hover {
  color: #ee6767
 }
 
+/*REVIEWS*/
+
+#add-review-form {
+  margin-top: 20px
+}
+
+#add-review-form textarea {
+  height: 150px !important;
+  width: 50% !important;
+  border: 1px solid rgb(204, 204, 204) !important;
+  padding: 16px !important;
+  margin-top: 7px !important;
+  font-size: 1em !important;
+}
+
+.review-btn {
+  width: 200px;
+  padding: 15px 10px !important
+}
+
+
 .review-main{
   padding: 0 10%;
   margin-top: 20px;
 }
 
+.review-main h3 {
+  display: inline-block;
+  margin-right: 30px
+}
+
+.review-rows {
+  background-color: #fff;
+  position: relative
+}
 
 /* CART */
 
@@ -517,18 +512,6 @@ a:focus, a:hover {
 
 
 
-
-
-#footer {
-  position: relative;
-  margin-top: 125px;
-  height: 300px;
-  clear: both;
-  background-color: #B8FFED;
-  text-align: center;
-  vertical-align: middle
-}
-
 .provider-login-btn {
   margin-left: 15px;
   width: 45%;
@@ -536,4 +519,68 @@ a:focus, a:hover {
 
 svg {
   fill: #ee6767 !important
+}
+
+/*CART DRAWER*/
+.drawer {
+  position: fixed;
+  width: 256px;
+  height: 100vh;
+  background-color: white;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 19px;
+  color: black;
+  margin: 0;
+}
+.drawer-backdrop {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.541176);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1300;
+  transition: 0.2s
+}
+
+.drawer-item {
+  padding: 15px 0;
+  margin: 0;
+}
+
+
+.drawer-total {
+  margin-top: 15px;
+}
+
+.drawer-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+.drawer-message p {
+  font-size: 15px;
+  display: inline;
+  margin: 0;
+}
+
+.drawer-message span {
+  font-size: 35px;
+  color: #6df1d5;
+}
+
+
+.drawer-btn {
+  width: 100%;
+  font-size: 1em;
 }
