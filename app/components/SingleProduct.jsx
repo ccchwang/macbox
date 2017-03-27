@@ -7,7 +7,7 @@ import WaitingBtn from '../components/AddCartAnimation/WaitingBtn'
 import AddBtn from '../components/AddCartAnimation/AddBtn'
 
 
-export default function({selectedProduct, reviews, handleCartAdd, user, playAnimation, toggleAnimation}) {
+export default function({selectedProduct, reviews, handleCartAdd, user, playBtnAnimation, toggleAnimation}) {
 
   return (
     <Grid>
@@ -60,12 +60,12 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playAnim
 
 
                 <TransitionGroup>
-                  { playAnimation && <WaitingBtn  />}
+                  { playBtnAnimation && <WaitingBtn  />}
                 </TransitionGroup>
 
-                <Button type="submit" className="emphasis-btn add-cart-btn" onClick={toggleAnimation} style={!playAnimation ? {backgroundColor:'#6df1d5'} : null}>
+                <Button type="submit" className="emphasis-btn add-cart-btn" onClick={() => toggleAnimation('playBtnAnimation')} style={!playBtnAnimation ? {backgroundColor:'#6df1d5'} : null}>
                   <TransitionGroup>
-                    { !playAnimation && <AddBtn /> }
+                    { !playBtnAnimation && <AddBtn /> }
                   </TransitionGroup>
                 </Button>
 

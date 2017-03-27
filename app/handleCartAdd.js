@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {receiveLineItem} from './reducers/cart'
 import store from './store'
-import {NavBar} from './components/Navbar'
+import {SingleProductContainer} from './containers/SingleProductContainer'
 import {toggleAnimation} from './toggleAnimation'
 
 export const handleCartAdd = function(e, user, selectedProduct) {
@@ -13,7 +13,7 @@ export const handleCartAdd = function(e, user, selectedProduct) {
   })
   .then(createdLineItem =>
     setTimeout(() => {
-      toggleAnimation.call(NavBar)
+      toggleAnimation.call(SingleProductContainer, "playCartDrawerAnimation")
       store.dispatch(receiveLineItem(createdLineItem.data))
     }, 3000)
   )

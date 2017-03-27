@@ -1,4 +1,5 @@
-export const toggleAnimation = function() {
-  this.setState({playAnimation: !this.state.playAnimation})
-  setTimeout(() => this.setState({playAnimation: !this.state.playAnimation}), 3000)
+export const toggleAnimation = function(animation) {
+  this.setState({[animation]: !this.state[animation]})
+
+  setTimeout(() => this.setState({[animation]: !this.state[animation]}), 3000)
 };

@@ -2,8 +2,9 @@ import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router'
 
+
 export default class TodoList extends React.Component {
-componentWillEnter (callback) {
+  componentWillEnter (callback) {
     const el = this.container;
     TweenMax.from(el, 0.3, {x: 100, opacity: 0, ease:Back.easeIn, onComplete: callback});
   }
@@ -12,6 +13,7 @@ componentWillEnter (callback) {
     const el = this.container;
     TweenMax.fromTo(el, 0.4, {x: 0}, {x: 255, onComplete: callback});
   }
+
   render() {
     let total = 0;
 
@@ -36,7 +38,7 @@ componentWillEnter (callback) {
                     <img className="img-responsive" src={item.product.imgUrl} />
                   </Col>
 
-                  <Col xs={7}  >
+                  <Col xs={7}  style={{paddingLeft: '5px'}}>
                   <Link to={`/products/${item.product_id}`}>
                     {item.product.name}
                   </Link>
