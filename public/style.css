@@ -304,7 +304,7 @@ a:focus, a:hover {
 }
 
 #nav-cart-count{
-  background-color: #c57cb5;
+  background-color: #b780ab;
 }
 
 .dropdown-menu>.active>a,
@@ -397,11 +397,11 @@ a:focus, a:hover {
 
 .rating-stars {
    font-size: 1.7em;
-   color: #c57cb5
+   color: #c083b2
 }
 
 .category-link {
- color: #c57cb5
+ color: #c083b2
 }
 
 /*REVIEWS*/
@@ -447,7 +447,7 @@ a:focus, a:hover {
 }
 
 .cart-page a:focus, .cart-page a:hover {
-  color: #c57cb5;
+  color: #c083b2;
 }
 
 .cart-checkout-panel{
@@ -493,7 +493,7 @@ a:focus, a:hover {
 }
 
 .mini-stars {
-  color: #c57cb5
+  color: #c083b2
 }
 
 .quick-view-hover {
@@ -505,7 +505,7 @@ a:focus, a:hover {
   padding: 4%;
   width: 95%;
   margin: 0 auto;
-  color: #c57cb5;
+  color: #c083b2;
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -518,7 +518,7 @@ a:focus, a:hover {
 }
 
 svg {
-  fill: #c57cb5 !important
+  fill: #c083b2 !important
 }
 
 /*CART DRAWER*/
