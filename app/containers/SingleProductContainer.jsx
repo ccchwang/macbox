@@ -7,7 +7,6 @@ import { toggleAnimation } from '../toggleAnimation'
 
 import SingleProduct from '../components/SingleProduct'
 import CartDrawer from '../components/AddCartAnimation/CartDrawer'
-import Backdrop from '../components/AddCartAnimation/Backdrop'
 
 
 export let SingleProductContainer;
@@ -34,8 +33,6 @@ export default connect(
     }
 
     render () {
-      const playCartDrawer = this.state.playCartDrawerAnimation
-
       return (
         <div>
         <SingleProduct
@@ -48,13 +45,8 @@ export default connect(
         />
 
         <TransitionGroup>
-          { playCartDrawer && <CartDrawer lineItems={this.props.lineItems} /> }
+          { this.state.playCartDrawerAnimation && <CartDrawer lineItems={this.props.lineItems} /> }
         </TransitionGroup>
-
-        <TransitionGroup>
-          { playCartDrawer && <Backdrop play={playCartDrawer} /> }
-        </TransitionGroup>
-
 
       </div>
       );

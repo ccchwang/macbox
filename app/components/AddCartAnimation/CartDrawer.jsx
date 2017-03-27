@@ -5,20 +5,34 @@ import { Link } from 'react-router'
 
 export default class CartDrawer extends React.Component {
   componentWillEnter (callback) {
-    const el = this.drawer;
-    TweenMax.from(el, 0.3, {x: 50, opacity: 0, ease:Back.easeIn, onComplete: callback});
+    const d = this.drawer;
+    const b = this.backdrop;
+    TweenMax.from(b, 0.3, {opacity: 0, ease:Back.easeIn, onComplete: callback});
+    TweenMax.from(d, 0.3, {x: 50, opacity: 0, ease:Back.easeIn, onComplete: callback});
   }
 
   componentWillLeave (callback) {
-    const el = this.drawer;
-    TweenMax.fromTo(el, 0.4, {x: 0}, {x: 255, onComplete: callback});
+    const d = this.drawer;
+    const b = this.backdrop;
+    TweenMax.to(b, 0.3, {opacity: 0, onComplete: callback});
+    TweenMax.fromTo(d, 0.4, {x: 0}, {x: 255, onComplete: callback});
   }
 
   render() {
     let total = 0;
 
     return (
+      <div>
 
+        {/*BACKDROP*/}
+        <div ref={c => this.backdrop = c} style={{position: 'relative', zIndex: 1300}}>
+        {
+          this.props.lineItems && <div className="drawer-backdrop"  />
+        }
+        </div>
+
+
+        {/*DRAWER*/}
         <div className='drawer' ref={c => this.drawer = c}>
           <Col xs={12} className="drawer-message">
             <span className="glyphicon glyphicon-ok-sign" aria-hidden="true" />
@@ -55,10 +69,9 @@ export default class CartDrawer extends React.Component {
           <Col xs={12} className="drawer-total">
             <Button className="emphasis-btn drawer-btn">CHECK OUT | ${total.toFixed(2)}</Button>
           </Col>
-
         </div>
 
-
+      </div>
 
     );
   }
