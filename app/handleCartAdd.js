@@ -15,7 +15,7 @@ export const handleCartAdd = function(e, user, selectedProduct) {
     setTimeout(() => {
       toggleAnimation.call(SingleProductContainer, "playCartDrawerAnimation")
       store.dispatch(receiveLineItem(createdLineItem.data))
-    }, 3000)
+    }, 2000)
   )
   .catch(console.error)
 }
