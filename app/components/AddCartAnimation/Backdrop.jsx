@@ -3,7 +3,7 @@ import React from 'react';
 export default class Backdrop extends React.Component {
   componentWillEnter (callback) {
     const el = this.backdrop;
-    TweenMax.from(el, 0.4, {opacity: 0, ease:Back.easeIn, onComplete: callback});
+    TweenMax.from(el, 0.3, {opacity: 0, ease:Back.easeIn, onComplete: callback});
   }
 
   componentWillLeave (callback) {
