@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { TextInput } from 'belle';
-import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import { RaisedButton, FlatButton, TextField, Step, Stepper, StepLabel } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
-import TextField from 'material-ui/TextField';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
-
+import LineItem from './LineItem'
+import { receiveOrder } from '../reducers/orders'
 
 
 export default connect(
@@ -18,14 +16,48 @@ export default connect(
     return {
       lineItems: state.cart.lineItems
     }
+  },
+  (dispatch) => {
+    return {
+      handleSubmit: function(order, items) {
+        dispatch(receiveOrder(order, items))
+      }
+    }
   }
-)(class HorizontalTransition extends React.Component {
+)(class Checkout extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        loading: false,
+        finished: false,
+        stepIndex: 0,
+        firstName: 'FIRST NAME',
+        lastName: 'LAST NAME',
+        street1: 'STREET 1',
+        street2: 'STREET 2',
+        city: 'CITY',
+        state: 'STATE',
+        zip: 'ZIP',
+        ccFirstName: 'FIRST NAME',
+        ccLastName: 'LAST NAME',
+        cc: 'CREDIT CARD NUMBER',
+        expMonth: 'EXP. MONTH',
+        expYear: 'EXP. YEAR',
+        ccv: 'CCV',
+        shippingOption: null
+      }
+      this.handleClick = this.handleClick.bind(this)
+    }
 
-  state = {
-    loading: false,
-    finished: false,
-    stepIndex: 0,
-  };
+
+
+  handleChange(input, field) {
+    this.setState({[field]: input.value})
+  }
+
+  handleClick(e) {
+    this.setState({shippingOption: e.target.value})
+  }
 
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
@@ -35,12 +67,17 @@ export default connect(
 
   handleNext = () => {
     const {stepIndex} = this.state;
+
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
         loading: false,
         stepIndex: stepIndex + 1,
         finished: stepIndex >= 2,
       }));
+    }
+
+    if (stepIndex === 2) {
+      this.props.handleSubmit(this.state, this.props.lineItems)
     }
   };
 
@@ -55,39 +92,8 @@ export default connect(
   };
 
   getStepContent(stepIndex) {
-    const checkoutStyle = {
-      display: 'inline-block',
-      border: '1px solid rgb(204, 204, 204)',
-      padding: '23px',
-      marginTop: '-7px',
-      fontSize: '1em',
-    }
 
-    const inlineStyle = Object.assign({}, checkoutStyle, {width: '50%'})
-    const inlineStyle2 = Object.assign({}, checkoutStyle, {width: '33.33333333%'})
-    const shippingStyle = Object.assign({}, checkoutStyle, {color: 'black', cursor: "pointer"})
-
-    let rows = this.props.lineItems && this.props.lineItems.map(item => {
-    let price = (item.product.formattedPrice * item.quantity).toFixed(2)
-
-    return (
-      <div key={item.id} >
-        <Row className="show-grid main-padding" key={item.id}>
-          <Col xs={4} >
-            <img className="img-responsive" src={item.product.imgUrl} />
-          </Col>
-
-          <Col xs={8}  >
-            <h4><Link to={`/products/${item.product_id}`}>{item.product.name}</Link></h4>
-            <p>{item.product.category}</p>
-            <p>${price} • Qty {item.product.quantity}</p>
-          </Col>
-
-        </Row>
-        <hr />
-      </div>
-    )
-  })
+    let rows = this.props.lineItems && this.props.lineItems.map(item => <LineItem item={item} key={item.id} />)
 
     switch (stepIndex) {
       case 0:
@@ -97,13 +103,17 @@ export default connect(
 
           <div className="checkout-form">
             <h3>Shipping Address</h3>
-            <TextInput defaultValue="FIRST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="LAST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="STREET 1" style={checkoutStyle}/>
-            <TextInput defaultValue="STREET 2" style={checkoutStyle}/>
-            <TextInput defaultValue="CITY" style={inlineStyle2}/>
-            <TextInput defaultValue="STATE" style={inlineStyle2}/>
-            <TextInput defaultValue="ZIP" style={inlineStyle2}/>
+            {
+              [{name: 'firstName', class: 'form-50'}, {name: 'lastName', class: 'form-50'}, {name: 'street1', class: ''}, {name: 'street2', class: ''}, {name: 'city', class: 'form-33'}, {name: 'state', class: 'form-33'}, {name: 'zip', class: 'form-33'}].map(obj =>
+                <TextInput
+                  key={obj.name}
+                  placeholder={this.state[obj.name]}
+                  className={obj.class}
+                  onUpdate={v => this.handleChange(v, obj.name)}
+                />
+              )
+            }
+
           </div>
 
           <div className="checkout-summary">
@@ -121,10 +131,18 @@ export default connect(
 
           <div className="checkout-form">
             <h3>Shipping Method</h3>
-            <TextInput defaultValue="UPS NEXT DAY AIR $22.00" style={shippingStyle}/>
-            <TextInput defaultValue="UPS 2ND DAY AIR $15.00" style={shippingStyle}/>
-            <TextInput defaultValue="UPS GROUND $7.00" style={shippingStyle}/>
-            <TextInput defaultValue="STANDARD $0.00" style={shippingStyle}/>
+            {
+              ["UPS NEXT DAY AIR $22.00", "UPS 2ND DAY AIR $15.00", "UPS GROUND $7.00", "STANDARD $0.00"].map((option, i) =>
+              <button
+                style={{backgroundColor: this.state.shippingOption === option ? '#FAD6D6': 'white'}}
+                value={option}
+                onClick={this.handleClick}
+                key={i}
+                className="shipping-options">
+                  {option}
+              </button>
+              )
+            }
           </div>
 
           <div className="checkout-summary">
@@ -142,12 +160,16 @@ export default connect(
 
           <div className="checkout-form">
             <h3>Payment Details</h3>
-            <TextInput defaultValue="FIRST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="LAST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="CREDIT CARD NUMBER" style={checkoutStyle}/>
-            <TextInput defaultValue="EXP. MONTH" style={inlineStyle2}/>
-            <TextInput defaultValue="EXP. YEAR" style={inlineStyle2}/>
-            <TextInput defaultValue="CCV" style={inlineStyle2}/>
+            {
+              [{name: 'ccFirstName', class: 'form-50'}, {name: 'ccLastName', class: 'form-50'}, {name: 'cc', class: ''}, {name: 'expMonth', class: 'form-33'}, {name: 'expYear', class: 'form-33'}, {name: 'ccv', class: 'form-33'}].map(obj =>
+                <TextInput
+                  key={obj.name}
+                  placeholder={this.state[obj.name]}
+                  className={obj.class}
+                  onUpdate={v => this.handleChange(v, obj.name)}
+                />
+              )
+            }
           </div>
 
           <div className="checkout-summary">
@@ -208,18 +230,18 @@ export default connect(
     const {loading, stepIndex} = this.state;
 
   return (
-    <div style={{width: '85%', margin: 'auto', fontFamily: "Tenor Sans", maxWidth: '1100px'}}>
+    <div className="checkout-main">
       <h1>Checkout</h1>
       <div className="main-padding">
       <Stepper activeStep={stepIndex}>
         <Step>
-          <StepLabel style={{fontFamily: "Tenor Sans"}}>Shipping Address</StepLabel>
+          <StepLabel className="step-label">Shipping Address</StepLabel>
         </Step>
         <Step>
-          <StepLabel style={{fontFamily: "Tenor Sans"}}>Shipping Method</StepLabel>
+          <StepLabel className="step-label">Shipping Method</StepLabel>
         </Step>
         <Step>
-          <StepLabel style={{fontFamily: "Tenor Sans"}}>Payment Details</StepLabel>
+          <StepLabel className="step-label">Payment Details</StepLabel>
         </Step>
       </Stepper>
 

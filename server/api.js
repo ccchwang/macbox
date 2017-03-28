@@ -9,6 +9,7 @@ api
   .use('/users', require('./users'))
   .use('/products', require('./products'))
   .use('/cart', require('./cart'))
+  .use('/orders', require('./orders'))
 
 
 // api.get('/test', function(req, res, next) {
