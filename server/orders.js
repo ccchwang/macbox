@@ -1,18 +1,32 @@
 'use strict'
 
 const db = require('APP/db')
-const { Cart, LineItem } = require('../db/models')
+const { Cart, LineItem, Order } = require('../db/models')
 const api = module.exports = require('express').Router()
 
 // const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
 
 api.post('/', (req, res, next) => {
-  const order = req.body.order
-  const items = req.body.items;
+  let orderId;
+  const itemsPromise = req.body.items.map(item => LineItem.findById(item.id))
+
+  Order.create()
+      .then(order => {
+        orderId = order.id;
+        return Promise.all(itemsPromise)
+      })
+      .then(items => {
+          const updateItems = items.map(item => item.update({order_id: orderId}));
+          return Promise.all(updateItems)
+        }
+      )
+      .then(updatedItems => console.log(updatedItems[0]))
+
+
 
   Cart.findById(items[0].cart_id)
-      .then(cart => console.log(cart))
+      .then(cart => cart.update({}))
     // let cartInfo = req.params.userId === "unauthUser" ? {where: {session_id: req.sessionID}}
     //                                                   : {where: {user_id: req.params.userId}}
     // let product = req.body.product;
