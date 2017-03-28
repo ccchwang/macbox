@@ -5,7 +5,10 @@ const db = require('APP/db')
 
 const Order = db.define('orders', {
   status: Sequelize.STRING,
-  address: Sequelize.TEXT,
+  name: Sequelize.STRING,
+  shippingAddress: Sequelize.TEXT,
+  shippingOptions: Sequelize.STRING,
+  billingAddress: Sequelize.TEXT,
   totalPrice: {
     type: Sequelize.DECIMAL,
     defaultValue: 0

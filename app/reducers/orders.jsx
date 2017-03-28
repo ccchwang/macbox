@@ -57,8 +57,8 @@ export const removeLineItem = (lineItemId) => {
   }
 }
 
-export const receiveOrder = (order, items) => {
-  axios.post('/api/orders', {order, items})
+export const receiveOrder = (order, items, userId) => {
+  axios.post('/api/orders', {order, items, userId})
 }
 
 

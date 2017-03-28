@@ -14,13 +14,14 @@ import { receiveOrder } from '../reducers/orders'
 export default connect(
   (state) => {
     return {
-      lineItems: state.cart.lineItems
+      lineItems: state.cart.lineItems,
+      userId: state.auth.id
     }
   },
   (dispatch) => {
     return {
-      handleSubmit: function(order, items) {
-        dispatch(receiveOrder(order, items))
+      handleSubmit: function(order, items, userId) {
+        dispatch(receiveOrder(order, items, userId))
       }
     }
   }
@@ -77,7 +78,7 @@ export default connect(
     }
 
     if (stepIndex === 2) {
-      this.props.handleSubmit(this.state, this.props.lineItems)
+      this.props.handleSubmit(this.state, this.props.lineItems, this.props.userId)
     }
   };
 

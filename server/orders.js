@@ -9,9 +9,17 @@ const api = module.exports = require('express').Router()
 
 api.post('/', (req, res, next) => {
   let orderId;
-  const itemsPromise = req.body.items.map(item => LineItem.findById(item.id))
+  const itemsPromise = req.body.items.map(item => LineItem.findById(item.id));
+  const { firstName, lastName, shippingOptions, street1, street2, city, state, zip } = req.body.order;
 
-  Order.create()
+  const orderDetails = {
+    name: firstName + " " + lastName,
+    shippingOptions: shippingOptions,
+    shippingAddress: street1 + "\n" + street2 + "\n" + city + ", " + state + " " + zip,
+    user_id: req.body.userId
+  }
+
+  Order.create(orderDetails)
       .then(order => {
         orderId = order.id;
         return Promise.all(itemsPromise)
@@ -23,25 +31,4 @@ api.post('/', (req, res, next) => {
       )
       .then(updatedItems => console.log(updatedItems[0]))
 
-
-
-  Cart.findById(items[0].cart_id)
-      .then(cart => cart.update({}))
-    // let cartInfo = req.params.userId === "unauthUser" ? {where: {session_id: req.sessionID}}
-    //                                                   : {where: {user_id: req.params.userId}}
-    // let product = req.body.product;
-
-    // Cart.findOrCreate(cartInfo)
-    //     .then(([cart, _]) => LineItem.findOrCreate({where: {
-    //         product_id: product.id,
-    //         cart_id: cart.id
-    //     }}))
-    //     .then(([line, isCreated]) => line.update(
-    //         {quantity: !isCreated ? line.quantity + +req.body.quantity
-    //                               : req.body.quantity
-    //         }
-    //     ))
-    //     .then(line => LineItem.scope('default').findById(line.id))
-    //     .then(line => res.send(line))
-    //     .catch(next)
 })
