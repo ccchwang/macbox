@@ -30,6 +30,10 @@ export default connect(
           <Col md={6}>
             <Link to={`/products/${item.product_id}`}>
               {item.product.name}
+              <div className="mini-stars">
+                { `★`.repeat(item.product.averageRating) }
+                { `☆`.repeat(5-item.product.averageRating) }
+              </div>
               <br />
               Qty {item.quantity}
             </Link>
@@ -47,11 +51,11 @@ export default connect(
       <div className="order-padding">
         <Row>
           <Col md={6}>
-            <h4>DATE: {orderDate.toLocaleString(locale, options)}</h4>
+            <h4>Ordered Date: {orderDate.toLocaleString(locale, options)}</h4>
             <h2>Order No: #{order.id}</h2>
           </Col>
           <Col md={6} className="text-right">
-            <h4>TOTAL: ${totalPrice}</h4>
+            <h4><span style={{letterSpacing: '1.9px', fontWeight: 'bold'}}>TOTAL:</span> ${totalPrice}</h4>
           </Col>
         </Row>
         <hr />
@@ -59,17 +63,41 @@ export default connect(
         { lineItems }
 
         <Row>
-          <Col md={6} />
-          <Col md={6}  className="text-right">
-            Subtotal: ${(totalPrice - shippingCost).toFixed(2)}
-            <br />
-            Shipping: ${shippingCost}
-            <br />
-            TOTAL: ${totalPrice}
+          <Col md={7} />
+          <Col md={5} style={{padding: 0}}>
+
+            <Col md={6}  className="text-right">
+              <span className="bold-text">Subtotal:</span>
+              <br />
+              <span className="bold-text">Shipping:</span>
+              <br />
+              <span className="bold-text">TOTAL:</span>
+            </Col>
+            <Col md={6} className="text-right">
+              <span className="bold-text">${(totalPrice - shippingCost).toFixed(2)}</span>
+              <br />
+              <span className="bold-text">${shippingCost}</span>
+              <br />
+              <span className="bold-text">${totalPrice}</span>
+            </Col>
           </Col>
         </Row>
 
+        <hr />
 
+        <Row>
+          <Col md={6}>
+          <span className="bold-text">SHIPPING ADDRESS:</span>
+          <br />
+           <p style={{margin: 0}}>{order.name}</p>
+          {order.shippingAddress.split("-").map((line, i) => <p style={{margin: 0}} key={i}>{line}</p>)}
+          </Col>
+          <Col md={6}>
+          <span className="bold-text">SHIPPING METHOD:</span>
+          <br />
+          {order.shippingMethod}
+          </Col>
+        </Row>
 
       </div>
     );

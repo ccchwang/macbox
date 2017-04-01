@@ -626,10 +626,18 @@ svg {
   padding-right: 6%;
   padding-bottom: 15%;
   max-width: 1300px;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
+  font-size: 15px
 }
 
 .text-right {
   text-align: right
+}
+
+.bold-text {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+
 }

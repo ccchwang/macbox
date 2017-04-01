@@ -25,7 +25,7 @@ api.post('/', (req, res, next) => {
     shippingMethod,
     shippingCost,
     totalPrice: shippingTotal,
-    shippingAddress: street1 + "\n" + street2 + "\n" + city + ", " + state + " " + zip,
+    shippingAddress: street1 + "-" + street2 + "-" + city + ", " + state + " " + zip,
     user_id: req.body.userId
   }
 
