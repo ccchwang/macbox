@@ -9,7 +9,7 @@ const Order = db.define('orders', {
   shippingAddress: Sequelize.TEXT,
   shippingOption: Sequelize.STRING,
   totalPrice: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.FLOAT,
     defaultValue: 0
   }
 })

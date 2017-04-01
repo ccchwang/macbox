@@ -1,14 +1,14 @@
 'use strict'
 
 const db = require('APP/db')
-const { Cart, LineItem, Order } = require('../db/models')
+const { LineItem, Order } = require('../db/models')
 const api = module.exports = require('express').Router()
 
-// const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
-api.get('/:userId', (req, res, next) => {
-  Order.findAll({where: {user_id: req.params.userId}})
-        .then(orders => res.send(orders))
+
+api.get('/:id', (req, res, next) => {
+  LineItem.scope('default').findAll({where: {order_id: req.params.id}})
+        .then(items => res.send(items))
         .catch(console.error)
 })
 

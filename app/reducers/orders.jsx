@@ -4,7 +4,8 @@ import axios from 'axios'
 
 const initialState = {
   lineItems: [],
-  orders: []
+  orders: [],
+  selectedOrder: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,12 +31,17 @@ const reducer = (state = initialState, action) => {
       newState.lineItems = [...newState.lineItems];
       break;
 
-    case "RECEIVE_ORDER":
-      newState.orders = [...newState.orders, action.order];
+    case "RECEIVE_SELECTED_ORDER":
+      newState.selectedOrder = newState.orders.filter(order => order.id === +action.orderId)[0];
+      newState.selectedOrder.lineItems = action.items
       break;
 
     case "RECEIVE_ORDERS":
       newState.orders = action.orders;
+      break;
+
+    case "RECEIVE_ORDER":
+      newState.orders = [...newState.orders, action.order];
       break;
 
     default: return state;
@@ -66,10 +72,11 @@ export const removeLineItem = (lineItemId) => {
   }
 }
 
-export const receiveOrder = (order) => {
+export const receiveSelectedOrder = (orderId, items) => {
   return {
-    type: "RECEIVE_ORDER",
-    order
+    type: "RECEIVE_SELECTED_ORDER",
+    orderId,
+    items
   }
 }
 
@@ -77,6 +84,13 @@ export const receiveOrders = (orders) => {
   return {
     type: "RECEIVE_ORDERS",
     orders
+  }
+}
+
+export const receiveOrder = (order) => {
+  return {
+    type: "RECEIVE_ORDER",
+    order
   }
 }
 

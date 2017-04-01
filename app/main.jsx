@@ -10,6 +10,7 @@ import SignUp from './components/SignUp'
 import WhoAmI from './components/WhoAmI'
 import SocialPanes from './components/SocialPanes'
 import Orders from './components/Orders'
+import SingleOrder from './components/SingleOrder'
 import Checkout from './components/Checkout'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
@@ -22,7 +23,7 @@ import CategoryContainer from './containers/CategoryContainer'
 import { receiveProducts, receiveProduct } from './reducers/products'
 import { receiveReviews } from './reducers/reviews'
 import { receiveLineItems } from './reducers/cart'
-import { receiveOrders } from './reducers/orders'
+import { receiveOrders, receiveSelectedOrder } from './reducers/orders'
 
 
 const loadProductsAndCartItems = (nextState, replace, done) => {
@@ -53,9 +54,19 @@ const loadSingleProduct = (nextState, replace, done) => {
 const loadOrders = (nextState, replace, done) => {
   const userId = store.getState().auth.id;
 
-  axios.get(`/api/orders/${userId}`)
+  axios.get(`/api/users/${userId}/orders`)
     .then(orders => orders.data)
     .then(orders => store.dispatch(receiveOrders(orders)))
+    .then(() => done())
+    .catch(console.error);
+}
+
+const fetchOrder = (nextState, replace, done) => {
+  const orderId = nextState.params.orderId;
+
+  axios.get(`/api/orders/${orderId}`)
+    .then(items => items.data)
+    .then(items => store.dispatch(receiveSelectedOrder(orderId, items)))
     .then(() => done())
     .catch(console.error);
 }
@@ -75,6 +86,7 @@ render (
         <Route path="/wishlist" component={SocialPanes} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/orders" component={Orders} onEnter={loadOrders} />
+        <Route path="/order/:orderId" component={SingleOrder} onEnter={fetchOrder} />
       </Route>
     </Router>
   </Provider>,

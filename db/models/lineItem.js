@@ -4,10 +4,7 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 const LineItem = db.define('lineItems', {
   orderedPrice: {
-    type: Sequelize.INTEGER,
-    get: function(price){
-      return this.getDataValue(price) / 100
-    }
+    type: Sequelize.INTEGER
   },
   quantity: {
     type: Sequelize.INTEGER,
@@ -19,7 +16,8 @@ const LineItem = db.define('lineItems', {
       if (lineItem.order_id) {
         db.model('orders').findById(lineItem.order_id)
           .then(order => {
-            let addition = (+order.totalPrice) + (+lineItem.orderedPrice);
+            let addition = (+order.totalPrice) + +(lineItem.orderedPrice);
+
             return order.update({totalPrice: addition})
           })
           .catch(console.error)
