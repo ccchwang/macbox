@@ -9,7 +9,8 @@ export const handleCartAdd = function(e, user, selectedProduct) {
 
   axios.post(`/api/cart/${user.id || 'unauthUser'}`, {
     product: selectedProduct,
-    quantity: e.target.quantity && e.target.quantity.value || 1
+    quantity: e.target.quantity && e.target.quantity.value || 1,
+    price: selectedProduct.formattedPrice
   })
   .then(createdLineItem =>
     setTimeout(() => {

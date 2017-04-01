@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { TextInput } from 'belle';
+import { ListGroupItem } from 'react-bootstrap'
 import { RaisedButton, FlatButton, TextField, Step, Stepper, StepLabel } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import LineItem from './LineItem'
-import { receiveOrder } from '../reducers/orders'
+import { createOrder } from '../reducers/orders'
 
 
 export default connect(
@@ -21,7 +22,7 @@ export default connect(
   (dispatch) => {
     return {
       handleSubmit: function(order, items, userId) {
-        dispatch(receiveOrder(order, items, userId))
+        dispatch(createOrder(order, items, userId))
       }
     }
   }
@@ -32,20 +33,21 @@ export default connect(
         loading: false,
         finished: false,
         stepIndex: 0,
-        firstName: 'FIRST NAME',
-        lastName: 'LAST NAME',
-        street1: 'STREET 1',
-        street2: 'STREET 2',
-        city: 'CITY',
-        state: 'STATE',
-        zip: 'ZIP',
-        ccFirstName: 'FIRST NAME',
-        ccLastName: 'LAST NAME',
-        cc: 'CREDIT CARD NUMBER',
-        expMonth: 'EXP. MONTH',
-        expYear: 'EXP. YEAR',
-        ccv: 'CCV',
-        shippingOption: null
+        firstName: '',
+        lastName: '',
+        street1: '',
+        street2: '',
+        city: '',
+        state: '',
+        zip: '',
+        ccFirstName: '',
+        ccLastName: '',
+        cc: '',
+        expMonth: '',
+        expYear: '',
+        ccv: '',
+        shippingOption: null,
+        invalidStep: false
       }
       this.handleClick = this.handleClick.bind(this)
     }
@@ -67,7 +69,31 @@ export default connect(
   };
 
   handleNext = () => {
-    const {stepIndex} = this.state;
+    const {stepIndex, firstName, lastName, street1, street2, city, state, zip, ccFirstName, ccLastName, cc, expMonth, expYear, ccv, shippingOption} = this.state;
+
+    if (stepIndex === 0) {
+      if (!firstName || !lastName || !street1 || !street2 || !city || !state || !zip) {
+        this.setState({invalidStep: true})
+        return;
+      }
+      else { this.setState({invalidStep: false}) }
+    }
+
+    else if (stepIndex === 1) {
+      if (!shippingOption) {
+        this.setState({invalidStep: true});
+        return;
+      }
+      else { this.setState({invalidStep: false}) }
+    }
+
+    else if (stepIndex === 2) {
+      if (!ccFirstName || !ccLastName || !cc || !expMonth || !expYear || !ccv) {
+        this.setState({invalidStep: true})
+        return;
+      }
+      this.props.handleSubmit(this.state, this.props.lineItems, this.props.userId)
+    }
 
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
@@ -75,10 +101,6 @@ export default connect(
         stepIndex: stepIndex + 1,
         finished: stepIndex >= 2,
       }));
-    }
-
-    if (stepIndex === 2) {
-      this.props.handleSubmit(this.state, this.props.lineItems, this.props.userId)
     }
   };
 
@@ -93,22 +115,24 @@ export default connect(
   };
 
   getStepContent(stepIndex) {
-
     let rows = this.props.lineItems && this.props.lineItems.map(item => <LineItem item={item} key={item.id} />)
 
     switch (stepIndex) {
       case 0:
         return (
-          <div>
           <div className="checkout-padding">
 
           <div className="checkout-form">
             <h3>Shipping Address</h3>
             {
-              [{name: 'firstName', class: 'form-50'}, {name: 'lastName', class: 'form-50'}, {name: 'street1', class: ''}, {name: 'street2', class: ''}, {name: 'city', class: 'form-33'}, {name: 'state', class: 'form-33'}, {name: 'zip', class: 'form-33'}].map(obj =>
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
+            }
+            {
+              [{name: 'firstName', class: 'form-50', val: 'FIRST NAME'}, {name: 'lastName', class: 'form-50', val: 'LAST NAME'}, {name: 'street1', class: '', val: 'STREET 1'}, {name: 'street2', class: '', val: 'STREET 2'}, {name: 'city', class: 'form-33', val: 'CITY'}, {name: 'state', class: 'form-33', val: 'STATE'}, {name: 'zip', class: 'form-33', val: 'ZIP'}].map(obj =>
                 <TextInput
                   key={obj.name}
-                  placeholder={this.state[obj.name]}
+                  value={this.state[obj.name]}
+                  placeholder={obj.val}
                   className={obj.class}
                   onUpdate={v => this.handleChange(v, obj.name)}
                 />
@@ -123,7 +147,7 @@ export default connect(
           </div>
 
           </div>
-          </div>
+
         );
       case 1:
         return (
@@ -132,6 +156,9 @@ export default connect(
 
           <div className="checkout-form">
             <h3>Shipping Method</h3>
+            {
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping option!</ListGroupItem>
+            }
             {
               ["UPS NEXT DAY AIR $22.00", "UPS 2ND DAY AIR $15.00", "UPS GROUND $7.00", "STANDARD $0.00"].map((option, i) =>
               <button
@@ -162,10 +189,14 @@ export default connect(
           <div className="checkout-form">
             <h3>Payment Details</h3>
             {
-              [{name: 'ccFirstName', class: 'form-50'}, {name: 'ccLastName', class: 'form-50'}, {name: 'cc', class: ''}, {name: 'expMonth', class: 'form-33'}, {name: 'expYear', class: 'form-33'}, {name: 'ccv', class: 'form-33'}].map(obj =>
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
+            }
+            {
+              [{name: 'ccFirstName', class: 'form-50', val: 'FIRST NAME'}, {name: 'ccLastName', class: 'form-50', val: 'LAST NAME'}, {name: 'cc', class: '', val: 'CREDIT CARD NUMBER'}, {name: 'expMonth', class: 'form-33', val: 'EXP. MONTH'}, {name: 'expYear', class: 'form-33', val: 'EXP. YEAR'}, {name: 'ccv', class: 'form-33', val: 'CCV'}].map(obj =>
                 <TextInput
                   key={obj.name}
-                  placeholder={this.state[obj.name]}
+                  placeholder={obj.val}
+                  value={this.state[obj.name]}
                   className={obj.class}
                   onUpdate={v => this.handleChange(v, obj.name)}
                 />
@@ -230,28 +261,28 @@ export default connect(
   render() {
     const {loading, stepIndex} = this.state;
 
-  return (
-    <div className="checkout-main">
-      <h1>Checkout</h1>
-      <div className="main-padding">
-      <Stepper activeStep={stepIndex}>
-        <Step>
-          <StepLabel className="step-label">Shipping Address</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel className="step-label">Shipping Method</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel className="step-label">Payment Details</StepLabel>
-        </Step>
-      </Stepper>
+    return (
+      <div className="checkout-main">
+        <h1>Checkout</h1>
+        <div className="main-padding">
+        <Stepper activeStep={stepIndex}>
+          <Step>
+            <StepLabel className="step-label">Shipping Address</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel className="step-label">Shipping Method</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel className="step-label">Payment Details</StepLabel>
+          </Step>
+        </Stepper>
 
+        </div>
+        <ExpandTransition loading={loading} open={true}>
+          {this.renderContent()}
+        </ExpandTransition>
       </div>
-      <ExpandTransition loading={loading} open={true}>
-        {this.renderContent()}
-      </ExpandTransition>
-    </div>
-  );
+    );
   }
 })
 

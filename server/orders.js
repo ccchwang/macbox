@@ -8,27 +8,27 @@ const api = module.exports = require('express').Router()
 
 
 api.post('/', (req, res, next) => {
-  let orderId;
+  let createdOrder;
   const itemsPromise = req.body.items.map(item => LineItem.findById(item.id));
-  const { firstName, lastName, shippingOptions, street1, street2, city, state, zip } = req.body.order;
+  const { firstName, lastName, shippingOption, street1, street2, city, state, zip } = req.body.order;
 
   const orderDetails = {
     name: firstName + " " + lastName,
-    shippingOptions: shippingOptions,
+    shippingOption: shippingOption,
     shippingAddress: street1 + "\n" + street2 + "\n" + city + ", " + state + " " + zip,
     user_id: req.body.userId
   }
 
   Order.create(orderDetails)
       .then(order => {
-        orderId = order.id;
+        createdOrder = order;
         return Promise.all(itemsPromise)
       })
       .then(items => {
-          const updateItems = items.map(item => item.update({order_id: orderId}));
+          const updateItems = items.map(item => item.update({order_id: createdOrder.id, cart_id: null}));
           return Promise.all(updateItems)
         }
       )
-      .then(updatedItems => console.log(updatedItems[0]))
+      .then(() => res.send(createdOrder))
 
 })

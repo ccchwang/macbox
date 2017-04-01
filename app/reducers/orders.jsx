@@ -3,7 +3,8 @@ import axios from 'axios'
 //REDUCER
 
 const initialState = {
-  lineItems: []
+  lineItems: [],
+  orders: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +28,10 @@ const reducer = (state = initialState, action) => {
       let itemToUpdate = newState.lineItems.filter(item => item.id === action.lineItemId)
       itemToUpdate[0].quantity = action.quantity
       newState.lineItems = [...newState.lineItems];
+      break;
+
+    case "RECEIVE_ORDER":
+      newState.orders = [...newState.orders, action.order];
       break;
 
     default: return state;
@@ -57,9 +62,27 @@ export const removeLineItem = (lineItemId) => {
   }
 }
 
-export const receiveOrder = (order, items, userId) => {
-  axios.post('/api/orders', {order, items, userId})
+export const receiveOrder = (order) => {
+  return {
+    type: "RECEIVE_ORDER",
+    order
+  }
 }
+
+export const createOrder = (order, items, userId) => {
+  return (dispatch) =>
+    axios.post('/api/orders', {order, items, userId})
+         .then(order => {
+           dispatch(receiveOrder(order))
+           dispatch(receiveLineItems([]))
+          })
+         .catch(console.error)
+}
+// export const logout = () =>
+//   dispatch =>
+//     axios.post('/api/auth/logout')
+//       .then(() => dispatch(whoami()))
+//       .catch(() => dispatch(whoami()))
 
 
 
