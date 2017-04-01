@@ -46,7 +46,9 @@ export default connect(
         expMonth: '',
         expYear: '',
         ccv: '',
-        shippingOption: null,
+        shippingMethod: null,
+        shippingCost: 0,
+        shippingTotal: 0,
         invalidStep: false,
         total: 0
       }
@@ -54,10 +56,10 @@ export default connect(
     }
 
     componentDidMount() {
-      let total = this.props.lineItems.reduce((acc, item) => acc += item.orderedPrice, 0)
-      total = (total/100).toFixed(2)
+      let total = this.props.lineItems.reduce((acc, item) => acc += item.orderedPrice, 0);
+      total = (total/100).toFixed(2);
 
-      this.setState({total})
+      this.setState({total, shippingTotal: total})
     }
 
 
@@ -67,7 +69,14 @@ export default connect(
   }
 
   handleClick(e) {
-    this.setState({shippingOption: e.target.value})
+    const shipping = e.target.value.split("-");
+    const shippingMethod = shipping[0];
+    const shippingCost = +shipping[1]
+    this.setState({
+      shippingMethod,
+      shippingCost,
+      shippingTotal: (+this.state.total + shippingCost).toFixed(2)
+    })
   }
 
   dummyAsync = (cb) => {
@@ -77,7 +86,7 @@ export default connect(
   };
 
   handleNext = () => {
-    const {stepIndex, firstName, lastName, street1, street2, city, state, zip, ccFirstName, ccLastName, cc, expMonth, expYear, ccv, shippingOption} = this.state;
+    const {stepIndex, firstName, lastName, street1, street2, city, state, zip, ccFirstName, ccLastName, cc, expMonth, expYear, ccv, shippingMethod} = this.state;
 
     if (stepIndex === 0) {
       if (!firstName || !lastName || !street1 || !street2 || !city || !state || !zip) {
@@ -88,7 +97,7 @@ export default connect(
     }
 
     else if (stepIndex === 1) {
-      if (!shippingOption) {
+      if (!shippingMethod) {
         this.setState({invalidStep: true});
         return;
       }
@@ -156,7 +165,7 @@ export default connect(
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
-            TOTAL: ${this.state.total}
+            TOTAL: ${this.state.shippingTotal}
           </div>
 
           </div>
@@ -170,25 +179,30 @@ export default connect(
           <div className="checkout-form">
             <h3>Shipping Method</h3>
             {
-              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping option!</ListGroupItem>
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping method!</ListGroupItem>
             }
             {
-              ["UPS NEXT DAY AIR - $22.00", "UPS 2ND DAY AIR - $15.00", "UPS GROUND - $7.00", "STANDARD - $0.00"].map((option, i) =>
-              <button
-                style={{backgroundColor: this.state.shippingOption === option ? '#FAD6D6': 'white'}}
-                value={option}
-                onClick={this.handleClick}
-                key={i}
-                className="shipping-options">
-                  {option}
-              </button>
-              )
+              [{type: "UPS NEXT DAY AIR", cost: 22}, {type: "UPS 2ND DAY AIR", cost: 15}, {type: "UPS GROUND", cost: 7}, {type: "STANDARD", cost: 0}].map((option, i) => {
+                const label = option.type + " - " + "$" + option.cost.toFixed(2);
+
+                return (
+                  <button
+                    style={{backgroundColor: this.state.shippingMethod === option.type ? '#FAD6D6': 'white'}}
+                    value={option.type + "-" + option.cost}
+                    onClick={this.handleClick}
+                    key={i}
+                    className="shipping-options">
+                      {label}
+                  </button>
+                )
+              })
             }
           </div>
 
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
+            TOTAL: ${this.state.shippingTotal}
           </div>
 
           </div>
