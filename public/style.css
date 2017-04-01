@@ -617,3 +617,19 @@ svg {
   width: 100%;
   font-size: 1em;
 }
+
+
+/*SINGLE ORDER*/
+
+.order-padding{
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 15%;
+  max-width: 1300px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.text-right {
+  text-align: right
+}

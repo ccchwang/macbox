@@ -18,10 +18,15 @@ api.post('/', (req, res, next) => {
   let createdOrder;
   const itemsPromise = req.body.items.map(item => LineItem.findById(item.id));
   const { firstName, lastName, shippingOption, street1, street2, city, state, zip } = req.body.order;
+  let { total } = req.body.order
+  const shipping = shippingOption.split(" - ");
+  const shippingCost = +shipping[1].slice(1);
 
   const orderDetails = {
     name: firstName + " " + lastName,
-    shippingOption: shippingOption,
+    shippingMethod: shipping[0],
+    shippingCost: shippingCost,
+    totalPrice: +total + shippingCost,
     shippingAddress: street1 + "\n" + street2 + "\n" + city + ", " + state + " " + zip,
     user_id: req.body.userId
   }

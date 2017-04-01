@@ -9,7 +9,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
   let total = 0;
 
   let rows = lineItems && lineItems.map(item => {
-    let price = (item.product.formattedPrice * item.quantity).toFixed(2)
+    let price = (item.orderedPrice / 100).toFixed(2)
     total += +price
 
     return (

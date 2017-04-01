@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 
-export default function({ item, hrStyle }) {
+export default function({ item, hrStyle, price }) {
 
     return (
       <div>
@@ -17,7 +17,7 @@ export default function({ item, hrStyle }) {
             {item.product.name}
           </Link>
           <br /><br />
-          ${item.product.formattedPrice} • Qty {item.quantity}
+          ${price} • Qty {item.quantity}
           </Col>
         </Row>
         <hr style={hrStyle} />

@@ -47,9 +47,17 @@ export default connect(
         expYear: '',
         ccv: '',
         shippingOption: null,
-        invalidStep: false
+        invalidStep: false,
+        total: 0
       }
       this.handleClick = this.handleClick.bind(this)
+    }
+
+    componentDidMount() {
+      let total = this.props.lineItems.reduce((acc, item) => acc += item.orderedPrice, 0)
+      total = (total/100).toFixed(2)
+
+      this.setState({total})
     }
 
 
@@ -115,7 +123,11 @@ export default connect(
   };
 
   getStepContent(stepIndex) {
-    let rows = this.props.lineItems && this.props.lineItems.map(item => <LineItem item={item} key={item.id} />)
+
+    let rows = this.props.lineItems && this.props.lineItems.map(item => {
+      let price = (item.orderedPrice / 100).toFixed(2)
+      return <LineItem price={price} item={item} key={item.id} />
+    })
 
     switch (stepIndex) {
       case 0:
@@ -144,6 +156,7 @@ export default connect(
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
+            TOTAL: ${this.state.total}
           </div>
 
           </div>
@@ -160,7 +173,7 @@ export default connect(
               this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping option!</ListGroupItem>
             }
             {
-              ["UPS NEXT DAY AIR $22.00", "UPS 2ND DAY AIR $15.00", "UPS GROUND $7.00", "STANDARD $0.00"].map((option, i) =>
+              ["UPS NEXT DAY AIR - $22.00", "UPS 2ND DAY AIR - $15.00", "UPS GROUND - $7.00", "STANDARD - $0.00"].map((option, i) =>
               <button
                 style={{backgroundColor: this.state.shippingOption === option ? '#FAD6D6': 'white'}}
                 value={option}

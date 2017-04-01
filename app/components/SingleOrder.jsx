@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Row, Col } from 'react-bootstrap'
-import LineItem from './LineItem'
+
 
 export default connect(
   (state, ownProps) => {
@@ -15,50 +15,58 @@ export default connect(
 
   render () {
     const order = this.props.selectedOrder;
+    const shippingCost = order.shippingCost.toFixed(2);
     const locale = "en-us"
     const options = {year: 'numeric', month: 'long', day: 'numeric'}
     const orderDate = new Date(order.created_at)
 
-    const lineItems = order.lineItems.map(item => <LineItem item={item}/>)
-    /*
-    const orders = this.props.orders.map(order => {
-      console.log(+order.totalPrice.toFixed(2))
-      const date = new Date(order.created_at)
-      return (<Link to={`/orders/${order.id}`} key={order.id}>
+    const lineItems = order.lineItems.map(item =>
+      <div key={item.id}>
         <Row>
-          <Col md={4}>
-            <h4>{date.toLocaleString(locale, options)}</h4>
+          <Col md={2}>
+            <img className="img-responsive" src={item.product.imgUrl} />
           </Col>
-          <Col md={4}>
-            <h4>Order No. {order.id}</h4>
+          <Col md={6}>
+            <Link to={`/products/${item.product_id}`}>
+              {item.product.name}
+              <br />
+              Qty {item.quantity}
+            </Link>
           </Col>
-          <Col md={4}>
-            <h4>${(order.totalPrice/100).toFixed(2)}</h4>
+          <Col md={4} className="text-right">
+          ${(item.orderedPrice/100).toFixed(2)}
           </Col>
         </Row>
-        </Link>
-      )
-
-
-    })*/
+        <hr />
+      </div>
+    )
 
 
     return (
-      <div className="pane-padding">
+      <div className="order-padding">
         <Row>
           <Col md={6}>
-            <h4>Ordered Date: {orderDate.toLocaleString(locale, options)}</h4>
-            <h2>Order No: {order.id}</h2>
+            <h4>DATE: {orderDate.toLocaleString(locale, options)}</h4>
+            <h2>Order No: #{order.id}</h2>
           </Col>
-          <Col md={6}>
-            <h4>TOTAL: ${(order.totalPrice/100).toFixed(2)}</h4>
+          <Col md={6} className="text-right">
+            <h4>TOTAL: ${order.totalPrice}</h4>
           </Col>
         </Row>
+        <hr />
 
-        {
-          lineItems
-        }
+        { lineItems }
 
+        <Row>
+          <Col md={6} />
+          <Col md={6}  className="text-right">
+            Subtotal: ${order.totalPrice - shippingCost}
+            <br />
+            Shipping: ${shippingCost}
+            <br />
+            TOTAL: ${order.totalPrice}
+          </Col>
+        </Row>
 
 
 
