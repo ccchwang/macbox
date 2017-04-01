@@ -8,7 +8,7 @@ const Order = db.define('orders', {
   name: Sequelize.STRING,
   shippingAddress: Sequelize.TEXT,
   shippingMethod: Sequelize.STRING,
-  shippingCost: Sequelize.FLOAT,
+  shippingCost: Sequelize.INTEGER,
   totalPrice: {
     type: Sequelize.FLOAT,
     defaultValue: 0

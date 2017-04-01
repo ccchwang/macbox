@@ -42,7 +42,8 @@ export default class CartDrawer extends React.Component {
           <Col xs={12}><hr style={{marginBottom: 0}} /></Col>
           {
             this.props.lineItems && this.props.lineItems.map(item => {
-              let price = (item.orderedPrice / 100).toFixed(2)
+
+              let price = item.orderedPrice;
               total += +price;
 
               return (

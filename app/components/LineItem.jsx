@@ -17,7 +17,7 @@ export default function({ item, hrStyle, price }) {
             {item.product.name}
           </Link>
           <br /><br />
-          ${price} • Qty {item.quantity}
+          ${price.toFixed(2)} • Qty {item.quantity}
           </Col>
         </Row>
         <hr style={hrStyle} />

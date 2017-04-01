@@ -57,7 +57,6 @@ export default connect(
 
     componentDidMount() {
       let total = this.props.lineItems.reduce((acc, item) => acc += item.orderedPrice, 0);
-      total = (total/100).toFixed(2);
 
       this.setState({total, shippingTotal: total})
     }
@@ -71,11 +70,13 @@ export default connect(
   handleClick(e) {
     const shipping = e.target.value.split("-");
     const shippingMethod = shipping[0];
-    const shippingCost = +shipping[1]
+    const shippingCost = +shipping[1];
+
+
     this.setState({
       shippingMethod,
       shippingCost,
-      shippingTotal: (+this.state.total + shippingCost).toFixed(2)
+      shippingTotal: this.state.total + shippingCost
     })
   }
 
@@ -134,7 +135,7 @@ export default connect(
   getStepContent(stepIndex) {
 
     let rows = this.props.lineItems && this.props.lineItems.map(item => {
-      let price = (item.orderedPrice / 100).toFixed(2)
+      let price = item.orderedPrice;
       return <LineItem price={price} item={item} key={item.id} />
     })
 
@@ -165,7 +166,7 @@ export default connect(
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
-            TOTAL: ${this.state.shippingTotal}
+            TOTAL: ${this.state.shippingTotal.toFixed(2)}
           </div>
 
           </div>
@@ -202,7 +203,7 @@ export default connect(
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
-            TOTAL: ${this.state.shippingTotal}
+            TOTAL: ${this.state.shippingTotal.toFixed(2)}
           </div>
 
           </div>

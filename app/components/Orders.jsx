@@ -29,7 +29,7 @@ export default connect(
             <h4>Order No. {order.id}</h4>
           </Col>
           <Col md={4}>
-            <h4>${order.totalPrice}</h4>
+            <h4>${order.totalPrice.toFixed(2)}</h4>
           </Col>
         </Row>
         </Link>

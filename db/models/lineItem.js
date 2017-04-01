@@ -4,7 +4,10 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 const LineItem = db.define('lineItems', {
   orderedPrice: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    get: function(price){
+      return this.getDataValue(price) / 100
+    }
   },
   quantity: {
     type: Sequelize.INTEGER,
