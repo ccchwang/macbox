@@ -34,6 +34,10 @@ const reducer = (state = initialState, action) => {
       newState.orders = [...newState.orders, action.order];
       break;
 
+    case "RECEIVE_ORDERS":
+      newState.orders = action.orders;
+      break;
+
     default: return state;
     }
   return newState
@@ -66,6 +70,13 @@ export const receiveOrder = (order) => {
   return {
     type: "RECEIVE_ORDER",
     order
+  }
+}
+
+export const receiveOrders = (orders) => {
+  return {
+    type: "RECEIVE_ORDERS",
+    orders
   }
 }
 

@@ -6,6 +6,13 @@ const api = module.exports = require('express').Router()
 
 // const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
+api.get('/:userId', (req, res, next) => {
+  Order.findAll({where: {user_id: req.params.userId}})
+        .then(orders => res.send(orders))
+        .catch(console.error)
+})
+
+
 
 api.post('/', (req, res, next) => {
   let createdOrder;

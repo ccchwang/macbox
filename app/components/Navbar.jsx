@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Badge } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
-import Logout from './Logout'
+import UserNav from './UserNav'
 import { logout } from '../reducers/auth'
 import LoginSignUp from './LoginSignUp'
 
@@ -37,13 +37,13 @@ export default connect(
       <Navbar.Collapse>
         <Nav>
           <NavDropdown eventKey={2} title="SHOP" id="basic-nav-dropdown">
-            <LinkContainer to={`/shop/Macbook%20Cover`}>
+            <LinkContainer to="/shop/Macbook%20Cover">
               <MenuItem eventKey={`2.1`}>Macbook Cover</MenuItem>
             </LinkContainer>
-            <LinkContainer to={`/shop/Macbook%20Decal`}>
+            <LinkContainer to="/shop/Macbook%20Decal">
               <MenuItem eventKey={`2.1`}>Macbook Decal</MenuItem>
             </LinkContainer>
-            <LinkContainer to={`/shop/Keyboard%20Decal`}>
+            <LinkContainer to="/shop/Keyboard%20Decal">
               <MenuItem eventKey={`2.1`}>Keyboard Decal</MenuItem>
             </LinkContainer>
           </NavDropdown>
@@ -55,7 +55,7 @@ export default connect(
           </LinkContainer>
         </Nav>
 
-      { props.auth ? <Logout handleLogout={props.handleLogout} /> : <LoginSignUp /> }
+      { props.auth ? <UserNav userName={props.auth.name} handleLogout={props.handleLogout} /> : <LoginSignUp /> }
 
       <Nav pullRight>
         <LinkContainer to="/cart">
