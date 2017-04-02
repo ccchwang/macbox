@@ -20,8 +20,9 @@ export default connect(
     const orders = this.props.orders.map(order => {
       const date = new Date(order.created_at)
 
-      return (<Link to={`/order/${order.id}`} key={order.id}>
-        <Row>
+      return (
+      <Link to={`/order/${order.id}`} key={order.id}>
+        <Row className="order-list-item">
           <Col md={4}>
             <h4>{date.toLocaleString(locale, options)}</h4>
           </Col>
@@ -37,11 +38,14 @@ export default connect(
     })
 
     return (
-      <div className="pane-padding">
+      <div className="order-padding">
         <h1>Order History</h1>
+
+        <div className="order-list-padding">
         {
           orders
         }
+        </div>
 
 
       </div>

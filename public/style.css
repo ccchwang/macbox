@@ -641,3 +641,14 @@ svg {
   margin-bottom: 10px;
 
 }
+
+.order-list-item {
+  border: 1px solid rgb(204,204,204);
+  padding: 20px 30px;
+  margin-bottom: 15px;
+  text-align: center
+}
+
+.order-list-padding {
+  margin: 40px 5%;
+}

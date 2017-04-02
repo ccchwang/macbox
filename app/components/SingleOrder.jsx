@@ -25,18 +25,20 @@ export default connect(
       <div key={item.id}>
         <Row>
           <Col md={2}>
+            <Link to={`/products/${item.product_id}`}>
             <img className="img-responsive" src={item.product.imgUrl} />
+            </Link>
           </Col>
           <Col md={6}>
             <Link to={`/products/${item.product_id}`}>
               {item.product.name}
+            </Link>
               <div className="mini-stars">
                 { `★`.repeat(item.product.averageRating) }
                 { `☆`.repeat(5-item.product.averageRating) }
               </div>
               <br />
               Qty {item.quantity}
-            </Link>
           </Col>
           <Col md={4} className="text-right">
           ${item.orderedPrice.toFixed(2)}
