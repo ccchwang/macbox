@@ -676,8 +676,8 @@ svg {
 
 
 .login-container {
-    width: 40%;
-    margin: 0px auto;
+    width: 35%;
+    margin: 50px auto 0;
     display: flex;
     justify-content: center;
 }
@@ -685,10 +685,10 @@ svg {
 .login-container .btn {
   padding: 13px;
   width: 100%;
-  margin-top: -7px;
   border-radius: 0;
   border: 0
 }
+
 
 #fb-login-btn {
   background-color: #3b5998

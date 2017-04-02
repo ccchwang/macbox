@@ -12,44 +12,30 @@ export const SignUp = ({ signup }) => (
     style={{width: '100%'}}
     >
 
-    <FormGroup>
-      <Col sm={2} />
-      <Col sm={10}>
+    <FormGroup style={{marginBottom: '35px'}}>
+      <Col sm={6}>
         <Button id="google-login-btn" href="/api/auth/login/google">Sign up with Google</Button>
       </Col>
-    </FormGroup>
-
-    <FormGroup>
-      <Col sm={2} />
-      <Col sm={10}>
+      <Col sm={6}>
         <Button id="fb-login-btn" href="/api/auth/login/facebook">Sign up with Facebook
       </Button>
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalName">
-      <Col style={{marginLeft: '0'}} componentClass={ControlLabel} smOffset={2} sm={2}>
-        Name
-      </Col>
-      <Col sm={10}>
+      <Col sm={12}>
         <FormControl type="name" name='name' placeholder="Name" />
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalEmail">
-      <Col style={{marginLeft: '0'}} componentClass={ControlLabel} smOffset={2} sm={2}>
-        Email
-      </Col>
-      <Col sm={10}>
+      <Col sm={12}>
         <FormControl type="email" name='email' placeholder="Email" />
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalPassword">
-      <Col style={{marginLeft: '0'}} componentClass={ControlLabel} smOffset={2} sm={2}>
-        Password
-      </Col>
-      <Col sm={10}>
+      <Col sm={12}>
         <FormControl type="password" name='password' placeholder="Password" />
       </Col>
     </FormGroup>
@@ -61,8 +47,7 @@ export const SignUp = ({ signup }) => (
     </FormGroup>
 
     <FormGroup>
-      <Col sm={2} />
-      <Col sm={10}>
+      <Col sm={12}>
         <Button type="submit" value="Login" className="emphasis-btn">
           Sign Up
         </Button>

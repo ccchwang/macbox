@@ -12,35 +12,24 @@ export default function({ login }) {
     login(evt.target.email.value, evt.target.password.value)
   } }>
 
-    <FormGroup>
-      <Col sm={2} />
-      <Col sm={10}>
+    <FormGroup style={{marginBottom: '35px'}}>
+      <Col sm={6}>
         <Button id="google-login-btn" href="/api/auth/login/google">Login with Google</Button>
       </Col>
-    </FormGroup>
-
-    <FormGroup>
-      <Col sm={2} />
-      <Col sm={10}>
+      <Col sm={6}>
         <Button id="fb-login-btn" href="/api/auth/login/facebook">Login with Facebook
       </Button>
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalEmail">
-      <Col style={{marginLeft: '0'}} componentClass={ControlLabel} smOffset={2} sm={2}>
-        Email
-      </Col>
-      <Col sm={10}>
+      <Col sm={12}>
         <FormControl type="email" name='email' placeholder="Email" />
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalPassword">
-      <Col style={{marginLeft: '0'}} componentClass={ControlLabel} smOffset={2} sm={2}>
-        Password
-      </Col>
-      <Col sm={10}>
+      <Col sm={12}>
         <FormControl type="password" name='password' placeholder="Password" />
       </Col>
     </FormGroup>
@@ -52,8 +41,7 @@ export default function({ login }) {
     </FormGroup>
 
     <FormGroup>
-      <Col sm={2} />
-      <Col sm={10}>
+      <Col sm={12}>
         <Button type="submit" value="Login" className="emphasis-btn">
           Sign in
         </Button>
