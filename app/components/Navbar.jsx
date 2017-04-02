@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Badge } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
+import UserNav from './UserNav'
 import { logout } from '../reducers/auth'
 import LoginSignUp from './LoginSignUp'
-import Logout from './Logout'
 
 
 export default connect(
@@ -15,7 +15,7 @@ export default connect(
       categories: products.products.map(p => p.category)
   }),
   (dispatch) => ({
-    logout: (e) => {
+    handleLogout: (e) => {
       e.preventDefault();
       dispatch(logout());
     }
@@ -37,16 +37,15 @@ export default connect(
       <Navbar.Collapse>
         <Nav>
           <NavDropdown eventKey={2} title="SHOP" id="basic-nav-dropdown">
-                <LinkContainer to={`/shop/Macbook%20Cover`}>
-                  <MenuItem eventKey={`2.1`}>Macbook Cover</MenuItem>
-                </LinkContainer>
-                <LinkContainer to={`/shop/Macbook%20Decal`}>
-                  <MenuItem eventKey={`2.1`}>Macbook Decal</MenuItem>
-                </LinkContainer>
-                <LinkContainer to={`/shop/Keyboard%20Decal`}>
-                  <MenuItem eventKey={`2.1`}>Keyboard Decal</MenuItem>
-                </LinkContainer>
-
+            <LinkContainer to="/shop/Macbook%20Cover">
+              <MenuItem eventKey={`2.1`}>Macbook Cover</MenuItem>
+            </LinkContainer>
+            <LinkContainer to="/shop/Macbook%20Decal">
+              <MenuItem eventKey={`2.1`}>Macbook Decal</MenuItem>
+            </LinkContainer>
+            <LinkContainer to="/shop/Keyboard%20Decal">
+              <MenuItem eventKey={`2.1`}>Keyboard Decal</MenuItem>
+            </LinkContainer>
           </NavDropdown>
         </Nav>
 
@@ -56,7 +55,7 @@ export default connect(
           </LinkContainer>
         </Nav>
 
-        {props.auth ? <Logout /> : <LoginSignUp />}
+      { props.auth ? <UserNav userName={props.auth.name} handleLogout={props.handleLogout} /> : <LoginSignUp /> }
 
       <Nav pullRight>
         <LinkContainer to="/cart">

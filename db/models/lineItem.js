@@ -14,18 +14,6 @@ const LineItem = db.define('lineItems', {
     defaultValue: 1
   },
 }, {
-  hooks: {
-    afterUpdate: function(lineItem){
-      if (lineItem.order_id) {
-        db.model('orders').findById(lineItem.order_id)
-          .then(order => {
-            let addition = (+order.totalPrice) + (+lineItem.orderedPrice);
-            return order.update({totalPrice: addition})
-          })
-          .catch(console.error)
-      }
-    }
-  },
   scopes: {
     default: {
       include: [{all: true}]

@@ -7,39 +7,29 @@ export default function({ login }) {
 
 
 
-  <Form horizontal onSubmit={evt => {
+  <Form style={{width: '100%'}} horizontal onSubmit={evt => {
     evt.preventDefault()
     login(evt.target.email.value, evt.target.password.value)
   } }>
 
-    <FormGroup>
-    <Col smOffset={4}>
-    <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
-    </Button>
-    </Col>
-    </FormGroup>
-
-    <FormGroup>
-      <Col smOffset={4}>
-      <Button className="buffer oauth provider-login-btn" bsStyle="info" href="/api/auth/login/facebook" bsSize="large">Login with Facebook
+    <FormGroup style={{marginBottom: '35px'}}>
+      <Col sm={6}>
+        <Button id="google-login-btn" href="/api/auth/login/google">Login with Google</Button>
+      </Col>
+      <Col sm={6}>
+        <Button id="fb-login-btn" href="/api/auth/login/facebook">Login with Facebook
       </Button>
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalEmail">
-      <Col componentClass={ControlLabel} smOffset={2} sm={2}>
-        Email
-      </Col>
-      <Col sm={4}>
+      <Col sm={12}>
         <FormControl type="email" name='email' placeholder="Email" />
       </Col>
     </FormGroup>
 
     <FormGroup controlId="formHorizontalPassword">
-      <Col componentClass={ControlLabel} smOffset={2} sm={2}>
-        Password
-      </Col>
-      <Col sm={4}>
+      <Col sm={12}>
         <FormControl type="password" name='password' placeholder="Password" />
       </Col>
     </FormGroup>
@@ -51,8 +41,8 @@ export default function({ login }) {
     </FormGroup>
 
     <FormGroup>
-      <Col smOffset={4} sm={10}>
-        <Button type="submit" value="Login">
+      <Col sm={12}>
+        <Button type="submit" value="Login" className="emphasis-btn">
           Sign in
         </Button>
       </Col>

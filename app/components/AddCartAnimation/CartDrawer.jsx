@@ -1,6 +1,6 @@
 import React from 'react';
-import { Row, Col, Button } from 'react-bootstrap'
-import { Link } from 'react-router'
+import { Col, Button } from 'react-bootstrap'
+import LineItem from '../LineItem'
 
 
 export default class CartDrawer extends React.Component {
@@ -14,7 +14,7 @@ export default class CartDrawer extends React.Component {
   componentWillLeave (callback) {
     const d = this.drawer;
     const b = this.backdrop;
-    TweenMax.to(b, 0.3, {opacity: 0, onComplete: callback});
+    TweenMax.to(b, 0.3, {opacity: 0});
     TweenMax.fromTo(d, 0.4, {x: 0}, {x: 255, onComplete: callback});
   }
 
@@ -42,26 +42,12 @@ export default class CartDrawer extends React.Component {
           <Col xs={12}><hr style={{marginBottom: 0}} /></Col>
           {
             this.props.lineItems && this.props.lineItems.map(item => {
-              let price = (item.product.formattedPrice * item.quantity).toFixed(2);
+
+              let price = item.orderedPrice;
               total += +price;
 
               return (
-                <div key={item.id}>
-                <Row className="drawer-item" key={item.id}>
-                  <Col xs={5} >
-                    <img className="img-responsive" src={item.product.imgUrl} />
-                  </Col>
-
-                  <Col xs={7}  style={{paddingLeft: '5px'}}>
-                  <Link to={`/products/${item.product_id}`}>
-                    {item.product.name}
-                  </Link>
-                  <br /><br />
-                  ${price} • Qty {item.quantity}
-                  </Col>
-                </Row>
-                <hr style={{margin: '0 15px'}} />
-              </div>
+                <LineItem price={price} item={item} key={item.id} hrStyle={{margin: '0 15px'}} />
               )
             })
           }

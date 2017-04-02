@@ -97,6 +97,15 @@
   height: 20px;
   background-color: blue
 }
+.checkout-main {
+  width: 85%;
+  margin: auto;
+  font-family: "Tenor Sans"; max-width: 1100px
+}
+
+.step-label {
+  font-family: "Tenor Sans" !important
+}
 
 .checkout-padding {
   padding-left: 6%;
@@ -108,14 +117,44 @@
   float: left
 }
 
-.checkout-padding h3 {
+.checkout-form textarea, .shipping-options, .login-container input {
+  display: inline-block !important;
+  border: 1px solid rgb(204, 204, 204) !important;
+  padding: 23px !important;
+  margin-top: -7px !important;
+  font-size: 1em !important;
+  border-radius: 0
+}
+
+
+
+.checkout-form textarea:focus, .checkout-form textarea:hover {
+  border: 1px solid rgb(204, 204, 204) !important;
+}
+
+.shipping-options {
+  margin-top: 0 !important;
+  width: 100%;
+}
+
+
+.form-50 {
+  width: 50% !important
+}
+
+.form-33 {
+  width: 33.3333333333% !important
+}
+
+.checkout-padding .checkout-heading {
   margin-bottom: 30px
 }
 
 
 .checkout-summary{
   width: 32%;
-  float: left
+  float: left;
+  margin-bottom: 15px
 }
 
 .checkout-summary h4 {
@@ -124,10 +163,30 @@
   line-height: 20px;
 }
 
-.subscribe-padding {
-  width: 600px;
-  margin: 0 auto
+.checkout-btn {
+  padding: 10px 40px;
+  background-color: rgb(109, 241, 213);
+  border: none;
+  border-radius: 0;
+  transition: 0.2s;
+  margin-top: 8px;
 }
+
+.checkout-btn:hover {
+  background-color: #52e6c7;
+}
+
+.checkout-back-btn:hover {
+  background-color: rgb(225, 225, 225)
+}
+
+.checkout-back-btn {
+  margin-right: 10px;
+  margin-left: 40px;
+  background-color: rgb(239, 239, 239)
+}
+
+
 
 /***************************/
 
@@ -167,7 +226,6 @@ a:focus, a:hover {
   border-radius: 0;
   transition: 0.2s;
   margin-top: 8px;
-
 }
 
 .emphasis-btn a {
@@ -304,7 +362,7 @@ a:focus, a:hover {
 }
 
 #nav-cart-count{
-  background-color: #b780ab;
+  background-color: #b57aa8;
 }
 
 .dropdown-menu>.active>a,
@@ -397,12 +455,13 @@ a:focus, a:hover {
 
 .rating-stars {
    font-size: 1.7em;
-   color: #c083b2
+   color: #b57aa8
 }
 
 .category-link {
- color: #c083b2
+ color: #b57aa8
 }
+
 
 /*REVIEWS*/
 
@@ -447,7 +506,7 @@ a:focus, a:hover {
 }
 
 .cart-page a:focus, .cart-page a:hover {
-  color: #c083b2;
+  color: #b57aa8;
 }
 
 .cart-checkout-panel{
@@ -493,7 +552,7 @@ a:focus, a:hover {
 }
 
 .mini-stars {
-  color: #c083b2
+  color: #b57aa8
 }
 
 .quick-view-hover {
@@ -505,7 +564,7 @@ a:focus, a:hover {
   padding: 4%;
   width: 95%;
   margin: 0 auto;
-  color: #c083b2;
+  color: #b57aa8;
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -518,7 +577,7 @@ a:focus, a:hover {
 }
 
 svg {
-  fill: #c083b2 !important
+  fill: #b57aa8 !important
 }
 
 /*CART DRAWER*/
@@ -581,4 +640,61 @@ svg {
 .drawer-btn {
   width: 100%;
   font-size: 1em;
+}
+
+
+/*SINGLE ORDER*/
+
+.order-padding{
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 15%;
+  max-width: 1300px;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 15px
+}
+
+.text-right {
+  text-align: right
+}
+
+.bold-text {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.order-list-item {
+  border: 1px solid rgb(204,204,204);
+  padding: 20px 30px;
+  margin-bottom: 15px;
+  text-align: center
+}
+
+.order-list-padding {
+  margin: 40px 5%;
+}
+
+
+.login-container {
+    width: 35%;
+    margin: 50px auto 0;
+    display: flex;
+    justify-content: center;
+}
+
+.login-container .btn {
+  padding: 13px;
+  width: 100%;
+  border-radius: 0;
+  border: 0
+}
+
+
+#fb-login-btn {
+  background-color: #3b5998
+}
+
+#google-login-btn {
+  background-color: #ea4335
 }

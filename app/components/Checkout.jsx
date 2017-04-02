@@ -3,29 +3,83 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { TextInput } from 'belle';
-import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import { ListGroupItem } from 'react-bootstrap'
+import { Step, Stepper, StepLabel } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
-import TextField from 'material-ui/TextField';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
-
+import LineItem from './LineItem'
+import OrderTotal from './OrderTotal'
+import { createOrder } from '../reducers/orders'
 
 
 export default connect(
   (state) => {
     return {
-      lineItems: state.cart.lineItems
+      lineItems: state.cart.lineItems,
+      userId: state.auth.id
+    }
+  },
+  (dispatch) => {
+    return {
+      handleSubmit: function(order, items, userId) {
+        dispatch(createOrder(order, items, userId))
+      }
     }
   }
-)(class HorizontalTransition extends React.Component {
+)(class Checkout extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        loading: false,
+        finished: false,
+        stepIndex: 0,
+        firstName: '',
+        lastName: '',
+        street1: '',
+        street2: '',
+        city: '',
+        state: '',
+        zip: '',
+        ccFirstName: '',
+        ccLastName: '',
+        cc: '',
+        expMonth: '',
+        expYear: '',
+        ccv: '',
+        shippingMethod: null,
+        shippingCost: 0,
+        shippingTotal: 0,
+        invalidStep: false,
+        total: 0
+      }
+      this.handleClick = this.handleClick.bind(this)
+    }
 
-  state = {
-    loading: false,
-    finished: false,
-    stepIndex: 0,
-  };
+    componentDidMount() {
+      let total = this.props.lineItems.reduce((acc, item) => acc += item.orderedPrice, 0);
+
+      this.setState({total, shippingTotal: total})
+    }
+
+
+
+  handleChange(input, field) {
+    this.setState({[field]: input.value})
+  }
+
+  handleClick(e) {
+    const shipping = e.target.value.split("-");
+    const shippingMethod = shipping[0];
+    const shippingCost = +shipping[1];
+
+
+    this.setState({
+      shippingMethod,
+      shippingCost,
+      shippingTotal: this.state.total + shippingCost
+    })
+  }
 
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
@@ -34,7 +88,32 @@ export default connect(
   };
 
   handleNext = () => {
-    const {stepIndex} = this.state;
+    const {stepIndex, firstName, lastName, street1, street2, city, state, zip, ccFirstName, ccLastName, cc, expMonth, expYear, ccv, shippingMethod} = this.state;
+
+    if (stepIndex === 0) {
+      if (!firstName || !lastName || !street1 || !street2 || !city || !state || !zip) {
+        this.setState({invalidStep: true})
+        return;
+      }
+      else { this.setState({invalidStep: false}) }
+    }
+
+    else if (stepIndex === 1) {
+      if (!shippingMethod) {
+        this.setState({invalidStep: true});
+        return;
+      }
+      else { this.setState({invalidStep: false}) }
+    }
+
+    else if (stepIndex === 2) {
+      if (!ccFirstName || !ccLastName || !cc || !expMonth || !expYear || !ccv) {
+        this.setState({invalidStep: true})
+        return;
+      }
+      this.props.handleSubmit(this.state, this.props.lineItems, this.props.userId)
+    }
+
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
         loading: false,
@@ -55,64 +134,51 @@ export default connect(
   };
 
   getStepContent(stepIndex) {
-    const checkoutStyle = {
-      display: 'inline-block',
-      border: '1px solid rgb(204, 204, 204)',
-      padding: '23px',
-      marginTop: '-7px',
-      fontSize: '1em',
-    }
-
-    const inlineStyle = Object.assign({}, checkoutStyle, {width: '50%'})
-    const inlineStyle2 = Object.assign({}, checkoutStyle, {width: '33.33333333%'})
-    const shippingStyle = Object.assign({}, checkoutStyle, {color: 'black', cursor: "pointer"})
 
     let rows = this.props.lineItems && this.props.lineItems.map(item => {
-    let price = (item.product.formattedPrice * item.quantity).toFixed(2)
-
-    return (
-      <div key={item.id} >
-        <Row className="show-grid main-padding" key={item.id}>
-          <Col xs={4} >
-            <img className="img-responsive" src={item.product.imgUrl} />
-          </Col>
-
-          <Col xs={8}  >
-            <h4><Link to={`/products/${item.product_id}`}>{item.product.name}</Link></h4>
-            <p>{item.product.category}</p>
-            <p>${price} • Qty {item.product.quantity}</p>
-          </Col>
-
-        </Row>
-        <hr />
-      </div>
-    )
-  })
+      let price = item.orderedPrice;
+      return <LineItem price={price} item={item} key={item.id} />
+    })
 
     switch (stepIndex) {
       case 0:
         return (
-          <div>
           <div className="checkout-padding">
 
           <div className="checkout-form">
-            <h3>Shipping Address</h3>
-            <TextInput defaultValue="FIRST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="LAST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="STREET 1" style={checkoutStyle}/>
-            <TextInput defaultValue="STREET 2" style={checkoutStyle}/>
-            <TextInput defaultValue="CITY" style={inlineStyle2}/>
-            <TextInput defaultValue="STATE" style={inlineStyle2}/>
-            <TextInput defaultValue="ZIP" style={inlineStyle2}/>
+            <h3 className="checkout-heading">Shipping Address</h3>
+            {
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
+            }
+            {
+              [{name: 'firstName', class: 'form-50', val: 'FIRST NAME'}, {name: 'lastName', class: 'form-50', val: 'LAST NAME'}, {name: 'street1', class: '', val: 'STREET 1'}, {name: 'street2', class: '', val: 'STREET 2'}, {name: 'city', class: 'form-33', val: 'CITY'}, {name: 'state', class: 'form-33', val: 'STATE'}, {name: 'zip', class: 'form-33', val: 'ZIP'}].map(obj =>
+                <TextInput
+                  key={obj.name}
+                  value={this.state[obj.name]}
+                  placeholder={obj.val}
+                  className={obj.class}
+                  onUpdate={v => this.handleChange(v, obj.name)}
+                />
+              )
+            }
+
           </div>
 
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
+            <Col md={12} className="text-right">
+              <OrderTotal
+                subtotal={this.state.total}
+                shipping={this.state.shippingCost}
+                total={this.state.shippingTotal}
+                margin="5px"
+              />
+            </Col>
           </div>
 
           </div>
-          </div>
+
         );
       case 1:
         return (
@@ -120,16 +186,39 @@ export default connect(
           <div className="checkout-padding">
 
           <div className="checkout-form">
-            <h3>Shipping Method</h3>
-            <TextInput defaultValue="UPS NEXT DAY AIR $22.00" style={shippingStyle}/>
-            <TextInput defaultValue="UPS 2ND DAY AIR $15.00" style={shippingStyle}/>
-            <TextInput defaultValue="UPS GROUND $7.00" style={shippingStyle}/>
-            <TextInput defaultValue="STANDARD $0.00" style={shippingStyle}/>
+            <h3 className="checkout-heading">Shipping Method</h3>
+            {
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping method!</ListGroupItem>
+            }
+            {
+              [{type: "UPS NEXT DAY AIR", cost: 22}, {type: "UPS 2ND DAY AIR", cost: 15}, {type: "UPS GROUND", cost: 7}, {type: "STANDARD", cost: 0}].map((option, i) => {
+                const label = option.type + " - " + "$" + option.cost.toFixed(2);
+
+                return (
+                  <button
+                    style={{backgroundColor: this.state.shippingMethod === option.type ? '#FAD6D6': 'white'}}
+                    value={option.type + "-" + option.cost}
+                    onClick={this.handleClick}
+                    key={i}
+                    className="shipping-options">
+                      {label}
+                  </button>
+                )
+              })
+            }
           </div>
 
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
+            <Col md={12} className="text-right">
+              <OrderTotal
+                subtotal={this.state.total}
+                shipping={this.state.shippingCost}
+                total={this.state.shippingTotal}
+                margin="5px"
+              />
+            </Col>
           </div>
 
           </div>
@@ -141,16 +230,34 @@ export default connect(
           <div className="checkout-padding">
 
           <div className="checkout-form">
-            <h3>Payment Details</h3>
-            <TextInput defaultValue="FIRST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="LAST NAME" style={inlineStyle}/>
-            <TextInput defaultValue="CREDIT CARD NUMBER" style={checkoutStyle}/>
-            <TextInput defaultValue="EXP. MONTH" style={inlineStyle2}/>
-            <TextInput defaultValue="EXP. YEAR" style={inlineStyle2}/>
-            <TextInput defaultValue="CCV" style={inlineStyle2}/>
+            <h3 className="checkout-heading">Payment Details</h3>
+            {
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
+            }
+            {
+              [{name: 'ccFirstName', class: 'form-50', val: 'FIRST NAME'}, {name: 'ccLastName', class: 'form-50', val: 'LAST NAME'}, {name: 'cc', class: '', val: 'CREDIT CARD NUMBER'}, {name: 'expMonth', class: 'form-33', val: 'EXP. MONTH'}, {name: 'expYear', class: 'form-33', val: 'EXP. YEAR'}, {name: 'ccv', class: 'form-33', val: 'CCV'}].map(obj =>
+                <TextInput
+                  key={obj.name}
+                  placeholder={obj.val}
+                  value={this.state[obj.name]}
+                  className={obj.class}
+                  onUpdate={v => this.handleChange(v, obj.name)}
+                />
+              )
+            }
           </div>
 
           <div className="checkout-summary">
+            <h3>Order Summary</h3>
+            { rows }
+            <Col md={12} className="text-right">
+              <OrderTotal
+                subtotal={this.state.total}
+                shipping={this.state.shippingCost}
+                total={this.state.shippingTotal}
+                margin="5px"
+              />
+            </Col>
           </div>
 
           </div>
@@ -176,7 +283,13 @@ export default connect(
                 this.setState({stepIndex: 0, finished: false});
               }}
             >
-              Success!
+              <div>
+                <div className="checkout-padding">
+                <div className="checkout-form">
+                  <h3 className="checkout-heading">Success!</h3>
+                </div>
+                </div>
+              </div>
             </a>
           </p>
         </div>
@@ -187,18 +300,22 @@ export default connect(
       <div style={contentStyle}>
         <div>{this.getStepContent(stepIndex)}</div>
         <div style={{marginTop: 24, marginBottom: 12}}>
-          <FlatButton
-            label="Back"
+          <div>
+          <button
+            className="checkout-btn checkout-back-btn"
             disabled={stepIndex === 0}
-            onTouchTap={this.handlePrev}
-            style={{marginRight: 12}}
-          />
-          <FlatButton
-            label={stepIndex === 2 ? 'Place Order' : 'Next'}
-            primary={true}
-            style={{backgroundColor: '#6df1d5', color: 'black'}}
-            onTouchTap={this.handleNext}
-          />
+            onClick={this.handlePrev}
+          >
+            Back
+          </button>
+
+          <button
+            className="checkout-btn"
+            onClick={this.handleNext}
+          >
+            {stepIndex === 2 ? 'Place Order' : 'Next'}
+          </button>
+          </div>
         </div>
       </div>
     );
@@ -207,28 +324,28 @@ export default connect(
   render() {
     const {loading, stepIndex} = this.state;
 
-  return (
-    <div style={{width: '85%', margin: 'auto', fontFamily: "Tenor Sans", maxWidth: '1100px'}}>
-      <h1>Checkout</h1>
-      <div className="main-padding">
-      <Stepper activeStep={stepIndex}>
-        <Step>
-          <StepLabel style={{fontFamily: "Tenor Sans"}}>Shipping Address</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel style={{fontFamily: "Tenor Sans"}}>Shipping Method</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel style={{fontFamily: "Tenor Sans"}}>Payment Details</StepLabel>
-        </Step>
-      </Stepper>
+    return (
+      <div className="checkout-main">
+        <h1>Checkout</h1>
+        <div className="main-padding">
+        <Stepper activeStep={stepIndex}>
+          <Step>
+            <StepLabel className="step-label">Shipping Address</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel className="step-label">Shipping Method</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel className="step-label">Payment Details</StepLabel>
+          </Step>
+        </Stepper>
 
+        </div>
+        <ExpandTransition loading={loading} open={true}>
+          {this.renderContent()}
+        </ExpandTransition>
       </div>
-      <ExpandTransition loading={loading} open={true}>
-        {this.renderContent()}
-      </ExpandTransition>
-    </div>
-  );
+    );
   }
 })
 

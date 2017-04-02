@@ -16,10 +16,10 @@ export const authenticated = user => ({
   type: AUTHENTICATED, user
 })
 
-export const signup = (username, password) =>
+export const signup = (username, password, name) =>
   dispatch =>
     axios.post('/api/auth/signup/local',
-      {username, password})
+      {username, password, name})
       .then(() => dispatch(whoami()))
       .then((user) => browserHistory.push('/'))
       .catch(() => dispatch(whoami()))

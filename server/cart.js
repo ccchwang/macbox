@@ -17,11 +17,14 @@ api.post('/:userId', (req, res, next) => {
             product_id: product.id,
             cart_id: cart.id
         }}))
-        .then(([line, isCreated]) => line.update(
-            {quantity: !isCreated ? line.quantity + +req.body.quantity
-                                  : req.body.quantity
-            }
-        ))
+        .then(([line, isCreated]) => {
+            let quantity = !isCreated ? line.quantity + +req.body.quantity : req.body.quantity;
+
+            return line.update({
+                quantity: quantity,
+                orderedPrice: quantity * product.price
+            })
+        })
         .then(line => LineItem.scope('default').findById(line.id))
         .then(line => res.send(line))
         .catch(next)

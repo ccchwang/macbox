@@ -9,8 +9,8 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
   let total = 0;
 
   let rows = lineItems && lineItems.map(item => {
-    let price = (item.product.formattedPrice * item.quantity).toFixed(2)
-    total += +price
+    let price = item.orderedPrice;
+    total += +price;
 
     return (
       <div key={item.id} >
@@ -22,7 +22,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
           <Col xs={7} md={8} >
             <h3><Link to={`/products/${item.product_id}`}>{item.product.name}</Link></h3>
             <p>{item.product.category}</p>
-            <h4>${price}</h4>
+            <h4>${price.toFixed(2)}</h4>
             <br />
             <Form onSubmit={(e) => handleUpdate(e, item.id)}>
               <FormGroup controlId="formControlsSelect">
