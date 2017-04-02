@@ -117,13 +117,16 @@
   float: left
 }
 
-.checkout-form textarea, .shipping-options {
+.checkout-form textarea, .shipping-options, .login-container input {
   display: inline-block !important;
   border: 1px solid rgb(204, 204, 204) !important;
   padding: 23px !important;
   margin-top: -7px !important;
   font-size: 1em !important;
+  border-radius: 0
 }
+
+
 
 .checkout-form textarea:focus, .checkout-form textarea:hover {
   border: 1px solid rgb(204, 204, 204) !important;
@@ -669,4 +672,28 @@ svg {
 
 .order-list-padding {
   margin: 40px 5%;
+}
+
+
+.login-container {
+    width: 40%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.login-container .btn {
+  padding: 13px;
+  width: 100%;
+  margin-top: -7px;
+  border-radius: 0;
+  border: 0
+}
+
+#fb-login-btn {
+  background-color: #3b5998
+}
+
+#google-login-btn {
+  background-color: #ea4335
 }

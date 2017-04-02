@@ -57,7 +57,7 @@ export default connect(
             <h2>Order No: #{order.id}</h2>
           </Col>
           <Col md={6} className="text-right">
-            <h4><span style={{letterSpacing: '1.9px', fontWeight: 'bold'}}>TOTAL:</span> ${totalPrice}</h4>
+            <h4><span style={{letterSpacing: '1.9px', fontWeight: 'bold'}}>TOTAL:</span> ${totalPrice.toFixed(2)}</h4>
           </Col>
         </Row>
         <hr />

@@ -130,7 +130,8 @@ auth.post('/signup/local', function(req, res, next){
         email: req.body.username
       },
       defaults: { // if the user doesn't exist, create including this info
-        password: req.body.password
+        password: req.body.password,
+        name: req.body.name
       }
     })
     .spread((user, created) => {

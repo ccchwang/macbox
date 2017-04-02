@@ -42,8 +42,8 @@ export default connect(
         <h1>Order History</h1>
 
         <div className="order-list-padding">
-        {
-          orders
+        { this.props.orders.length ? orders
+          : <h3>Looks like you don't have any orders!</h3>
         }
         </div>
 
