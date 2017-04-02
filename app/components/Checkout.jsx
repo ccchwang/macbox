@@ -4,11 +4,12 @@ import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } fr
 import { Link } from 'react-router'
 import { TextInput } from 'belle';
 import { ListGroupItem } from 'react-bootstrap'
-import { RaisedButton, FlatButton, TextField, Step, Stepper, StepLabel } from 'material-ui';
+import { Step, Stepper, StepLabel } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import LineItem from './LineItem'
+import OrderTotal from './OrderTotal'
 import { createOrder } from '../reducers/orders'
 
 
@@ -145,7 +146,7 @@ export default connect(
           <div className="checkout-padding">
 
           <div className="checkout-form">
-            <h3>Shipping Address</h3>
+            <h3 className="checkout-heading">Shipping Address</h3>
             {
               this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
             }
@@ -166,7 +167,14 @@ export default connect(
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
-            TOTAL: ${this.state.shippingTotal.toFixed(2)}
+            <Col md={12} className="text-right">
+              <OrderTotal
+                subtotal={this.state.total}
+                shipping={this.state.shippingCost}
+                total={this.state.shippingTotal}
+                margin="5px"
+              />
+            </Col>
           </div>
 
           </div>
@@ -178,7 +186,7 @@ export default connect(
           <div className="checkout-padding">
 
           <div className="checkout-form">
-            <h3>Shipping Method</h3>
+            <h3 className="checkout-heading">Shipping Method</h3>
             {
               this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping method!</ListGroupItem>
             }
@@ -203,7 +211,14 @@ export default connect(
           <div className="checkout-summary">
             <h3>Order Summary</h3>
             { rows }
-            TOTAL: ${this.state.shippingTotal.toFixed(2)}
+            <Col md={12} className="text-right">
+              <OrderTotal
+                subtotal={this.state.total}
+                shipping={this.state.shippingCost}
+                total={this.state.shippingTotal}
+                margin="5px"
+              />
+            </Col>
           </div>
 
           </div>
@@ -215,7 +230,7 @@ export default connect(
           <div className="checkout-padding">
 
           <div className="checkout-form">
-            <h3>Payment Details</h3>
+            <h3 className="checkout-heading">Payment Details</h3>
             {
               this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
             }
@@ -233,6 +248,16 @@ export default connect(
           </div>
 
           <div className="checkout-summary">
+            <h3>Order Summary</h3>
+            { rows }
+            <Col md={12} className="text-right">
+              <OrderTotal
+                subtotal={this.state.total}
+                shipping={this.state.shippingCost}
+                total={this.state.shippingTotal}
+                margin="5px"
+              />
+            </Col>
           </div>
 
           </div>
@@ -258,7 +283,13 @@ export default connect(
                 this.setState({stepIndex: 0, finished: false});
               }}
             >
-              Success!
+              <div>
+                <div className="checkout-padding">
+                <div className="checkout-form">
+                  <h3 className="checkout-heading">Success!</h3>
+                </div>
+                </div>
+              </div>
             </a>
           </p>
         </div>
@@ -269,18 +300,22 @@ export default connect(
       <div style={contentStyle}>
         <div>{this.getStepContent(stepIndex)}</div>
         <div style={{marginTop: 24, marginBottom: 12}}>
-          <FlatButton
-            label="Back"
+          <div>
+          <button
+            className="checkout-btn checkout-back-btn"
             disabled={stepIndex === 0}
-            onTouchTap={this.handlePrev}
-            style={{marginRight: 12}}
-          />
-          <FlatButton
-            label={stepIndex === 2 ? 'Place Order' : 'Next'}
-            primary={true}
-            style={{backgroundColor: '#6df1d5', color: 'black'}}
-            onTouchTap={this.handleNext}
-          />
+            onClick={this.handlePrev}
+          >
+            Back
+          </button>
+
+          <button
+            className="checkout-btn"
+            onClick={this.handleNext}
+          >
+            {stepIndex === 2 ? 'Place Order' : 'Next'}
+          </button>
+          </div>
         </div>
       </div>
     );

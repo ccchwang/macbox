@@ -143,14 +143,15 @@
   width: 33.3333333333% !important
 }
 
-.checkout-padding h3 {
+.checkout-padding .checkout-heading {
   margin-bottom: 30px
 }
 
 
 .checkout-summary{
   width: 32%;
-  float: left
+  float: left;
+  margin-bottom: 15px
 }
 
 .checkout-summary h4 {
@@ -159,10 +160,30 @@
   line-height: 20px;
 }
 
-.subscribe-padding {
-  width: 600px;
-  margin: 0 auto
+.checkout-btn {
+  padding: 10px 40px;
+  background-color: rgb(109, 241, 213);
+  border: none;
+  border-radius: 0;
+  transition: 0.2s;
+  margin-top: 8px;
 }
+
+.checkout-btn:hover {
+  background-color: #52e6c7;
+}
+
+.checkout-back-btn:hover {
+  background-color: rgb(225, 225, 225)
+}
+
+.checkout-back-btn {
+  margin-right: 10px;
+  margin-left: 40px;
+  background-color: rgb(239, 239, 239)
+}
+
+
 
 /***************************/
 
@@ -202,7 +223,6 @@ a:focus, a:hover {
   border-radius: 0;
   transition: 0.2s;
   margin-top: 8px;
-
 }
 
 .emphasis-btn a {
@@ -638,8 +658,6 @@ svg {
 .bold-text {
   font-weight: bold;
   display: inline-block;
-  margin-bottom: 10px;
-
 }
 
 .order-list-item {

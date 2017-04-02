@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Row, Col } from 'react-bootstrap'
-
+import OrderTotal from './OrderTotal'
 
 export default connect(
   (state, ownProps) => {
@@ -14,8 +14,8 @@ export default connect(
 
   render () {
     const order = this.props.selectedOrder;
-    const shippingCost = order.shippingCost.toFixed(2);
-    const totalPrice = order.totalPrice.toFixed(2);
+    const shippingCost = order.shippingCost
+    const totalPrice = order.totalPrice;
 
     const locale = "en-us"
     const options = {year: 'numeric', month: 'long', day: 'numeric'}
@@ -66,22 +66,14 @@ export default connect(
 
         <Row>
           <Col md={7} />
-          <Col md={5} style={{padding: 0}}>
 
-            <Col md={6}  className="text-right">
-              <span className="bold-text">Subtotal:</span>
-              <br />
-              <span className="bold-text">Shipping:</span>
-              <br />
-              <span className="bold-text">TOTAL:</span>
-            </Col>
-            <Col md={6} className="text-right">
-              <span className="bold-text">${(totalPrice - shippingCost).toFixed(2)}</span>
-              <br />
-              <span className="bold-text">${shippingCost}</span>
-              <br />
-              <span className="bold-text">${totalPrice}</span>
-            </Col>
+          <Col md={5} style={{padding: 0}}>
+            <OrderTotal
+              subtotal={totalPrice - shippingCost}
+              shipping={shippingCost}
+              total={totalPrice}
+              margin="10px"
+            />
           </Col>
         </Row>
 
