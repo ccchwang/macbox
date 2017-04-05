@@ -14,6 +14,10 @@ const reducer = (state = initialState, action) => {
       newState.reviews = action.reviews
       break;
 
+    case "RECEIVE_REVIEW":
+      newState.reviews = newState.reviews.concat(action.review)
+      break;
+
     default: return state;
     }
   return newState
@@ -28,33 +32,18 @@ export const receiveReviews = (reviews) => {
   }
 }
 
+export const receiveReview = (review) => {
+  return {
+    type: "RECEIVE_REVIEW",
+    review
+  }
+}
 
-
-// const AUTHENTICATED = 'AUTHENTICATED'
-// export const authenticated = user => ({
-//   type: AUTHENTICATED, user
-// })
-
-// export const login = (username, password) =>
-//   dispatch =>
-//     axios.post('/api/auth/login/local',
-//       {username, password})
-//       .then(() => dispatch(whoami()))
-//       .catch(() => dispatch(whoami()))
-
-// export const logout = () =>
-//   dispatch =>
-//     axios.post('/api/auth/logout')
-//       .then(() => dispatch(whoami()))
-//       .catch(() => dispatch(whoami()))
-
-// export const whoami = () =>
-//   dispatch =>
-//     axios.get('/api/auth/whoami')
-//       .then(response => {
-//         const user = response.data
-//         dispatch(authenticated(user))
-//       })
-//       .catch(failed => dispatch(authenticated(null)))
+export const createReview = (review) => {
+  return (dispatch) =>
+    axios.post(`/api/products/${review.product_id}/reviews`, review)
+        .then((created) => dispatch(receiveReview(created.data)))
+        .catch(console.error)
+}
 
 export default reducer

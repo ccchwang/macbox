@@ -37,7 +37,7 @@ export default function({ login }) {
     <FormGroup>
       <Col sm={12}>
         <Button type="submit" value="Login" className="emphasis-btn">
-          SIGN IN
+          LOG IN
         </Button>
       </Col>
     </FormGroup>

@@ -486,6 +486,16 @@ a:focus, a:hover {
   font-size: 1em !important;
 }
 
+#add-review-form button {
+  margin-right: 15px;
+  width: 200px;
+  padding: 12px 0;
+}
+
+#add-review-form a:hover {
+  color: black
+}
+
 .review-btn {
   width: 200px;
   padding: 12px 10px !important

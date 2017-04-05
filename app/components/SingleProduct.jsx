@@ -15,6 +15,11 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playBtnA
     quantity.push(<option value={i} key={i}>{i}</option>)
   }
 
+  let rating = reviews.reduce((acc, review) => acc += review.rating, 0);
+  rating = Math.round(rating / reviews.length);
+
+  console.log(rating)
+
   return (
     <Grid>
       Shop / <Link to={`/shop/${selectedProduct.category}`} className="category-link">{selectedProduct.category}</Link>
@@ -26,8 +31,8 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playBtnA
         <Col sm={6} md={7} className="product-info">
             <h1> {selectedProduct.name} </h1>
             <div className="rating-stars">
-              { `★`.repeat(selectedProduct.averageRating) }
-              { `☆`.repeat(5-selectedProduct.averageRating) }
+              { `★`.repeat(rating) }
+              { `☆`.repeat(5-rating) }
               {" " + reviews.length} Reviews
             </div>
             <h3> ${selectedProduct.formattedPrice} </h3>

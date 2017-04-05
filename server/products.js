@@ -26,8 +26,15 @@ api.get('/:productId', function (req, res, next) {
       .catch(next)
 })
 
-// api.get('/products/:productId', function (req, res, next) {
-//   Review.scope('user').findAll()
-//     .then(reviews => console.log(reviews))
-//     .catch(console.error)
-// })
+api.post('/:productId/reviews', function (req, res, next) {
+  Review.create(req.body)
+      .then(created =>
+        Review.findOne({
+          where: {id: created.id},
+          include: [{ model: User}]
+        })
+      )
+      .then(foundReview => res.send(foundReview))
+      .catch(next)
+})
+

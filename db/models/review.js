@@ -36,13 +36,5 @@ const Review = db.define('reviews', {
 })
 
 
-// EI: might want to make more model methods for common queries
-// Review.findByUserId()
-
-// Review.findByUserId = Review.findAll({
-//   where: {
-//     userId: ...
-//   }
-// })
 
 module.exports = Review

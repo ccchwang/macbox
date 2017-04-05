@@ -3,7 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import TransitionGroup from 'react-addons-transition-group'
 import AddReviewForm from './AddReviewForm'
 
-export default function({ reviews, selectedProduct, toggleAnimation, playReviewAdd }) {
+export default function({ reviews, toggleAnimation, playReviewAdd, handleChange, handleSubmit, user, rating, content }) {
 
   const rows = reviews && reviews.map(review => {
     return (
@@ -36,7 +36,15 @@ export default function({ reviews, selectedProduct, toggleAnimation, playReviewA
      <a style={playReviewAdd ? {cursor: "pointer", color: '#d66e98'} : {cursor: "pointer"}} onClick={toggleAnimation}>ADD A REVIEW</a>
 
      <TransitionGroup>
-        { playReviewAdd && <AddReviewForm />}
+        { playReviewAdd &&
+          <AddReviewForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            user={user}
+            rating={rating}
+            content={content}
+          />
+        }
       </TransitionGroup>
 
      <div className="review-rows">
