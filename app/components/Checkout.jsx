@@ -50,7 +50,9 @@ export default connect(
         shippingMethod: null,
         shippingCost: 0,
         shippingTotal: 0,
+        email: '',
         invalidStep: false,
+        invalidEmail: false,
         total: 0
       }
       this.handleClick = this.handleClick.bind(this)
@@ -88,7 +90,7 @@ export default connect(
   };
 
   handleNext = () => {
-    const {stepIndex, firstName, lastName, street1, street2, city, state, zip, ccFirstName, ccLastName, cc, expMonth, expYear, ccv, shippingMethod} = this.state;
+    const {stepIndex, firstName, lastName, street1, street2, city, state, zip, ccFirstName, ccLastName, cc, expMonth, expYear, ccv, shippingMethod, email} = this.state;
 
     if (stepIndex === 0) {
       if (!firstName || !lastName || !street1 || !street2 || !city || !state || !zip) {
@@ -109,6 +111,10 @@ export default connect(
     else if (stepIndex === 2) {
       if (!ccFirstName || !ccLastName || !cc || !expMonth || !expYear || !ccv) {
         this.setState({invalidStep: true})
+        return;
+      }
+      if (!email) {
+        this.setState({invalidEmail: true})
         return;
       }
       this.props.handleSubmit(this.state, this.props.lineItems, this.props.userId)
@@ -148,7 +154,7 @@ export default connect(
           <div className="checkout-form">
             <h3 className="checkout-heading">Shipping Address</h3>
             {
-              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields.</ListGroupItem>
             }
             {
               [{name: 'firstName', class: 'form-50', val: 'FIRST NAME'}, {name: 'lastName', class: 'form-50', val: 'LAST NAME'}, {name: 'street1', class: '', val: 'STREET 1'}, {name: 'street2', class: '', val: 'STREET 2'}, {name: 'city', class: 'form-33', val: 'CITY'}, {name: 'state', class: 'form-33', val: 'STATE'}, {name: 'zip', class: 'form-33', val: 'ZIP'}].map(obj =>
@@ -188,7 +194,7 @@ export default connect(
           <div className="checkout-form">
             <h3 className="checkout-heading">Shipping Method</h3>
             {
-              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping method!</ListGroupItem>
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please select a shipping method.</ListGroupItem>
             }
             {
               [{type: "UPS NEXT DAY AIR", cost: 22}, {type: "UPS 2ND DAY AIR", cost: 15}, {type: "UPS GROUND", cost: 7}, {type: "STANDARD", cost: 0}].map((option, i) => {
@@ -232,7 +238,7 @@ export default connect(
           <div className="checkout-form">
             <h3 className="checkout-heading">Payment Details</h3>
             {
-              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields!</ListGroupItem>
+              this.state.invalidStep && <ListGroupItem bsStyle="danger">Please fill out all fields.</ListGroupItem>
             }
             {
               [{name: 'ccFirstName', class: 'form-50', val: 'FIRST NAME'}, {name: 'ccLastName', class: 'form-50', val: 'LAST NAME'}, {name: 'cc', class: '', val: 'CREDIT CARD NUMBER'}, {name: 'expMonth', class: 'form-33', val: 'EXP. MONTH'}, {name: 'expYear', class: 'form-33', val: 'EXP. YEAR'}, {name: 'ccv', class: 'form-33', val: 'CCV'}].map(obj =>
@@ -245,6 +251,16 @@ export default connect(
                 />
               )
             }
+            <br /><br />
+            <h3 className="checkout-heading">Email Confirmation</h3>
+            {
+              this.state.invalidEmail && <ListGroupItem bsStyle="danger">Please enter an email address.</ListGroupItem>
+            }
+            <TextInput
+              placeholder='EMAIL ADDRESS'
+              value={this.state.email}
+              onUpdate={v => this.handleChange(v, 'email')}
+            />
           </div>
 
           <div className="checkout-summary">
@@ -271,28 +287,19 @@ export default connect(
   renderContent() {
     const {finished, stepIndex} = this.state;
     const contentStyle = {margin: '0 16px', overflow: 'hidden'};
+    console.log(this.props.userId)
 
     if (finished) {
       return (
-        <div style={contentStyle}>
-          <p>
-            <a
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
-              }}
-            >
-              <div>
-                <div className="checkout-padding">
-                <div className="checkout-form">
-                  <h3 className="checkout-heading">Success!</h3>
-                </div>
-                </div>
-              </div>
-            </a>
-          </p>
-        </div>
+          <div className="checkout-padding">
+            <h3 className="checkout-heading">Success!</h3>
+            <p className="checkout-success">Please check your email for the order confirmation.</p>
+            <br />
+            {
+              this.props.userId &&
+              <p className="checkout-success">You can also view your order history <Link to="/orders" style={{color: 'blue'}}>here.</Link></p>
+            }
+          </div>
       );
     }
 

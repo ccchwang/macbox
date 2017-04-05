@@ -103,12 +103,6 @@ export const createOrder = (order, items, userId) => {
           })
          .catch(console.error)
 }
-// export const logout = () =>
-//   dispatch =>
-//     axios.post('/api/auth/logout')
-//       .then(() => dispatch(whoami()))
-//       .catch(() => dispatch(whoami()))
-
 
 
 export default reducer

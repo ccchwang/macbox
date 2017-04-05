@@ -66,7 +66,7 @@
 }
 
 .sort-pane .p3, .p4, .p5 {
-  background-color: #FF8C94;
+  background-color: #D6ABB1;
 }
 
 .sort-pane .p6, .p7 {
@@ -132,6 +132,10 @@
   border: 1px solid rgb(204, 204, 204) !important;
 }
 
+.checkout-success {
+  font-size: 1.2em
+}
+
 .shipping-options {
   margin-top: 0 !important;
   width: 100%;
@@ -165,7 +169,7 @@
 
 .checkout-btn {
   padding: 10px 40px;
-  background-color: rgb(109, 241, 213);
+  background-color: rgb(131, 241, 236);
   border: none;
   border-radius: 0;
   transition: 0.2s;
@@ -221,7 +225,7 @@ a:focus, a:hover {
 
 .emphasis-btn {
   padding: 11px 15%;
-  background-color: rgb(109, 241, 213);
+  background-color: rgb(131, 241, 236);
   border: none;
   border-radius: 0;
   transition: 0.2s;
@@ -270,7 +274,7 @@ a:focus, a:hover {
 .modal-body button {
   padding: 8px 7%;
   transition: 0.18s;
-  border: 3px solid rgb(109, 241, 213);
+  border: 3px solid rgb(131, 241, 236);
   margin-right: 11px;
 }
 
@@ -302,7 +306,7 @@ a:focus, a:hover {
 
 
 #navbar {
-  background-color: #FF8C94;
+  background-color: #D6ABB1;
   vertical-align: middle;
   border: none;
   height: 67px;
@@ -310,7 +314,7 @@ a:focus, a:hover {
 }
 
 #nav-border {
-  background-color:#FAD6D6;
+  background-color:#ffdcdc;
   height: 10px;
   width: 100vw;
   position: fixed;
@@ -319,7 +323,7 @@ a:focus, a:hover {
 }
 
 .navbar-collapse  {
-  background-color: #FF8C94;
+  background-color: #D6ABB1;
   padding-top: 7px;
   font-size: 1.1em;
 }
@@ -340,16 +344,16 @@ a:focus, a:hover {
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover {
-  color: rgb(255, 226, 248);
+  color: rgb(197, 253, 250);
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-  background-color: #FF8C94;
+  background-color: #D6ABB1;
 }
 
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
-  background-color: #FF8C94;
+  background-color: #D6ABB1;
   color: rgb(168, 255, 237)
 }
 
@@ -362,13 +366,13 @@ a:focus, a:hover {
 }
 
 #nav-cart-count{
-  background-color: #b57aa8;
+  background-color: #dc739e;
 }
 
 .dropdown-menu>.active>a,
 .dropdown-menu>li>a:focus,
 .dropdown-menu>li>a:hover{
-  background-color: rgb(109, 241, 213);
+  background-color: rgb(131, 241, 236);
   color: black
 }
 
@@ -455,11 +459,11 @@ a:focus, a:hover {
 
 .rating-stars {
    font-size: 1.7em;
-   color: #b57aa8
+   color: #dc739e
 }
 
 .category-link {
- color: #b57aa8
+ color: #dc739e
 }
 
 
@@ -506,7 +510,7 @@ a:focus, a:hover {
 }
 
 .cart-page a:focus, .cart-page a:hover {
-  color: #b57aa8;
+  color: #dc739e;
 }
 
 .cart-checkout-panel{
@@ -538,9 +542,9 @@ a:focus, a:hover {
 }
 
 .cart-btn:hover, .cart-btn:active:focus, .cart-btn:focus {
-  border: 3px solid #FF8C94;
+  border: 3px solid #D6ABB1;
   background-color: white;
-  color: #FF8C94;
+  color: #D6ABB1;
 }
 
 
@@ -552,7 +556,7 @@ a:focus, a:hover {
 }
 
 .mini-stars {
-  color: #b57aa8
+  color: #dc739e
 }
 
 .quick-view-hover {
@@ -564,7 +568,7 @@ a:focus, a:hover {
   padding: 4%;
   width: 95%;
   margin: 0 auto;
-  color: #b57aa8;
+  color: #dc739e;
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -577,7 +581,7 @@ a:focus, a:hover {
 }
 
 svg {
-  fill: #b57aa8 !important
+  fill: #dc739e !important
 }
 
 /*CART DRAWER*/
@@ -633,7 +637,7 @@ svg {
 
 .drawer-message span {
   font-size: 35px;
-  color: rgb(109, 241, 213);
+  color: rgb(131, 241, 236);
 }
 
 
