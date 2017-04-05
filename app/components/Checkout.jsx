@@ -287,7 +287,6 @@ export default connect(
   renderContent() {
     const {finished, stepIndex} = this.state;
     const contentStyle = {margin: '0 16px', overflow: 'hidden'};
-    console.log(this.props.userId)
 
     if (finished) {
       return (
@@ -306,8 +305,7 @@ export default connect(
     return (
       <div style={contentStyle}>
         <div>{this.getStepContent(stepIndex)}</div>
-        <div style={{marginTop: 24, marginBottom: 12}}>
-          <div>
+        <div style={{marginTop: 24, marginBottom: 75}}>
           <button
             className="checkout-btn checkout-back-btn"
             disabled={stepIndex === 0}
@@ -322,7 +320,6 @@ export default connect(
           >
             {stepIndex === 2 ? 'Place Order' : 'Next'}
           </button>
-          </div>
         </div>
       </div>
     );
