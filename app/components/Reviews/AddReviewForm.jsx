@@ -19,9 +19,9 @@ export default class AddReviewForm extends React.Component {
       <div id="add-review-form" ref={c => this.container = c}>
         <Rating
           defaultValue={3}
-          characterStyle={{color: '#ee6767'}}
-          hoverCharacterStyle={{color: '#ee6767'}}
-          activeCharacterStyle={{color: '#ee6767'}}
+          characterStyle={{color: '#d66e98'}}
+          hoverCharacterStyle={{color: '#d66e98'}}
+          activeCharacterStyle={{color: '#d66e98'}}
         ></Rating>
         <TextInput placeholder="REVIEW SUMMARY" />
         <Button className="emphasis-btn review-btn">SUBMIT REVIEW</Button>

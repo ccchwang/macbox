@@ -10,7 +10,7 @@ export default function({ subtotal, shipping, total, margin }) {
       <br />
       <span className="bold-text" style={{marginBottom: margin}}>Shipping:</span>
       <br />
-      <span className="bold-text" style={{marginBottom: margin}}>TOTAL:</span>
+      <span className="bold-text" style={{marginBottom: margin}}>Total:</span>
     </Col>
     <Col xs={6} md={6} className="text-right">
       <span className="bold-text" style={{marginBottom: margin}}>${subtotal.toFixed(2)}</span>

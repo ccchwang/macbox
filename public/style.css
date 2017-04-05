@@ -3,7 +3,7 @@
   z-index: 2;
   width: 258px;
   text-align: center;
-  margin: 0
+  margin: 0;
 }
 
 #addBtn {
@@ -12,7 +12,7 @@
 
 .add-cart-btn {
   min-width: 258.05px;
-  min-height: 42px;
+  min-height: 44px;
 }
 
 .btn:focus {
@@ -121,7 +121,7 @@
 .checkout-form textarea, .shipping-options, .login-container input {
   display: inline-block !important;
   border: 1px solid rgb(204, 204, 204) !important;
-  padding: 23px !important;
+  padding: 24px !important;
   margin-top: -7px !important;
   font-size: 1em !important;
   border-radius: 0
@@ -169,7 +169,7 @@
 }
 
 .checkout-btn {
-  padding: 10px 40px;
+  padding: 12px 40px;
   background-color: rgb(131, 241, 236);
   border: none;
   border-radius: 0;
@@ -178,7 +178,7 @@
 }
 
 .checkout-btn:hover {
-  background-color: #52e6c7;
+  background-color: #6ae4df;
 }
 
 .checkout-back-btn:hover {
@@ -187,7 +187,6 @@
 
 .checkout-back-btn {
   margin-right: 10px;
-  margin-left: 71%;
   background-color: rgb(239, 239, 239)
 }
 
@@ -203,11 +202,11 @@
 a {
   transition: 0.15s;
   color: black;
-  transition: 0.3s
+  transition: 0.2s
 }
 
 a:focus, a:hover {
-  color: #41b396;
+  color: #d66e98;
   text-decoration: none;
 }
 
@@ -217,6 +216,7 @@ a:focus, a:hover {
 
 #body {
   padding-top: 125px;
+  margin-bottom: 100px
 }
 
 .main-padding{
@@ -225,7 +225,7 @@ a:focus, a:hover {
 }
 
 .emphasis-btn {
-  padding: 11px 15%;
+  padding: 12px 15%;
   background-color: rgb(131, 241, 236);
   border: none;
   border-radius: 0;
@@ -240,7 +240,7 @@ a:focus, a:hover {
 }
 
 .emphasis-btn:hover, .emphasis-btn:active:focus, .emphasis-btn:focus {
-  background-color: #52e6c7;
+  background-color: #6ae4df;
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none
@@ -273,7 +273,7 @@ a:focus, a:hover {
 }
 
 .modal-body button {
-  padding: 8px 7%;
+  padding: 9px 7%;
   transition: 0.18s;
   border: 3px solid rgb(131, 241, 236);
   margin-right: 11px;
@@ -283,7 +283,7 @@ a:focus, a:hover {
 .modal-body button:hover,
 .modal-body button:active,
 .modal-body button:active:focus {
-  border-color: #52e6c7
+  border-color: #6ae4df
 }
 
 .modal-body .modal-detail-btn {
@@ -345,7 +345,7 @@ a:focus, a:hover {
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover {
-  color: rgb(197, 253, 250);
+  color: rgb(205, 247, 244);
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
@@ -355,7 +355,7 @@ a:focus, a:hover {
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
   background-color: #D6ABB1;
-  color: rgb(168, 255, 237)
+  color: rgb(205, 247, 244)
 }
 
 #brand-star {
@@ -367,15 +367,18 @@ a:focus, a:hover {
 }
 
 #nav-cart-count{
-  background-color: #dc739e;
+  background-color: #d66e98;
 }
 
 .dropdown-menu>.active>a,
 .dropdown-menu>li>a:focus,
-.dropdown-menu>li>a:hover{
+.dropdown-menu>li>a:hover,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover{
   background-color: rgb(131, 241, 236);
   color: black
 }
+
 
 /***HOME PAGE***/
 
@@ -460,11 +463,11 @@ a:focus, a:hover {
 
 .rating-stars {
    font-size: 1.7em;
-   color: #dc739e
+   color: #d66e98
 }
 
 .category-link {
- color: #dc739e
+ color: #d66e98
 }
 
 
@@ -485,7 +488,7 @@ a:focus, a:hover {
 
 .review-btn {
   width: 200px;
-  padding: 15px 10px !important
+  padding: 12px 10px !important
 }
 
 
@@ -511,7 +514,7 @@ a:focus, a:hover {
 }
 
 .cart-page a:focus, .cart-page a:hover {
-  color: #dc739e;
+  color: #d66e98;
 }
 
 .cart-checkout-panel{
@@ -543,9 +546,9 @@ a:focus, a:hover {
 }
 
 .cart-btn:hover, .cart-btn:active:focus, .cart-btn:focus {
-  border: 3px solid #D6ABB1;
+  border: 3px solid #d66e98;
   background-color: white;
-  color: #D6ABB1;
+  color: #d66e98;
 }
 
 
@@ -557,7 +560,7 @@ a:focus, a:hover {
 }
 
 .mini-stars {
-  color: #dc739e
+  color: #d66e98
 }
 
 .quick-view-hover {
@@ -569,7 +572,7 @@ a:focus, a:hover {
   padding: 4%;
   width: 95%;
   margin: 0 auto;
-  color: #dc739e;
+  color: #d66e98;
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -582,7 +585,7 @@ a:focus, a:hover {
 }
 
 svg {
-  fill: #dc739e !important
+  fill: #d66e98 !important
 }
 
 /*CART DRAWER*/
@@ -638,7 +641,7 @@ svg {
 
 .drawer-message span {
   font-size: 35px;
-  color: rgb(131, 241, 236);
+  color: #d66e98;
 }
 
 
@@ -657,7 +660,7 @@ svg {
   max-width: 1300px;
   width: 70%;
   margin: 0 auto;
-  font-size: 15px
+  font-size: 16px
 }
 
 .text-right {
@@ -689,17 +692,21 @@ svg {
 }
 
 .login-container .btn {
-  padding: 13px;
+  padding: 14px;
   width: 100%;
   border-radius: 0;
-  border: 0
+  border: 0;
 }
 
 
 #fb-login-btn {
-  background-color: #3b5998
+  background-color: #3b5998;
+  color: white;
+  font-weight: 400
 }
 
 #google-login-btn {
-  background-color: #ea4335
+  background-color: #de3b2d;
+  color: white;
+  font-weight: 400
 }

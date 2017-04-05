@@ -35,15 +35,9 @@ export default function({ login }) {
     </FormGroup>
 
     <FormGroup>
-      <Col smOffset={4} sm={10}>
-        <Checkbox>Remember me</Checkbox>
-      </Col>
-    </FormGroup>
-
-    <FormGroup>
       <Col sm={12}>
         <Button type="submit" value="Login" className="emphasis-btn">
-          Sign in
+          SIGN IN
         </Button>
       </Col>
     </FormGroup>

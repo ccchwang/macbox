@@ -202,7 +202,7 @@ export default connect(
 
                 return (
                   <button
-                    style={{backgroundColor: this.state.shippingMethod === option.type ? '#FAD6D6': 'white'}}
+                    style={{backgroundColor: this.state.shippingMethod === option.type ? '#ffdcdc': 'white'}}
                     value={option.type + "-" + option.cost}
                     onClick={this.handleClick}
                     key={i}
@@ -296,7 +296,7 @@ export default connect(
             <br />
             {
               this.props.userId &&
-              <p className="checkout-success">You can also view your order history <Link to="/orders" style={{color: 'blue'}}>here.</Link></p>
+              <p className="checkout-success">You can also view your order history <Link to="/orders" style={{color: '#d66e98'}}>here.</Link></p>
             }
           </div>
       );
@@ -308,17 +308,18 @@ export default connect(
         <div style={{marginTop: 24, marginBottom: 75}}>
           <button
             className="checkout-btn checkout-back-btn"
+            style={{marginLeft: stepIndex === 2 ? '67%' : '70%'}}
             disabled={stepIndex === 0}
             onClick={this.handlePrev}
           >
-            Back
+            BACK
           </button>
 
           <button
             className="checkout-btn"
             onClick={this.handleNext}
           >
-            {stepIndex === 2 ? 'Place Order' : 'Next'}
+            {stepIndex === 2 ? 'PLACE ORDER' : 'NEXT'}
           </button>
         </div>
       </div>
