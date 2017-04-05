@@ -8,5 +8,8 @@ node_modules/*
 public/bundle.js
 public/bundle.js.map
 
+#mailer
+server/nodemailer.js
+
 # NPM errors
 npm-debug.log

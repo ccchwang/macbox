@@ -3,6 +3,8 @@
 const db = require('APP/db')
 const { LineItem, Order } = require('../db/models')
 const api = module.exports = require('express').Router()
+const { transporter, createEmail } = require('./nodemailer');
+
 
 
 
@@ -17,15 +19,16 @@ api.get('/:id', (req, res, next) => {
 api.post('/', (req, res, next) => {
   let createdOrder;
   const itemsPromise = req.body.items.map(item => LineItem.findById(item.id));
-  const { firstName, lastName, street1, street2, city, state, zip, shippingTotal, shippingMethod, shippingCost } = req.body.order;
+  const { firstName, lastName, street1, street2, city, state, zip, shippingTotal, shippingMethod, shippingCost, email } = req.body.order;
 
+  const shippingAddress = street1 + "\n" + street2 + "\n" + city + ", " + state + " " + zip;
 
   const orderDetails = {
     name: firstName + " " + lastName,
     shippingMethod,
     shippingCost,
     totalPrice: shippingTotal,
-    shippingAddress: street1 + "-" + street2 + "-" + city + ", " + state + " " + zip,
+    shippingAddress,
     user_id: req.body.userId
   }
 
@@ -39,6 +42,21 @@ api.post('/', (req, res, next) => {
           return Promise.all(updateItems)
         }
       )
-      .then(() => res.send(createdOrder))
+      .then(items => {
+        res.send(createdOrder);
+        return items
+      })
+      .then(items => {
+
+        //send email confirmation
+        transporter.sendMail(createEmail(email, createdOrder.id, shippingTotal, items, shippingMethod, shippingAddress, shippingCost), (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+        });
+      })
+      .catch(console.error)
+
 
 })

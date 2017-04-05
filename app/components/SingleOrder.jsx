@@ -84,7 +84,7 @@ export default connect(
           <span className="bold-text">SHIPPING ADDRESS:</span>
           <br />
            <p style={{margin: 0}}>{order.name}</p>
-          {order.shippingAddress.split("-").map((line, i) => <p style={{margin: 0}} key={i}>{line}</p>)}
+          {order.shippingAddress.split("\n").map((line, i) => <p style={{margin: 0}} key={i}>{line}</p>)}
           </Col>
           <Col md={6}>
           <span className="bold-text">SHIPPING METHOD:</span>

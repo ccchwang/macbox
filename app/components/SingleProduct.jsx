@@ -63,7 +63,7 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playBtnA
                   { playBtnAnimation && <WaitingBtn  />}
                 </TransitionGroup>
 
-                <Button type="submit" className="emphasis-btn add-cart-btn" onClick={() => toggleAnimation('playBtnAnimation')} style={!playBtnAnimation ? {backgroundColor:'#6df1d5'} : null}>
+                <Button type="submit" className="emphasis-btn add-cart-btn" onClick={() => toggleAnimation('playBtnAnimation')} style={!playBtnAnimation ? {backgroundColor:'rgb(131, 241, 236)'} : null}>
                   <TransitionGroup>
                     { !playBtnAnimation && <AddBtn /> }
                   </TransitionGroup>
