@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Button } from 'react-bootstrap'
+import { Link } from 'react-router'
 import LineItem from '../LineItem'
 
 
@@ -53,7 +54,7 @@ export default class CartDrawer extends React.Component {
           }
 
           <Col xs={12} className="drawer-total">
-            <Button className="emphasis-btn drawer-btn">CHECK OUT | ${total.toFixed(2)}</Button>
+            <Link to="/cart"><Button className="emphasis-btn drawer-btn">CHECK OUT | ${total.toFixed(2)}</Button></Link>
           </Col>
         </div>
 
