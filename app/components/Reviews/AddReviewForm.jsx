@@ -35,7 +35,7 @@ export default class AddReviewForm extends React.Component {
           </div>
           :
           <div>
-            <p>Please sign in or create an account to leave a review.</p>
+            <p>Please log in or create an account to leave a review.</p>
             <Link to="/login"><button className="emphasis-btn">LOG IN</button></Link>
             <Link to="/signup"><button className="emphasis-btn">SIGN UP</button></Link>
           </div>

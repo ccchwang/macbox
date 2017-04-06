@@ -217,7 +217,7 @@ a:focus, a:hover {
 
 #body {
   padding-top: 125px;
-  margin-bottom: 100px
+  margin-bottom: 140px
 }
 
 .main-padding{
@@ -380,6 +380,17 @@ a:focus, a:hover {
   color: black
 }
 
+
+.dropdown-menu {
+  top: 91%;
+  display: none;
+  padding: 5px 0;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.175);
+  box-shadow: 0 1px 4px rgba(0,0,0,.175);
+}
 
 /***HOME PAGE***/
 
@@ -720,4 +731,20 @@ svg {
   background-color: #de3b2d;
   color: white;
   font-weight: 400
+}
+
+#footer {
+  width: 100%;
+  height: 250px;
+  background-color: #d66e98
+}
+
+#footer-tag {
+  text-align: center;
+  width: 100%;
+  color: white;
+  margin: 0 auto;
+  font-size: 16px;
+  padding-top: 104px;
+  letter-spacing: 2px
 }
