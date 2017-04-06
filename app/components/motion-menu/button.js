@@ -70,7 +70,7 @@ export default class MenuButton extends Component {
                 position: 'absolute',
                 height: '30px',
                 width: '30px',
-                backgroundColor: 'rgb(234, 169, 169)',
+                backgroundColor: '#d66e98',
                 paddingLeft: '7px',
                 paddingTop: '4px',
                 borderRadius: '5px',

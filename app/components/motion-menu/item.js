@@ -120,7 +120,7 @@ export default class MenuItem extends Component {
                 position: 'absolute',
                 height: '40px',
                 width: '40px',
-                backgroundColor: 'rgb(234, 169, 169)',
+                backgroundColor: '#d66e98',
                 paddingLeft: '8px',
                 paddingTop: '8px',
                 borderRadius: '5px',

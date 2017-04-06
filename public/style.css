@@ -249,7 +249,12 @@ a:focus, a:hover {
 
 
 .modal-header {
-  padding: 10px 15px 19px 10px;
+  padding: 9px 10px 12px;
+}
+
+.modal-header .close {
+  padding-top: 7px;
+  padding-right: 5px;
 }
 
 .custom-modal {
@@ -321,7 +326,7 @@ a:focus, a:hover {
   width: 100vw;
   position: fixed;
   top: 67px;
-  z-index: 2
+  z-index: 200
 }
 
 .navbar-collapse  {

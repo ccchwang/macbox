@@ -5,6 +5,13 @@ import { SortablePane, Pane } from 'react-sortable-pane';
 import { Grid, Row, Col, Modal, Button } from 'react-bootstrap'
 import MotionMenu from './motion-menu'
 import { handleCartAdd } from '../handleCartAdd'
+import { ShareButtons } from 'react-share';
+
+const {
+  FacebookShareButton,
+  TwitterShareButton,
+  PinterestShareButton,
+} = ShareButtons;
 
 
 export default connect(
@@ -44,11 +51,14 @@ export default connect(
       </Pane>)
   })
 
+
   const column1 = panes.slice(0,3);
   const column2 = panes.slice(3,6);
   const column3 = panes.slice(6,8);
   const column4 = panes.slice(8);
   const product = this.state.selectedProduct;
+  const socialMediaDescript = product.name + " " + product.category;
+  const socialMediaImg = `http://localhost:8080` + product.imgUrl;
 
   return (
     <div className="pane-padding">
@@ -116,22 +126,42 @@ export default connect(
               <div className="button">
                 <img src="./img/favorite-5-16.png" />
               </div>
-              <div className="button">
-                <img src="./img/facebook-24.png" />
-              </div>
-              <div className="button">
 
-              </div>
+              <FacebookShareButton
+                picture={socialMediaImg}
+                title={socialMediaDescript}
+                description={product.description}
+                url="grace-shopper-babes.herokuapp.com"
+              >
+                <img src="./img/facebook-24.png" />
+              </FacebookShareButton>
+
+              <div className="button" />
+
               <div className="button">
                 <img src="./img/email-3-24.png" />
               </div>
-              <div className="button">
+
+              <PinterestShareButton
+                media={socialMediaImg}
+                description={socialMediaDescript + " - " + product.description}
+                url='www.yahoo.com'
+              >
                 <img src="./img/pinterest-6-24.png" />
-              </div>
+              </PinterestShareButton>
+
               <div className="button">
                 <img src="./img/instagram-6-24.png" />
               </div>
-              <div className="button"><img src="./img/twitter-24.png" /></div>
+
+              <TwitterShareButton
+                title={socialMediaDescript}
+                via="Macbox"
+                url='http://localhost:8080'
+              >
+                <img src="./img/twitter-24.png" />
+              </TwitterShareButton>
+
 
             </MotionMenu>
           </Modal.Header>
