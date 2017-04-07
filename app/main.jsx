@@ -8,7 +8,7 @@ import axios from 'axios'
 import store from './store'
 import SignUp from './components/SignUp'
 import WhoAmI from './components/WhoAmI'
-import SocialPanes from './components/SocialPanes'
+import Wishlist from './components/Wishlist'
 import Orders from './components/Orders'
 import SingleOrder from './components/SingleOrder'
 import Checkout from './components/Checkout'
@@ -83,7 +83,7 @@ render (
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct} />
         <Route path="/shop/:category" component={CategoryContainer} />
         <Route path="/cart" component={CartContainer} />
-        <Route path="/wishlist" component={SocialPanes} />
+        <Route path="/wishlist" component={Wishlist} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/orders" component={Orders} onEnter={loadOrders} />
         <Route path="/order/:orderId" component={SingleOrder} onEnter={fetchOrder} />

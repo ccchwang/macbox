@@ -18,7 +18,6 @@ export default function({selectedProduct, reviews, handleCartAdd, user, playBtnA
   let rating = reviews.reduce((acc, review) => acc += review.rating, 0);
   rating = Math.round(rating / reviews.length);
 
-  console.log(rating)
 
   return (
     <Grid>

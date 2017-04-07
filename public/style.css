@@ -49,10 +49,11 @@
   }
 
 .sort-pane {
-  border-radius: 9px;
   background-size: cover;
   cursor: pointer;
+  border-radius: 4px;
 }
+
 .sort-pane p {
   color: #414042;
   font-size: 1em;
@@ -70,19 +71,26 @@
 }
 
 .sort-pane .p6, .p7 {
-  background-color: #6DF1D7;
+  background-color: rgb(131, 241, 236);
 }
 
 .sort-pane .p8, .p9 {
-  background-color: #ffcba7;
+  background-color: #ea91b5;
 }
 
 .pane-header{
   border-bottom: 1px solid rgb(206, 205, 205);
-  padding: 12px 2px 5px;
+  padding: 0 2px 5px;
   letter-spacing: 0.05em;
-  margin: 12px 0 18px;
+  margin: 22px 0 18px;
   width: 200px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.pane-header h3 {
+  text-transform: uppercase;
+  font-size: 22px
 }
 
 .pane-padding{
@@ -90,7 +98,37 @@
   padding-right: 6%;
   max-width: 1300px;
   margin: 0 auto;
+  height: 800px
 }
+
+.wishlist {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  padding: 3%
+}
+
+#popover-basic {
+  border: 1px solid #d66e98;
+  box-shadow: none;
+  border-radius: 3px;
+  color: #d66e98;
+  z-index: 0;
+  position: relative;
+  max-width: 267px;
+}
+
+.popover.right>.arrow {
+  border-right-color: #d66e98;
+  top: 61%;
+  left: -15px;
+  border-width: 7px
+}
+
+.popover-content {
+    padding: 6px 15px;
+}
+
 
 #motion-menu-btn{
   width: 20px;
