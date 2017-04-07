@@ -121,8 +121,6 @@ export default class MenuItem extends Component {
                 height: '40px',
                 width: '40px',
                 backgroundColor: '#d66e98',
-                paddingLeft: '8px',
-                paddingTop: '8px',
                 borderRadius: '5px',
                 cursor: 'pointer'
               },

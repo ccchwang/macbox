@@ -9,6 +9,7 @@ const {
   FacebookShareButton,
   TwitterShareButton,
   PinterestShareButton,
+  GooglePlusShareButton
 } = ShareButtons;
 
 
@@ -27,7 +28,7 @@ export default function ProductModal ({ product, show, close, user }) {
               margin={120}
             >
               <div className="button">
-                <img src="/img/favorite-5-16.png" />
+                <img style={{marginLeft: '7px', marginTop: '7.5px'}} src="/img/favorite-5-16.png" />
               </div>
 
               <FacebookShareButton
@@ -36,14 +37,14 @@ export default function ProductModal ({ product, show, close, user }) {
                 description={product.description}
                 url="grace-shopper-babes.herokuapp.com"
               >
-                <img src="/img/facebook-24.png" />
+                <img className="share-img" src="/img/facebook-24.png" />
               </FacebookShareButton>
 
               <div className="button" />
 
               <div className="button">
-                <a href={`mailto:?body=${socialMediaTitle}%0AShop%20it%20at%3A%20${socialMediaUrl}%0A%0A${product.description}`}>
-                  <img src="/img/email-3-24.png" />
+                <a id="email-link" href={`mailto:?body=Shop%20my%20find!%20Visit%3A%20${socialMediaUrl}%0A%0A${socialMediaTitle}%0A%0A${product.description}`}>
+                  <img className="share-img" src="/img/email-3-24.png" />
                 </a>
               </div>
 
@@ -52,19 +53,21 @@ export default function ProductModal ({ product, show, close, user }) {
                 description={socialMediaTitle + " - " + product.description}
                 url='www.yahoo.com'
               >
-                <img src="/img/pinterest-6-24.png" />
+                <img className="share-img" src="/img/pinterest-6-24.png" />
               </PinterestShareButton>
 
-              <div className="button">
-                <img src="/img/instagram-6-24.png" />
-              </div>
+              <GooglePlusShareButton
+                url={'http://grace-shopper-babes.herokuapp.com/'}
+              >
+                <img className="share-img" src="/img/google-plus-24.png" />
+              </GooglePlusShareButton>
 
               <TwitterShareButton
                 title={socialMediaTitle}
                 via="Macbox"
                 url={socialMediaUrl}
               >
-                <img src="/img/twitter-24.png" />
+                <img className="share-img" src="/img/twitter-24.png" />
               </TwitterShareButton>
             </MotionMenu>
           </Modal.Header>

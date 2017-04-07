@@ -71,8 +71,6 @@ export default class MenuButton extends Component {
                 height: '30px',
                 width: '30px',
                 backgroundColor: '#d66e98',
-                paddingLeft: '7px',
-                paddingTop: '4px',
                 borderRadius: '5px',
                 cursor: 'pointer'
               },

@@ -108,6 +108,17 @@
   padding: 3%
 }
 
+.share-img {
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+#email-link {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
 #popover-basic {
   border: 1px solid #d66e98;
   box-shadow: none;
