@@ -1,7 +1,7 @@
 import React from 'react'
 import {PageHeader, Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
 
-export const SignUp = ({ signup }) => (
+export const SignUp = ({ signup, login }) => (
   <div className="login-container">
   <Form
     horizontal
@@ -47,15 +47,33 @@ export const SignUp = ({ signup }) => (
         </Button>
       </Col>
     </FormGroup>
+
+    <p className="login-separator">- or -</p>
+
+    <FormGroup>
+      <Col sm={12}>
+        <Button
+          className="emphasis-btn guest-login"
+          onClick={evt => {
+            evt.preventDefault()
+            login('anna@gmail.com', '1234')
+          }}
+        >
+          GUEST LOG IN
+        </Button>
+      </Col>
+    </FormGroup>
+
   </Form>
   </div>
 
 )
 
 import {signup} from 'APP/app/reducers/auth'
+import {login} from 'APP/app/reducers/auth'
 import {connect} from 'react-redux'
 
 export default connect (
   state => ({}),
-  {signup},
+  {signup, login},
 )(SignUp)

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { SortablePane, Pane } from 'react-sortable-pane';
-import { Col, Tooltip, Popover } from 'react-bootstrap'
+import { Col, Popover } from 'react-bootstrap'
 import ProductModal from './ProductModal'
 
 export default connect(
@@ -77,7 +78,11 @@ export default connect(
       </Popover>
 
 
-      { lists }
+      {
+        this.props.user ? lists :
+         <h4>Please log in to view your wishlists.</h4>
+      }
+
 
       <ProductModal
         product={this.state.selectedProduct}

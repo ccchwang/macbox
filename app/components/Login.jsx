@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
+import {Form, Col, FormGroup, Checkbox, Button, FormControl} from "react-bootstrap"
 
 export default function({ login }) {
   return (
@@ -38,6 +38,22 @@ export default function({ login }) {
       <Col sm={12}>
         <Button type="submit" value="Login" className="emphasis-btn">
           LOG IN
+        </Button>
+      </Col>
+    </FormGroup>
+
+    <p className="login-separator">- or -</p>
+
+    <FormGroup>
+      <Col sm={12}>
+        <Button
+          className="emphasis-btn guest-login"
+          onClick={evt => {
+            evt.preventDefault()
+            login('anna@gmail.com', '1234')
+          }}
+        >
+          GUEST LOG IN
         </Button>
       </Col>
     </FormGroup>

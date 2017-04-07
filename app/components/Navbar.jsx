@@ -37,8 +37,8 @@ export default connect(
       <Navbar.Collapse>
         <Nav>
           <NavDropdown eventKey={2} title="SHOP" id="basic-nav-dropdown">
-            <LinkContainer to="/shop/Macbook%20Cover">
-              <MenuItem eventKey={`2.1`}>Macbook Cover</MenuItem>
+            <LinkContainer to="/shop/Macbook%20Case">
+              <MenuItem eventKey={`2.1`}>Macbook Case</MenuItem>
             </LinkContainer>
             <LinkContainer to="/shop/Macbook%20Decal">
               <MenuItem eventKey={`2.1`}>Macbook Decal</MenuItem>

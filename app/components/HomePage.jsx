@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 export default function(props) {
   const boxes = props.products.map((product, index) => {
 
-    if (index === 0 || index % 10 === 0) {
+    if (index === 0 || index % 10 === 0 ) {
       return (
         <Col xs={6} md={6} className="grid-box" key={product.id} >
           <Link to={`products/${product.id}`}>
@@ -19,7 +19,7 @@ export default function(props) {
         </Col>
       )
     }
-    else if (index === 7 || index===17 || index===29 ) {
+    else if (index === 7 || index === 14 ) {
       return (
         <Col xs={6} md={6} className="grid-box float-right" key={product.id} >
           <Link to={`products/${product.id}`}>

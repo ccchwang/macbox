@@ -173,11 +173,16 @@
   padding: 24px !important;
   margin-top: -7px !important;
   font-size: 1em !important;
-  height: 70px !important;
   border-radius: 0
 }
 
+.checkout-form textarea, .shipping-options {
+  height: 70px !important;
+}
 
+.login-container input {
+  height: 48px !important;
+}
 
 .checkout-form textarea:focus, .checkout-form textarea:hover {
   border: 1px solid rgb(204, 204, 204) !important;
@@ -453,7 +458,8 @@ a:focus, a:hover {
 }
 .grid-box {
   border: 3px solid white;
-  padding: 0
+  padding: 0;
+  min-height: 274px
 }
 
 
@@ -552,13 +558,13 @@ a:focus, a:hover {
   font-size: 1em !important;
 }
 
-#add-review-form button {
+.force-login {
   margin-right: 15px;
   width: 200px;
   padding: 12px 0;
 }
 
-#add-review-form a:hover {
+.force-login:hover {
   color: black
 }
 
@@ -762,7 +768,7 @@ svg {
 
 .login-container {
     width: 35%;
-    margin: 50px auto 0;
+    margin: 40px auto 0;
     display: flex;
     justify-content: center;
 }
@@ -785,6 +791,20 @@ svg {
   background-color: #de3b2d;
   color: white;
   font-weight: 400
+}
+
+.login-separator {
+  font-style: italic;
+  text-align: center;
+}
+
+.guest-login {
+  background-color: white;
+  border: 1.5px solid #6ae4df !important
+}
+
+.guest-login:hover {
+  background-color: #edfffe
 }
 
 #footer {
