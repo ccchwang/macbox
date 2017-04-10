@@ -7,8 +7,8 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
     auth: {
-        user: 'chwang590@gmail.com',
-        pass: env.EMAIL_PW
+        user: 'macbox.orders@gmail.com',
+        pass: 'macboxHerokuapp2'
     }
 });
 
