@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import UserNav from './UserNav'
 import { logout } from '../reducers/auth'
-import LoginSignUp from './LoginSignUp'
+import NavLoginSignup from './NavLoginSignup'
 
 
 export default connect(
@@ -55,7 +55,7 @@ export default connect(
           </LinkContainer>
         </Nav>
 
-      { props.auth ? <UserNav userName={props.auth.name} handleLogout={props.handleLogout} /> : <LoginSignUp /> }
+      { props.auth ? <UserNav userName={props.auth.name} handleLogout={props.handleLogout} /> : <NavLoginSignup /> }
 
       <Nav pullRight>
         <LinkContainer to="/cart">

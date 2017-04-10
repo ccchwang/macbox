@@ -9,7 +9,6 @@ export default function({ handleLogout, userName }) {
             <LinkContainer to="/orders">
               <MenuItem eventKey={`2.1`}>Order History</MenuItem>
             </LinkContainer>
-              <MenuItem eventKey={`2.1`}>Settings</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey={2} onClick={handleLogout}>Logout</MenuItem>
           </NavDropdown>

@@ -62,19 +62,19 @@
   padding: 3% 6%;
 }
 
-.sort-pane .p0, .p1, .p2 {
+.wishlist.Birthday p {
   background-color: #ffd8d8;
 }
 
-.sort-pane .p3, .p4, .p5 {
+.wishlist.NYC p {
   background-color: #D6ABB1;
 }
 
-.sort-pane .p6, .p7 {
+.wishlist.Summer p {
   background-color: rgb(131, 241, 236);
 }
 
-.sort-pane .p8, .p9 {
+.wishlist.Decals p {
   background-color: #ea91b5;
 }
 
@@ -459,7 +459,6 @@ a:focus, a:hover {
 .grid-box {
   border: 3px solid white;
   padding: 0;
-  min-height: 274px
 }
 
 
@@ -492,7 +491,8 @@ a:focus, a:hover {
 
 .grid-box-hover h3 {
   font-size: 1.6em;
-  line-height: 30px
+  line-height: 30px;
+  margin-top: 5px
 }
 
 
@@ -502,6 +502,16 @@ a:focus, a:hover {
   width: 90px;
   margin: 7px auto
 }
+
+@media (min-width: 992px) {
+  .grid-box.col-md-3 {
+    max-height: 275px;
+  }
+  .grid-box.col-md-6 {
+    max-height: 550px;
+  }
+}
+
 
 /* Single Product Page */
 
@@ -768,7 +778,7 @@ svg {
 
 .login-container {
     width: 35%;
-    margin: 40px auto 0;
+    margin: 50px auto 0;
     display: flex;
     justify-content: center;
 }

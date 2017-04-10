@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { SortablePane, Pane } from 'react-sortable-pane';
 import { Col, Popover } from 'react-bootstrap'
 import ProductModal from './ProductModal'
@@ -41,7 +40,7 @@ export default connect(
           id={product.id}
           className="sort-pane"
           >
-            <p className={`p${i}`} onClick={(e) => this.open(e, product)}>{product.name}</p>
+            <p onClick={(e) => this.open(e, product)}>{product.name}</p>
         </Pane>)
     })
 
@@ -49,15 +48,15 @@ export default connect(
   const column1 = panes.slice(0,3);
   const column2 = panes.slice(3,6);
   const column3 = panes.slice(6,8);
-  const column4 = panes.slice(8);
+  const column4 = panes.slice(9, 12);
 
-  const lists = [{col: column1, name: 'Birthday'}, {col: column2, name: 'NYC'}, {col: column3, name: 'Decals'}, {col: column4, name: 'Summer'}].map(list => (
+  const lists = [{col: column1, name: 'Birthday'}, {col: column2, name: 'NYC'}, {col: column3, name: 'Summer'}, {col: column4, name: 'Decals'}].map(list => (
     <Col md={3} key={list.name}>
       <div className="pane-header"><h3>{list.name}</h3></div>
       <SortablePane
         direction="vertical"
         margin={20}
-        className="wishlist"
+        className={`wishlist ${list.name}`}
       >
         { list.col }
       </SortablePane>
@@ -77,12 +76,7 @@ export default connect(
         Click and drag to re-sort the lists!
       </Popover>
 
-
-      {
-        this.props.user ? lists :
-         <h4>Please log in to view your wishlists.</h4>
-      }
-
+      { this.props.user ? lists : <h4>Please log in to view your wishlists.</h4> }
 
       <ProductModal
         product={this.state.selectedProduct}
@@ -92,8 +86,7 @@ export default connect(
       />
 
     </div>
-  );
-  }
+  )}
 }
 )
 

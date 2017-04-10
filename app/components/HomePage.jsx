@@ -1,6 +1,6 @@
 import React from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router'
+import { Grid, Row } from 'react-bootstrap'
+import GridBox from './GridBox'
 
 
 export default function(props) {
@@ -8,40 +8,31 @@ export default function(props) {
 
     if (index === 0 || index % 10 === 0 ) {
       return (
-        <Col xs={6} md={6} className="grid-box" key={product.id} >
-          <Link to={`products/${product.id}`}>
-            <img src={product.imgUrl} className="img-responsive"/>
-            <div className='grid-box-hover'>
-              <h3>{product.name}</h3>
-              <div className="shop-icon">SHOP IT</div>
-            </div>
-          </Link>
-        </Col>
+        <GridBox
+          md={6}
+          key={product.id}
+          product={product}
+        />
       )
     }
-    else if (index === 7 || index === 14 ) {
+    else if (index === 7 || index === 17 ) {
       return (
-        <Col xs={6} md={6} className="grid-box float-right" key={product.id} >
-          <Link to={`products/${product.id}`}>
-            <img src={product.imgUrl} className="img-responsive"/>
-            <div className='grid-box-hover'>
-              <h3>{product.name}</h3>
-              <div className="shop-icon">SHOP IT</div>
-            </div>
-          </Link>
-        </Col>
+        <GridBox
+          md={6}
+          floatRight={true}
+          key={product.id}
+          product={product}
+        />
       )
     }
     else {
-      return <Col xs={6} md={3} className="grid-box" key={product.id}>
-        <Link to={`products/${product.id}`}>
-          <img src={product.imgUrl} className="img-responsive"/>
-          <div className='grid-box-hover'>
-            <h3>{product.name}</h3>
-            <div className="shop-icon">SHOP IT</div>
-          </div>
-        </Link>
-      </Col>
+      return (
+        <GridBox
+          md={3}
+          key={product.id}
+          product={product}
+        />
+      )
     }
   })
 
