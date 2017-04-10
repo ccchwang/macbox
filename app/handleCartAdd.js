@@ -13,7 +13,6 @@ export const handleCartAdd = function(e, user, selectedProduct, animation=true) 
     price: selectedProduct.formattedPrice
   })
   .then(createdLineItem => {
-    console.log(animation)
     if (animation) {
       setTimeout(() => {
         toggleAnimation.call(SingleProductContainer, "playCartDrawerAnimation")
