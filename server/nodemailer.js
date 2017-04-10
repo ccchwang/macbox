@@ -41,6 +41,10 @@ const formatMailBody = (orderId, total, listItems, shipping, address, shippingCo
     <b>Shipping Method:</b> ${shipping}
     <br/><br />
     <b>Shipping Address:</b> ${address}
+    <br/><br /><br /><br />
+    <center><i>Macbox is a demo e-commerce site by Chloe Hwang.</i>
+    <br /><br />
+    <i>Visit at macbox.herokuapp.com | github.com/chloehwang/macbox</i></center>
   `
 }
 
@@ -55,6 +59,9 @@ const formatPlainMailBody = (orderId, total, listItems, shipping, address, shipp
     Shipping Cost: $${shippingCost.toFixed(2)}</h3>
     Shipping Method: ${shipping}
     Shipping Address: ${address}
+
+    Macbox is a demo e-commerce site by Chloe Hwang.
+    Visit at macbox.herokuapp.com | github.com/chloehwang/macbox
   `
 }
 
