@@ -21,7 +21,7 @@ export default function SocialShareMenu ({ product }) {
       margin={120}
     >
       <div className="button">
-        <img style={{marginLeft: '7.25px', marginTop: '7.5px'}} src="/img/favorite-5-16.png" />
+        <img style={{marginLeft: '7.25px', marginTop: '7.25px'}} src="/img/favorite-5-16.png" />
       </div>
 
       <FacebookShareButton
