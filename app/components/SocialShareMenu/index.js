@@ -12,8 +12,8 @@ const {
 
 export default function SocialShareMenu ({ product }) {
   const socialMediaTitle = product.name + " " + product.category;
-  const socialMediaImg = `http://localhost:8080` + product.imgUrl;
-  const socialMediaUrl = `http://localhost:8080/products/` + product.id;
+  const socialMediaImg = `https://macbox.herokuapp.com` + product.imgUrl;
+  const socialMediaUrl = `https://macbox.herokuapp.com/products/` + product.id;
 
   return (
     <Menu
@@ -21,14 +21,14 @@ export default function SocialShareMenu ({ product }) {
       margin={120}
     >
       <div className="button">
-        <img style={{marginLeft: '7.5px', marginTop: '7.5px'}} src="/img/favorite-5-16.png" />
+        <img style={{marginLeft: '7.25px', marginTop: '7.5px'}} src="/img/favorite-5-16.png" />
       </div>
 
       <FacebookShareButton
         picture={socialMediaImg}
         title={socialMediaTitle}
         description={product.description}
-        url="grace-shopper-babes.herokuapp.com"
+        url={socialMediaUrl}
       >
         <img className="share-img" src="/img/facebook-24.png" />
       </FacebookShareButton>
@@ -44,13 +44,13 @@ export default function SocialShareMenu ({ product }) {
       <PinterestShareButton
         media={socialMediaImg}
         description={socialMediaTitle + " - " + product.description}
-        url='www.yahoo.com'
+        url={socialMediaUrl}
       >
         <img className="share-img" src="/img/pinterest-6-24.png" />
       </PinterestShareButton>
 
       <GooglePlusShareButton
-        url={'http://grace-shopper-babes.herokuapp.com/'}
+        url={socialMediaUrl}
       >
         <img className="share-img" src="/img/google-plus-24.png" />
       </GooglePlusShareButton>
